@@ -1,7 +1,6 @@
 package Model.Utils;
 
 import java.sql.*;
-import com.microsoft.sqlserver.jdbc.*;
 
 public class ConnectionManager {
 
@@ -10,13 +9,19 @@ public class ConnectionManager {
 
 
     /**
-          * Class constructor which creates the connection to database.
+          * Konstruktor umożliwiający połączenie z bazą
         */
         private ConnectionManager(){
+            try {
+                    java.lang.Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+                    conn = java.sql.DriverManager.getConnection("jdbc:sqlserver://DON-LAPTOP:1433;DatabaseName=InteligentnyBudynek;user=budynek;password=haslo;SelectMethod=cursor ");
+            } catch (Exception ex){
+                ex.printStackTrace();
+            }
         }
 
         /**
-         * Method responsible for getting connection to database.
+         * Metoda odpowiedzialna za udostępnianie instancji połączenia
          * @return object Connection type
          * @throws SQLException  If an sql exception occured.
          */
@@ -27,12 +32,13 @@ public class ConnectionManager {
         }
 
         /**
-         * Method responsible for closing connection from database.
+         * Metoda odpowiedzialna za kończenie połączenia z bazą
          * @throws SQLException  If an sql exception occured.
          */
         public void disconnectFromDatabase() throws SQLException{
                 conn.close();
         }
+
 }
 
 		
