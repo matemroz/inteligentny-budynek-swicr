@@ -1,4 +1,4 @@
-package Controller.ElementyBudynku;
+package ElementyBudynku;
 
 import java.util.List;
 
@@ -8,7 +8,6 @@ public class Pokoj {
 	private int idPokoju;
 	private String nazwa;
 	private List Urzadzenia;
-	public Urzadzenie m_Urzadzenie;
 
 	public Pokoj(){
 

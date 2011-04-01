@@ -7,8 +7,6 @@ public class AnalizatorGazow extends Urzadzenie {
 	private double poziomCO;
 	private double poziomCO2;
 	private boolean pracuje;
-	public Alarm m_Alarm;
-	public ZraszaczPrzeciwpozarowy m_ZraszaczPrzeciwpozarowy;
 
 	public AnalizatorGazow(){
 
@@ -26,10 +24,6 @@ public class AnalizatorGazow extends Urzadzenie {
 		return 0;
 	}
 
-	public String getNazwa(){
-		return "";
-	}
-
 	public double getPoziomCO(){
 		return 0;
 	}
@@ -38,34 +32,14 @@ public class AnalizatorGazow extends Urzadzenie {
 		return 0;
 	}
 
-	/**
-	 * 
-	 * @param moc
-	 */
 	public void setMoc(double moc){
 
 	}
 
-	/**
-	 * 
-	 * @param nazwa
-	 */
-	public void setNazwa(String nazwa){
+        public void setPoziomCO(double poziomCO){
 
 	}
 
-	/**
-	 * 
-	 * @param poziomCO
-	 */
-	public void setPoziomCO(double poziomCO){
-
-	}
-
-	/**
-	 * 
-	 * @param poziomCO2
-	 */
 	public void setPoziomCO2(double poziomCO2){
 
 	}

@@ -5,7 +5,6 @@ public class Okno extends Urzadzenie {
 	private int nazwa;
 	private boolean otwarte;
 	private boolean zasloniete;
-	public AnalizatorGazow m_AnalizatorGazow;
 
 	public Okno(){
 

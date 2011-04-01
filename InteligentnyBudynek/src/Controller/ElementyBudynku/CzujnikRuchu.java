@@ -6,7 +6,6 @@ public class CzujnikRuchu extends Urzadzenie {
 	private String nazwa;
 	private boolean pracuje;
 	private boolean ruch;
-	public Alarm m_Alarm;
 
 	public CzujnikRuchu(){
 

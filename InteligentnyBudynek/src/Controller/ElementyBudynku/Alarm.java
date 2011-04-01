@@ -1,49 +1,59 @@
 package Controller.ElementyBudynku;
 
+import Model.DAO.MsUrzadzenieDAO;
+
 public class Alarm extends Urzadzenie {
 
-	private double moc;
-	private String nazwa;
-	private boolean pracuje;
+    public Alarm(){}
 
-	public Alarm(){
+    public Alarm(int idUrzadzenia, int idPokoju) {
+        this.idUrzadzenia = idUrzadzenia;
+        this.idPokoju = idPokoju;
+    }
 
-	}
+    public boolean czyPracuje(int idUrzadzenia) {
+        this.pracuje = (new MsUrzadzenieDAO()).czyPracuje(idUrzadzenia);
+    return this.pracuje;
+    }
 
-	public boolean czyPracuje(){
-		return false;
-	}
+    public double pobierzMoc() {
+        this.moc = (new MsUrzadzenieDAO()).pobierzMoc(this.idUrzadzenia);
+    return this.moc;
+    }
 
-	public double getMoc(){
-		return 0;
-	}
+    public double ustawMoc(double moc) {
+        this.moc = (new MsUrzadzenieDAO()).ustawMoc(this.idUrzadzenia, moc);
+    return this.moc;
+    }
 
-	public double getNazwa(){
-		return 0;
-	}
+    public boolean wlacz() {
+        return (new MsUrzadzenieDAO()).rejestrujWlaczenie(this.idUrzadzenia);
+    }
 
-	/**
-	 * 
-	 * @param moc
-	 */
-	public void setMoc(double moc){
+    public boolean wylacz() {
+        return (new MsUrzadzenieDAO()).rejestrujWylaczenie(this.idUrzadzenia);
+    }
 
-	}
 
-	/**
-	 * 
-	 * @param nazwa
-	 */
-	public void setNazwa(String nazwa){
+    public double getMoc() {
+        return moc;
+    }
 
-	}
+    public void setMoc(double moc) {
+        this.moc = moc;
+    }
 
-	public void wlacz(){
+    public boolean isPracuje() {
+        return pracuje;
+    }
 
-	}
+    public void setPracuje(boolean pracuje) {
+        this.pracuje = pracuje;
+    }
 
-	public void wylacz(){
-
-	}
-
+    private double moc;
+    private String nazwa;
+    private boolean pracuje;
+    private int idUrzadzenia;
+    private int idPokoju;
 }

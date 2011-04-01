@@ -9,11 +9,11 @@ public class MsUrzadzenieDAO implements IUrzadzenieDAO {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    public boolean dodaj(int idPokoju) {
+    public int dodaj(int idPokoju) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    public boolean przenies(int idUrzadzenia, int idPokoju) {
+    public int przenies(int idUrzadzenia, int idPokoju) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
@@ -21,15 +21,27 @@ public class MsUrzadzenieDAO implements IUrzadzenieDAO {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    public double getMoc(int idUrzadzenia) {
+    public boolean czyPracuje(int idUrzadzenia){
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    public boolean ustawMoc(int idUrzadzenia, double moc) {
+    public String pobierzNazwa(int idUrzadzenia){
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    public double getPoborGazu(int idUrzadzenia) {
+    public String ustawNazwa(int idUrzadzenia, String nazwa){
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    public double pobierzMoc(int idUrzadzenia) {
+        return 4.0;
+    }
+
+    public double ustawMoc(int idUrzadzenia, double moc){
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    public double pobierzPoborGazu(int idUrzadzenia) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 

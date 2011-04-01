@@ -6,21 +6,21 @@ package Model.DAO;
      int znajdzUrzadzenie(int idUrzadzenia);
 
     //dodaje do bazy urzadzenie do danego pokoju (idUrzadzenia generowane jest automatycznie w bazie)
-     boolean dodaj(int idPokoju);
+     int dodaj(int idPokoju);
 
     //zmienia w bazie idPokoju do dla urzadzenia o danym idUrzadzenia
-     boolean przenies(int idUrzadzenia, int idPokoju);
+     int przenies(int idUrzadzenia, int idPokoju);
 
     //usuwa z bazy urzadzenie o danym idUrzadzenia
      boolean usun(int idUrzadzenia) ;
 
     //pobiera z bazy moc urzadzenia
-     double getMoc(int idUrzadzenia);
+     double pobierzMoc(int idUrzadzenia);
 
     //wprowadza w bazie moc urzadzenia
-     boolean ustawMoc(int idUrzadzenia, double moc);
+     double ustawMoc(int idUrzadzenia, double moc);
 
-     double getPoborGazu(int idUrzadzenia);
+     double pobierzPoborGazu(int idUrzadzenia);
 
      boolean ustawPoborGazu(int idUrzadzenia, double poborGazu) ;
 
