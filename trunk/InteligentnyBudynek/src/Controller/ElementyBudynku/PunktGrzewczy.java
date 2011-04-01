@@ -1,11 +1,12 @@
 package Controller.ElementyBudynku;
 
+//Punkt grzewczy grzeje za pomoca GAZU
+
 public class PunktGrzewczy extends Urzadzenie {
 
 	private String nazwa;
 	private int poziomDzialania;
 	private boolean pracuje;
-	public CzujnikTemperatury m_CzujnikTemperatury;
 
 	public PunktGrzewczy(){
 

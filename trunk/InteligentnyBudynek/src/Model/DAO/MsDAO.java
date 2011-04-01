@@ -4,8 +4,8 @@ import java.sql.*;
 
 public class MsDAO extends DAOFactory {
 
-    public static final String DRIVER = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
-    public static final String DBURL = "jdbc:sqlserver://DON-LAPTOP:1433;DatabaseName=InteligentnyBudynek;user=budynek;password=haslo;SelectMethod=cursor";
+    private static final String DRIVER = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
+    private static final String DBURL = "jdbc:sqlserver://DON-LAPTOP:1433;DatabaseName=InteligentnyBudynek;user=budynek;password=haslo;SelectMethod=cursor";
     private static Connection conn;
 
     public static Connection createConnection() throws ClassNotFoundException, SQLException {

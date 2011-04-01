@@ -5,16 +5,13 @@ import java.util.List;
 
 public interface IPokojDAO {
 
-    boolean dodaj( );
-
-    boolean dodaj(String nazwa);
+    int dodaj(String nazwa);
 
     boolean usun(int idPokoju);
 
-    void ustawNazwe(int idPokoju, String nazwa);
+    String ustawNazwe(int idPokoju, String nazwa) ;
 
-    String getNazwa(int idPokoju);
+    String pobierzNazwa(int idPokoju);
 
-    //metoda zwraca liste urzadzen z danego pokoju
-    public List<Urzadzenie> wylistujUrzadzenia();
+    List<Urzadzenie> wylistujUrzadzenia(int idPokoju);
 }
