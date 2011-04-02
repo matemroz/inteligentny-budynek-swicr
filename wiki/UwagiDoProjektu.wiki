@@ -1,1 +1,1 @@
-Jak implementujemy konstruktory? Czy w atrybuty klasy mają być od razu pobierane z bazki, czy przekazywane jako argumenty konstruktora?
+Staramy się pobierać argumenty z bazy od razu w konstruktorze, ale robimy tez przeciążone konstruktory ze zwykłymi argumentami.
