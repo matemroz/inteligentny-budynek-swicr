@@ -1,0 +1,2 @@
+login: twoj_mail
+haslo: wygenerowane haslo z Profile(prawy górny róg)->Settings
