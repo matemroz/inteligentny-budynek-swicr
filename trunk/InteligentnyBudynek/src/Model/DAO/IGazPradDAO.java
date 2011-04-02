@@ -8,5 +8,5 @@ public interface IGazPradDAO {
 
     double pobierzCeneGazu();
 
-    boolean ustawCeneGazu(double cenaGazu);
+    double ustawCeneGazu(double cenaGazu);
 }

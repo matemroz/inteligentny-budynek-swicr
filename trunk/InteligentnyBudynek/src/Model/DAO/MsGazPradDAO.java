@@ -14,7 +14,7 @@ public class MsGazPradDAO implements IGazPradDAO{
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    public boolean ustawCeneGazu(double cenaGazu) {
+    public double ustawCeneGazu(double cenaGazu) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
