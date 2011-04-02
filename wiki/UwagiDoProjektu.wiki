@@ -1,1 +1,3 @@
 Staramy się pobierać argumenty z bazy od razu w konstruktorze, ale robimy tez przeciążone konstruktory ze zwykłymi argumentami.
+
+Nazwa urządzanie składa się z "Nazwa_urządzenia#"+idUrzadzenia np. Żarówka#101
