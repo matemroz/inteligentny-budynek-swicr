@@ -52,3 +52,17 @@ W trakcie ładowania GUI i wykonywania metody onLoad (chyba tak się nazywała, 
   # Pobranie listy pokoi.
   # Pobranie list urzadzeń do każdego pokoju.
   # Utworzenie obiektów urządzeń w każdym pokoju.
+
+
+
+----
+
+==Metody z bazy==
+Metody z bazy pobierz* i ustaw* *nie zmieniają stanu* pól obiektów. Zwracają tylko wartość:
+  *  ustaw->boolean,
+  *  pobierz-> odpowiedni typ (np. double dla moc).
+
+----
+
+==Poziom gazów i pracy klimatyzatora==
+To jest jeszcze do rozkminienia. Dobrze byłoby jakby z poziomu GUI wyglądało to w ten sposób, że mamy ComboBoxa i wartości do wyboru: 0, 20, 40, 60, 80, 100%.
