@@ -62,7 +62,15 @@ Metody z bazy pobierz i ustaw *nie zmieniają stanu* pól obiektów. Zwracają t
   *  ustaw->boolean,
   *  pobierz-> odpowiedni typ (np. double dla moc).
 
+
 ----
 
 ==Poziom gazów i pracy klimatyzatora==
 To jest jeszcze do rozkminienia. Dobrze byłoby jakby z poziomu GUI wyglądało to w ten sposób, że mamy ComboBoxa i wartości do wyboru: 0, 20, 40, 60, 80, 100%.
+
+
+----
+
+==Format czasu pracy==
+Metoda _pobierzCzasPracy_ będzie pobierać czas danych w sekundach. W programie możemy zrobić np. wyświetlanie czasu pracy przeliczając te sekundy na format: HH:MM:SS. Zrobiłem w paczce: Controller.Utils klasę _Konwerter_. W niej będziemy pisać metody do konwersji jednostek itp.  
+ 
