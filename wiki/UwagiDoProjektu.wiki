@@ -1,3 +1,44 @@
-Staramy się pobierać argumenty z bazy od razu w konstruktorze, ale robimy tez przeciążone konstruktory ze zwykłymi argumentami.
+=Uwagi do projektu=
 
-Nazwa urządzanie składa się z "Nazwa_urządzenia#"+idUrzadzenia np. Żarówka#101
+----
+
+==Format nazwy urządzenia==
+Nazwa urządzanie składa się z _*"Nazwa_urządzenia#"+idUrzadzenia*_ np. Żarówka#101
+
+----
+
+==Konstruktory - ElementyBudynkow==
+W konstruktorach następuje inicjalizacja pól. Do inicjalizacji niektórych pól wykorzystywane są metody z interfejsu do obsługi bazy, np. (_nazwa_, _moc_ ),    
+
+Potrzebujemy tutaj również co najmniej dwa rodzaje konstruktorów:
+  *  _urządzenie zostało utworzone już wcześniej_ - 
+{{{
+...
+
+    public Alarm(int idPokoju, int idUrzadzenia){
+            this.idPokoju = idPokoju;
+            this.idUrzadzenia = idUrzadzenia;
+            this.nazwa = (new MsUrzadzenieDAO()).pobierzNazwa(this.idUrzadzenia);
+            this.moc = (new MsUrzadzenieDAO()).pobierzMoc(this.idUrzadzenia);
+    }
+...
+}}}
+
+  *  _tworzone jest nowe urządzenie_ :
+
+{{{
+...
+
+    public Alarm(int idPokoju){
+            this.idPokoju = idPokoju;
+            this.idUrzadzenia = (new MsUrzadzenieDAO()).dodaj(this.idPokoju);
+
+            this.nazwa = "Alarm";
+            (new MsUrzadzenieDAO()).ustawNazwa(this.idUrzadzenia, this.nazwa);
+
+            this.moc = 30;
+            (new MsUrzadzenieDAO()).ustawMoc(this.idUrzadzenia, this.moc);
+    }
+
+...
+}}}
