@@ -72,5 +72,5 @@ To jest jeszcze do rozkminienia. Dobrze byłoby jakby z poziomu GUI wyglądało 
 ----
 
 ==Format czasu pracy==
-Metoda _pobierzCzasPracy_ będzie pobierać czas danych w sekundach. W programie możemy zrobić np. wyświetlanie czasu pracy przeliczając te sekundy na format: HH:MM:SS. Zrobiłem w paczce: Controller.Utils klasę _Konwerter_. W niej będziemy pisać metody do konwersji jednostek itp.  
+Metoda _pobierzCzasPracy_ będzie pobierać czas danych w sekundach. W programie możemy zrobić np. wyświetlanie czasu pracy przeliczając te sekundy na format: HH:MM:SS. Zrobiłem w paczce: Controller.Utils klasę _Konwerter_. Będziemy w niej pisać metody do konwersji jednostek itp.  
  
