@@ -42,3 +42,13 @@ Potrzebujemy tutaj również co najmniej dwa rodzaje konstruktorów:
 
 ...
 }}}
+
+
+----
+
+==Load programu==
+W trakcie ładowania GUI i wykonywania metody onLoad (chyba tak się nazywała, ale nie jestem pewien), powinny być wykonywane następujące akce:
+
+1. Pobranie listy pokoi.
+2. Pobranie list urzadzeń do każdego pokoju.
+3. Utworzenie obiektów urządzeń w każdym pokoju.
