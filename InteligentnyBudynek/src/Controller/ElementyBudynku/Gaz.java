@@ -7,11 +7,11 @@ public class Gaz {
 	public double cenaZaMetr;
 
 	public Gaz(){
-
+            this.cenaZaMetr = ( new MsGazPradDAO()).pobierzCeneGazu();
         }
 
 	public double getCenaZaMetr(){
-		return cenaZaMetr;
+		return this.cenaZaMetr;
 	}
 
 	/**
@@ -22,15 +22,10 @@ public class Gaz {
                 this.cenaZaMetr = cenaZaMetr;
 	}
 
-        public double pobierzCeneZaMetr() {
-                this.cenaZaMetr = (new MsGazPradDAO()).pobierzCeneGazu();
-            return this.cenaZaMetr;
+        public boolean ustawCeneZaMetr(double cenaZaMetr) {
+            //TODO: nie wiem jak to inaczej rozwiazać
+            (new MsGazPradDAO()).ustawCeneGazu(cenaZaMetr);
+        return true;
         }
-
-        public double ustawCeneZaMetr(double cenaZaMetr) {
-                this.cenaZaMetr = (new MsGazPradDAO()).ustawCeneGazu(cenaZaMetr);
-            return this.cenaZaMetr;
-        }
-
 
 }
