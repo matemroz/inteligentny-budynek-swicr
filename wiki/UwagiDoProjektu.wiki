@@ -58,7 +58,7 @@ W trakcie ładowania GUI i wykonywania metody onLoad (chyba tak się nazywała, 
 ----
 
 ==Metody z bazy==
-Metody z bazy pobierz* i ustaw* *nie zmieniają stanu* pól obiektów. Zwracają tylko wartość:
+Metody z bazy pobierz i ustaw *nie zmieniają stanu* pól obiektów. Zwracają tylko wartość:
   *  ustaw->boolean,
   *  pobierz-> odpowiedni typ (np. double dla moc).
 
