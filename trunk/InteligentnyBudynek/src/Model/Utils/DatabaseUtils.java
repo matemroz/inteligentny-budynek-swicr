@@ -5,7 +5,41 @@ import java.util.*;
 
 public class DatabaseUtils {
 
-    public static boolean executeCommand(String tableName, List<String> columnNames, List<String> columnTypes, List<String> values) {
+    public static boolean executeCommand(String tableName, List<String> columnNames, List<String> values){
+        StringBuilder sql = new StringBuilder("INSERT INTO ");
+        sql.append(tableName).append(" (");
+        Iterator itColumnNames = columnNames.iterator();
+        
+        while(itColumnNames.hasNext()){
+            sql.append(itColumnNames.next()).append(", ");
+        }
+
+        sql.deleteCharAt(sql.lastIndexOf(","));
+        sql.append(") VALUES (");
+        Iterator itValues = values.iterator();
+        while(itValues.hasNext()){
+            sql.append("'").append(itValues.next()).append("'").append(", ");
+        }
+        sql.deleteCharAt(sql.lastIndexOf(","));
+        sql.append(" );");
+
+        System.out.println(sql.toString());
+
+        boolean resultSuccess = false;
+
+        try {
+            Statement st = ConnectionManager.getDatabaseConnection().createStatement();
+            resultSuccess = st.execute(sql.toString());
+        } catch (SQLException ex) {
+            System.err.println("Błąd przy wykonywyniu operacji INSERT w bazie. \n"
+                    + ex.getSQLState()
+                    + "\n" + ex.getErrorCode());
+
+        }
+    return resultSuccess;
+    }
+
+    public static boolean executeCommandWithOutput(String tableName, List<String> columnNames, List<String> columnTypes, List<String> values) {
         StringBuilder sql = new StringBuilder("DECLARE");
         sql.append(" @").append(tableName).append("Var").append(" table ( ");
         sql.append("new").append("Id").append(tableName).append(" int").append(", ");
@@ -43,17 +77,38 @@ public class DatabaseUtils {
         sql.deleteCharAt(sql.lastIndexOf(","));
         sql.append(");");
 
+        boolean resultSuccess = false;
+
         System.out.println(sql.toString());
         try {
             Statement st = ConnectionManager.getDatabaseConnection().createStatement();
-            st.execute(sql.toString());
+            resultSuccess = st.execute(sql.toString());
         } catch (SQLException ex) {
             System.err.println("Błąd przy wykonywyniu operacji INSERT w bazie. \n"
                     + ex.getSQLState()
                     + "\n" + ex.getErrorCode());
 
         }
-        return true;
+        return resultSuccess;
+    }
+
+    public static int updateCommand(String tableName, String columnName, String value, String condition){
+
+        StringBuilder sql = new StringBuilder("UPDATE ");
+        sql.append(tableName).append(" SET ").append(columnName).append(" = ").append(value).append(" ");
+        sql.append("WHERE ").append(condition).append(";");
+        int resultSuccess = -1;
+        System.out.println(sql.toString());
+        try {
+            Statement st = ConnectionManager.getDatabaseConnection().createStatement();
+            resultSuccess = st.executeUpdate(sql.toString());
+        } catch (SQLException ex) {
+            System.err.println("Błąd przy wykonywyniu operacji INSERT w bazie. \n"
+                    + ex.getSQLState()
+                    + "\n" + ex.getErrorCode());
+        }
+
+        return resultSuccess;
     }
 
     public static ResultSet queryCommand(List<String> colNames, List<String> tableNames, List<String> tableRelations, String condition) {
@@ -150,23 +205,19 @@ public class DatabaseUtils {
     }
 
     public static void main(String[] args) {
-        List<String> columnNames = new ArrayList<String>();
+      /*  List<String> columnNames = new ArrayList<String>();
         columnNames.add("idPokoju");
         columnNames.add("nazwa");
         columnNames.add("moc");
         columnNames.add("poborGazu");
 
-        List<String> columnTypes = new ArrayList<String>();
-        columnTypes.add("int");
-        columnTypes.add("Varchar(40)");
-        columnTypes.add("float");
-        columnTypes.add("float");
 
         List<String> values = new ArrayList<String>();
         values.add("1");
         values.add("Salon");
         values.add("30");
-        values.add("0");
-        DatabaseUtils.executeCommand("Urzadzenia", columnNames, columnTypes, values);
+        values.add("0");*/
+
+        DatabaseUtils.updateCommand("Urzadzenia", "moc", "70", "idUrzadzenia = '1'");
     }
 }

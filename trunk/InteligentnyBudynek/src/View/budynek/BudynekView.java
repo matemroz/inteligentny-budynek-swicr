@@ -193,10 +193,11 @@ public class BudynekView extends FrameView {
         jButton14 = new javax.swing.JButton();
         jButton25 = new javax.swing.JButton();
         jButton26 = new javax.swing.JButton();
+        projektuj = new javax.swing.JFrame();
 
         mainPanel.setName("mainPanel"); // NOI18N
 
-        org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(View.budynek.BudynekApp.class).getContext().getResourceMap(BudynekView.class);
+        org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance().getContext().getResourceMap(BudynekView.class);
         jPanel1.setBackground(resourceMap.getColor("jPanel1.background")); // NOI18N
         jPanel1.setName("jPanel1"); // NOI18N
 
@@ -608,7 +609,7 @@ public class BudynekView extends FrameView {
         fileMenu.setText(resourceMap.getString("fileMenu.text")); // NOI18N
         fileMenu.setName("fileMenu"); // NOI18N
 
-        javax.swing.ActionMap actionMap = org.jdesktop.application.Application.getInstance(View.budynek.BudynekApp.class).getContext().getActionMap(BudynekView.class, this);
+        javax.swing.ActionMap actionMap = org.jdesktop.application.Application.getInstance().getContext().getActionMap(BudynekView.class, this);
         exitMenuItem.setAction(actionMap.get("quit")); // NOI18N
         exitMenuItem.setName("exitMenuItem"); // NOI18N
         fileMenu.add(exitMenuItem);
@@ -1124,6 +1125,19 @@ public class BudynekView extends FrameView {
                 .addGap(22, 22, 22))
         );
 
+        projektuj.setName("projektuj"); // NOI18N
+
+        javax.swing.GroupLayout projektujLayout = new javax.swing.GroupLayout(projektuj.getContentPane());
+        projektuj.getContentPane().setLayout(projektujLayout);
+        projektujLayout.setHorizontalGroup(
+            projektujLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        projektujLayout.setVerticalGroup(
+            projektujLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
+
         setComponent(mainPanel);
         setMenuBar(menuBar);
         setStatusBar(statusPanel);
@@ -1340,6 +1354,7 @@ public class BudynekView extends FrameView {
     private javax.swing.JPanel mainPanel;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JProgressBar progressBar;
+    private javax.swing.JFrame projektuj;
     private javax.swing.JLabel statusAnimationLabel;
     private javax.swing.JLabel statusMessageLabel;
     private javax.swing.JPanel statusPanel;
