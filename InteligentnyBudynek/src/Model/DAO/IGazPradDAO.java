@@ -4,7 +4,7 @@ public interface IGazPradDAO {
 
     double pobierzCenePradu();
 
-    boolean ustawCenePradu(double cenaPradu);
+    double ustawCenePradu(double cenaPradu);
 
     double pobierzCeneGazu();
 

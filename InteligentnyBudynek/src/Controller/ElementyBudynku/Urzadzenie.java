@@ -12,36 +12,32 @@ public class Urzadzenie {
     }
 
     public String pobierzNazwa() {
-        this.nazwa = (new MsUrzadzenieDAO()).pobierzNazwa(this.idUrzadzenia);
-    return this.nazwa;
+        return (new MsUrzadzenieDAO()).pobierzNazwa(this.idUrzadzenia);
     }
 
-    public String ustawNazwa(String nazwa) {
-        this.nazwa = (new MsUrzadzenieDAO()).ustawNazwa(this.idUrzadzenia, nazwa);
-    return this.nazwa;
+    public boolean ustawNazwa(String nazwa) {
+        return (new MsUrzadzenieDAO()).ustawNazwa(this.idUrzadzenia, nazwa);
     }
 
     public int dodaj(int idPokoju) {
-        this.idUrzadzenia = (new MsUrzadzenieDAO()).dodaj(idPokoju);
-    return this.idUrzadzenia;
+        return (new MsUrzadzenieDAO()).dodaj(idPokoju);
     }
 
     public int przenies(int idPokoju) {
-        this.idPokoju = (new MsUrzadzenieDAO()).przenies(this.idUrzadzenia, idPokoju);
-    return this.idPokoju;
+        return (new MsUrzadzenieDAO()).przenies(this.idUrzadzenia, idPokoju);
     }
 
     public boolean usun(int idUrzadzenia) {
         return (new MsUrzadzenieDAO()).usun(idUrzadzenia);
     }
-    
+
+     /*
+     * Metody wygenerowane na podstawie pól
+     */
+
     public int getIdUrzadzenia() {
         return this.idUrzadzenia;
     }
-
-    /*
-     * Metody wygenerowane na podstawie pól
-     */
 
     public void setIdUrzadzenia(int idUrzadzenia) {
         this.idUrzadzenia = idUrzadzenia;

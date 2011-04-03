@@ -5,31 +5,56 @@ import java.util.*;
 
 public class DatabaseUtils {
 
+    public static boolean executeCommand(String tableName, List<String> columnNames, List<String> columnTypes, List<String> values) {
+        StringBuilder sql = new StringBuilder("DECLARE");
+        sql.append(" @").append(tableName).append("Var").append(" table ( ");
+        sql.append("new").append("Id").append(tableName).append(" int").append(", ");
 
-    public static boolean executeCommand(String tableName, List<String> columnNames, List<String> values){
-        /*StringBuilder sql = new StringBuilder("INSERT INTO ");
-        sql.append(tableName).append(" (");
         Iterator itColumnNames = columnNames.iterator();
-        while(itColumnNames.hasNext()){
-           sql.append(itColumnNames.next()).append(", ");
+        Iterator itColumnTypes = columnTypes.iterator();
+
+        if (columnNames.size() != columnTypes.size()) {
+            System.out.println("Nieodpowiednio przypisane typy pól do nazw!");
+            return false;
+        }
+
+        while (itColumnNames.hasNext()) {
+            sql.append(itColumnNames.next()).append(" ").append(itColumnTypes.next()).append(", ");
         }
         sql.deleteCharAt(sql.lastIndexOf(","));
-        sql.append(") VALUES (");
+        sql.append("); ");
+        itColumnNames = null;
+
+        sql.append("INSERT ").append(tableName);
+        sql.append(" OUTPUT ");
+        sql.append("INSERTED.id").append(tableName).append(", ");
+        itColumnNames = columnNames.iterator();
+        while (itColumnNames.hasNext()) {
+            sql.append("INSERTED.").append(itColumnNames.next()).append(", ");
+        }
+        sql.deleteCharAt(sql.lastIndexOf(","));
+        sql.append("INTO @").append(tableName).append("Var");
+        sql.append(" VALUES (");
         Iterator itValues = values.iterator();
-        while(itValues.hasNext()) {
-           sql.append("'");
-           sql.append(itValues.next()).append("', ");
+        while (itValues.hasNext()) {
+            sql.append("'");
+            sql.append(itValues.next()).append("', ");
         }
         sql.deleteCharAt(sql.lastIndexOf(","));
-        sql.append(")");
+        sql.append(");");
 
         System.out.println(sql.toString());
+        try {
+            Statement st = ConnectionManager.getDatabaseConnection().createStatement();
+            st.execute(sql.toString());
+        } catch (SQLException ex) {
+            System.err.println("Błąd przy wykonywyniu operacji INSERT w bazie. \n"
+                    + ex.getSQLState()
+                    + "\n" + ex.getErrorCode());
 
-        Statement st = null;*/
+        }
         return true;
     }
-
-    
 
     public static ResultSet queryCommand(List<String> colNames, List<String> tableNames, List<String> tableRelations, String condition) {
         ResultSet rs = null;
@@ -49,12 +74,12 @@ public class DatabaseUtils {
         Iterator itTableRelations = tableRelations.iterator();
         String tabName = "", prevTabName = "", tableRelation = "";
         int i = 0;
-        while(itTableNames.hasNext()){
+        while (itTableNames.hasNext()) {
             tabName = itTableNames.next().toString();
             tableRelation = "";
             sql.append(tabName);
-          
-            if( i > 0 && itTableRelations.hasNext()){
+
+            if (i > 0 && itTableRelations.hasNext()) {
                 sql.append(" ON ");
                 tableRelation = itTableRelations.next().toString();
                 sql.append(prevTabName).append(".").append(tableRelation);
@@ -65,7 +90,7 @@ public class DatabaseUtils {
             sql.append(" INNER JOIN ");
             i++;
         }
-        
+
         sql.delete(sql.toString().length() - " INNER JOIN ".length(), sql.toString().length());
         sql.append(" WHERE ");
         sql.append(condition);
@@ -75,15 +100,14 @@ public class DatabaseUtils {
                 return null;
             }
         } catch (SQLException ex) {
-            System.err.println("SQL error while querying data:\n"
+            System.err.println("Błąd przy wykonywnaniu operacji SELECT w bazie. \n"
                     + ex.getSQLState()
                     + "\n" + ex.getErrorCode());
         }
         return rs;
     }
 
-
-     public static ResultSet queryCommand(List<String> colNames, String tableName, String condition) {
+    public static ResultSet queryCommand(List<String> colNames, String tableName, String condition) {
         ResultSet rs = null;
         Statement st = null;
 
@@ -100,7 +124,7 @@ public class DatabaseUtils {
                 return null;
             }
         } catch (SQLException ex) {
-            System.err.println("SQL error while querying data:\n"
+            System.err.println("Błąd przy wykonywnaniu operacji SELECT w bazie. \n"
                     + ex.getSQLState()
                     + "\n" + ex.getErrorCode());
         }
@@ -118,11 +142,31 @@ public class DatabaseUtils {
                 return null;
             }
         } catch (SQLException ex) {
-            System.err.println("SQL error while querying data:\n"
+            System.err.println("Błąd przy wykonywnaniu operacji SELECT w bazie. \n"
                     + ex.getSQLState()
                     + "\n" + ex.getErrorCode());
         }
         return rs;
     }
 
+    public static void main(String[] args) {
+        List<String> columnNames = new ArrayList<String>();
+        columnNames.add("idPokoju");
+        columnNames.add("nazwa");
+        columnNames.add("moc");
+        columnNames.add("poborGazu");
+
+        List<String> columnTypes = new ArrayList<String>();
+        columnTypes.add("int");
+        columnTypes.add("Varchar(40)");
+        columnTypes.add("float");
+        columnTypes.add("float");
+
+        List<String> values = new ArrayList<String>();
+        values.add("1");
+        values.add("Salon");
+        values.add("30");
+        values.add("0");
+        DatabaseUtils.executeCommand("Urzadzenia", columnNames, columnTypes, values);
+    }
 }

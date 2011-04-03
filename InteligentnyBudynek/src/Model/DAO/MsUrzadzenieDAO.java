@@ -1,4 +1,5 @@
 package Model.DAO;
+import Model.Utils.*;
 
 public class MsUrzadzenieDAO implements IUrzadzenieDAO {
 
@@ -10,7 +11,8 @@ public class MsUrzadzenieDAO implements IUrzadzenieDAO {
     }
 
     public int dodaj(int idPokoju) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        DatabaseUtils.executeCommand(null, null, null, null);
+        return 0;
     }
 
     public int przenies(int idUrzadzenia, int idPokoju) {
@@ -29,7 +31,7 @@ public class MsUrzadzenieDAO implements IUrzadzenieDAO {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    public String ustawNazwa(int idUrzadzenia, String nazwa){
+    public boolean ustawNazwa(int idUrzadzenia, String nazwa){
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
@@ -37,7 +39,7 @@ public class MsUrzadzenieDAO implements IUrzadzenieDAO {
         return 4.0;
     }
 
-    public double ustawMoc(int idUrzadzenia, double moc){
+    public boolean ustawMoc(int idUrzadzenia, double moc){
         throw new UnsupportedOperationException("Not supported yet.");
     }
 

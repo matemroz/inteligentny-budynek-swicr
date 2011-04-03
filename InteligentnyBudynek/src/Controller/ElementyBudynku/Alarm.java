@@ -4,26 +4,35 @@ import Model.DAO.MsUrzadzenieDAO;
 
 public class Alarm extends Urzadzenie {
 
-    public Alarm(){}
 
-    public Alarm(int idUrzadzenia, int idPokoju) {
-        this.idUrzadzenia = idUrzadzenia;
-        this.idPokoju = idPokoju;
+    public Alarm(int idPokoju){
+            this.idPokoju = idPokoju;
+            this.idUrzadzenia = (new MsUrzadzenieDAO()).dodaj(this.idPokoju);
+
+            this.nazwa = "Alarm";
+            (new MsUrzadzenieDAO()).ustawNazwa(this.idUrzadzenia, this.nazwa);
+
+            this.moc = 30;
+            (new MsUrzadzenieDAO()).ustawMoc(this.idUrzadzenia, this.moc);
+    }
+
+    public Alarm(int idPokoju, int idUrzadzenia){
+            this.idPokoju = idPokoju;
+            this.idUrzadzenia = idUrzadzenia;
+            this.nazwa = (new MsUrzadzenieDAO()).pobierzNazwa(this.idUrzadzenia);
+            this.moc = (new MsUrzadzenieDAO()).pobierzMoc(this.idUrzadzenia);
     }
 
     public boolean czyPracuje(int idUrzadzenia) {
-        this.pracuje = (new MsUrzadzenieDAO()).czyPracuje(idUrzadzenia);
-    return this.pracuje;
+        return (new MsUrzadzenieDAO()).czyPracuje(idUrzadzenia);
     }
 
     public double pobierzMoc() {
-        this.moc = (new MsUrzadzenieDAO()).pobierzMoc(this.idUrzadzenia);
-    return this.moc;
+         return (new MsUrzadzenieDAO()).pobierzMoc(this.idUrzadzenia);
     }
 
-    public double ustawMoc(double moc) {
-        this.moc = (new MsUrzadzenieDAO()).ustawMoc(this.idUrzadzenia, moc);
-    return this.moc;
+    public boolean ustawMoc(double moc) {
+        return (new MsUrzadzenieDAO()).ustawMoc(this.idUrzadzenia, moc);
     }
 
     public boolean wlacz() {
@@ -33,7 +42,6 @@ public class Alarm extends Urzadzenie {
     public boolean wylacz() {
         return (new MsUrzadzenieDAO()).rejestrujWylaczenie(this.idUrzadzenia);
     }
-
 
     public double getMoc() {
         return moc;
