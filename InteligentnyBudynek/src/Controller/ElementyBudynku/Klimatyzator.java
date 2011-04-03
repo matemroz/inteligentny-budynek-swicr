@@ -4,6 +4,8 @@ import Model.DAO.MsUrzadzenieDAO;
 
 public class Klimatyzator extends Urzadzenie {
 
+    /*Trzeba będzie jeszcze przemyśleć bo jak wyższy poziom działania to większa moc pobierana*/
+
 	private double moc;
 	private String nazwa;
 	private int poziomDzialania;
@@ -33,7 +35,7 @@ public class Klimatyzator extends Urzadzenie {
 	public boolean czyPracuje(int idUrzadzenia){
 		return (new MsUrzadzenieDAO()).czyPracuje(idUrzadzenia);
 	}
-
+        
         public boolean wlacz(){
             return (new MsUrzadzenieDAO()).rejestrujWlaczenie(this.idUrzadzenia);
 	}

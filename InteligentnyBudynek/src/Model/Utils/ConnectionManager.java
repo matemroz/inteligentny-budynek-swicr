@@ -5,7 +5,7 @@ import java.sql.*;
 public class ConnectionManager {
 
         private static final ConnectionManager cm = new ConnectionManager();
-        private Connection conn;
+        private static Connection conn;
 
 
     /**
@@ -15,6 +15,7 @@ public class ConnectionManager {
             try {
                     java.lang.Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
                     conn = java.sql.DriverManager.getConnection("jdbc:sqlserver://DON-LAPTOP:1433;DatabaseName=InteligentnyBudynek;user=budynek;password=haslo;SelectMethod=cursor ");
+                    System.out.println("Polączono z bazką\n");
             } catch (Exception ex){
                 ex.printStackTrace();
             }
@@ -35,7 +36,7 @@ public class ConnectionManager {
          * Metoda odpowiedzialna za kończenie połączenia z bazą
          * @throws SQLException  If an sql exception occured.
          */
-        public void disconnectFromDatabase() throws SQLException{
+        public static void disconnectFromDatabase() throws SQLException{
                 conn.close();
         }
 
