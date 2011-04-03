@@ -7,7 +7,6 @@ public class Prad {
 	public double cenaKWH;
 
 	public Prad(){
-            //TODO: co jesli nie uda sie pobrac ceny?
             cenaKWH = (new MsGazPradDAO()).pobierzCenePradu();
 	}
 
@@ -18,9 +17,11 @@ public class Prad {
 	
 	public boolean setCenaKWH(double cenaKWH){
             //TODO: co jesli nie uda sie zmienic ceny w bazie?
-            if (cenaKWH < 0)
+            if (cenaKWH < 0){
+                System.out.println("Nie można ustawić ujemnej ceny za prąd!");
                 return false;
-
+            }
+            
             this.cenaKWH = cenaKWH;
             (new MsGazPradDAO()).ustawCenePradu(cenaKWH);
             return true;
