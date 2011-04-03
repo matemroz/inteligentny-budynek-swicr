@@ -12,13 +12,47 @@ public class AnalizatorGazow extends Urzadzenie {
         private int idUrzadzenia;
         private int idPokoju;
 
+        public AnalizatorGazow( int idPokoju){
+            this.idPokoju = idPokoju;
+            this.idUrzadzenia = ( new MsUrzadzenieDAO()).dodaj(this.idPokoju);
+
+            this.nazwa = "Analizator Gazów";
+            (new MsUrzadzenieDAO()).ustawNazwa(this.idUrzadzenia, this.nazwa);
+
+            this.moc = 10;
+            (new MsUrzadzenieDAO()).ustawMoc(this.idUrzadzenia, this.moc);
+        }
+
 	public AnalizatorGazow(int idUrzadzenia, int idPokoju){
             this.idUrzadzenia = idUrzadzenia;
             this.idPokoju = idPokoju;
-	}
+            this.nazwa = (new MsUrzadzenieDAO()).pobierzNazwa(this.idUrzadzenia);
+            this.moc = (new MsUrzadzenieDAO()).pobierzMoc(this.idUrzadzenia);
+        }
 /*Nie wiem czy o to chodziło ale w necie znalazłem że poziom CO powyżej
  * 26PPM( cząsteczek CO na milion cząsteczek tlenu) jest niebezpieczny
  */
+         public boolean czyPracuje(int idUrzadzenia) {
+                return (new MsUrzadzenieDAO()).czyPracuje(idUrzadzenia);
+        }
+
+        public double pobierzMoc() {
+             return (new MsUrzadzenieDAO()).pobierzMoc(this.idUrzadzenia);
+        }
+
+        public boolean ustawMoc(double moc) {
+                return(new MsUrzadzenieDAO()).ustawMoc(this.idUrzadzenia, moc);
+        }
+
+	public boolean wlacz(){
+            return (new MsUrzadzenieDAO()).rejestrujWlaczenie(this.idUrzadzenia);
+	}
+
+	public boolean wylacz(){
+            return ( new MsUrzadzenieDAO()).rejestrujWylaczenie(idUrzadzenia);
+	}
+
+
 	public boolean czyNiebezpiecznyCO(){
             if(poziomCO < 26)
                 return false;
@@ -38,16 +72,16 @@ public class AnalizatorGazow extends Urzadzenie {
 		return moc;
 	}
 
+        public void setMoc(double moc){
+                this.moc = moc;
+	}
+
 	public double getPoziomCO(){
 		return poziomCO;
 	}
 
 	public double getPoziomCO2(){
 		return poziomCO2;
-	}
-
-	public void setMoc(double moc){
-                this.moc = moc;
 	}
 
         public void setPoziomCO(double poziomCO){
@@ -58,26 +92,11 @@ public class AnalizatorGazow extends Urzadzenie {
                 this.poziomCO2 = poziomCO2;
 	}
 
-        public boolean czyPracuje(int idUrzadzenia) {
-                this.pracuje = (new MsUrzadzenieDAO()).czyPracuje(idUrzadzenia);
-        return this.pracuje;
+        public boolean getPracuje(){
+            return pracuje;
         }
 
-        public double pobierzMoc() {
-                this.moc = (new MsUrzadzenieDAO()).pobierzMoc(this.idUrzadzenia);
-        return this.moc;
+        public void setPracuje( boolean pracuje){
+            this.pracuje = pracuje;
         }
-
-        public double ustawMoc(double moc) {
-                this.moc = (new MsUrzadzenieDAO()).ustawMoc(this.idUrzadzenia, moc);
-        return this.moc;
-        }
-
-	public boolean wlacz(){
-            return (new MsUrzadzenieDAO()).rejestrujWlaczenie(this.idUrzadzenia);
-	}
-
-	public boolean wylacz(){
-            return ( new MsUrzadzenieDAO()).rejestrujWylaczenie(idUrzadzenia);
-	}
 }

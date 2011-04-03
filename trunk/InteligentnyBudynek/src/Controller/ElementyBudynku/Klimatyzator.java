@@ -11,14 +11,27 @@ public class Klimatyzator extends Urzadzenie {
         private int idUrzadzenia;
         private int idPokoju;
 
+        public Klimatyzator(int idPokoju){
+            this.idPokoju = idPokoju;
+            this.idUrzadzenia = (new MsUrzadzenieDAO()).dodaj(this.idPokoju);
+
+            this.nazwa = "Klimatyzator";
+            (new MsUrzadzenieDAO()).ustawNazwa(this.idUrzadzenia, this.nazwa);
+
+            this.moc = 300;
+            (new MsUrzadzenieDAO()).ustawMoc(this.idUrzadzenia, this.moc);
+
+        }
+
 	public Klimatyzator( int idUrzadzenia, int idPokoju){
                 this.idUrzadzenia = idUrzadzenia;
                 this.idPokoju = idPokoju;
+                this.nazwa = (new MsUrzadzenieDAO()).pobierzNazwa(this.idUrzadzenia);
+                this.moc = (new MsUrzadzenieDAO()).pobierzMoc(this.idUrzadzenia);
 	}
 
 	public boolean czyPracuje(int idUrzadzenia){
-		this.pracuje = (new MsUrzadzenieDAO()).czyPracuje(idUrzadzenia);
-        return this.pracuje;
+		return (new MsUrzadzenieDAO()).czyPracuje(idUrzadzenia);
 	}
 
         public boolean wlacz(){
@@ -30,49 +43,40 @@ public class Klimatyzator extends Urzadzenie {
 	}
 
         public double pobierzMoc() {
-                this.moc = (new MsUrzadzenieDAO()).pobierzMoc(this.idUrzadzenia);
-            return this.moc;
+            return (new MsUrzadzenieDAO()).pobierzMoc(this.idUrzadzenia);
+        }
+
+        public boolean ustawMoc(double moc) {
+            return (new MsUrzadzenieDAO()).ustawMoc(this.idUrzadzenia, moc);
         }
 
 	public double getMoc(){
 		return moc;
 	}
 
+        public void setMoc(double moc){
+                this.moc = moc;
+	}
+
 	public String getNazwa(){
 		return nazwa;
+	}
+
+        public void setNazwa(String nazwa){
+                this.nazwa = nazwa;
 	}
 
 	public int getPoziomDzialania(){
 		return poziomDzialania;
 	}
 
-        public boolean getPracuje(){
-            return pracuje;
-        }
-	/**
-	 *
-	 * @param moc
-	 */
-	public void setMoc(double moc){
-                this.moc = moc;
-	}
-
-	/**
-	 *
-	 * @param nazwa
-	 */
-	public void setNazwa(String nazwa){
-                this.nazwa = nazwa;
-	}
-
-	/**
-	 *
-	 * @param poziomDzialania
-	 */
 	public void setPoziomDzialania(int poziomDzialania){
                 this.poziomDzialania = poziomDzialania;
 	}
-
+        public boolean getPracuje(){
+            return pracuje;
+        }
+	
         public void setPracuje( boolean pracuje){
             this.pracuje = pracuje;
         }
