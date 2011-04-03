@@ -7,7 +7,7 @@ Nazwa urządzanie składa się z _*"Nazwa_urządzenia#"+idUrzadzenia*_ np. Żar�
 
 ----
 
-==Konstruktory - ElementyBudynkow==
+==Konstruktory Elementy Budynku==
 W konstruktorach następuje inicjalizacja pól. Do inicjalizacji niektórych pól wykorzystywane są metody z interfejsu do obsługi bazy, np. (_nazwa_, _moc_ ),    
 
 Potrzebujemy tutaj również co najmniej dwa rodzaje konstruktorów:
