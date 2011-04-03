@@ -4,6 +4,7 @@ import Model.DAO.MsUrzadzenieDAO;
 
 public class AnalizatorGazow extends Urzadzenie {
 
+    //hgjkhjkhl;k;lhkjgjhl
 	private double moc;
 	private String nazwa;
 	private double poziomCO;
