@@ -1,0 +1,8 @@
+=WAŻNE=
+
+----
+
+=DODATKOWE=
+
+==Planowanie==
+Automatyczne włączanie się i wyłączanie urządzeń. Można to zrobić, ale to już dodatkowo jak się ogarniemy z tym co jest.
