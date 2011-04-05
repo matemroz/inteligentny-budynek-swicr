@@ -17,7 +17,7 @@ public class AnalizatorGazow extends Urzadzenie {
             this.idPokoju = idPokoju;
             this.idUrzadzenia = ( new MsUrzadzenieDAO()).dodaj(this.idPokoju);
 
-            this.nazwa = "Analizator Gazów";
+            this.nazwa = "Analizator gazów";
             (new MsUrzadzenieDAO()).ustawNazwa(this.idUrzadzenia, this.nazwa);
 
             this.moc = 10;

@@ -15,7 +15,7 @@ public class CzujnikRuchu extends Urzadzenie {
             this.idPokoju = idPokoju;
             this.idUrzadzenia = (new MsUrzadzenieDAO()).dodaj(this.idPokoju);
 
-            this.nazwa = "Czujnik Ruchu";
+            this.nazwa = "Czujnik ruchu";
             ( new MsUrzadzenieDAO()).ustawNazwa(this.idUrzadzenia, this.nazwa);
 
             this.moc = 2;

@@ -12,11 +12,11 @@ public class CzujnikTemperatury extends Urzadzenie {
         private int idUrzadzenia;
         private int idPokoju;
 
-        public CzujnikTemperatury( int idPokuju){
+        public CzujnikTemperatury( int idPokoju){
             this.idPokoju = idPokoju;
             this.idUrzadzenia = ( new MsUrzadzenieDAO()).dodaj(this.idPokoju);
 
-            this.nazwa = "Czujnik Temperatury";
+            this.nazwa = "Czujnik temperatury";
             ( new MsUrzadzenieDAO()).ustawNazwa(this.idUrzadzenia, this.nazwa);
 
             this.moc = 2;

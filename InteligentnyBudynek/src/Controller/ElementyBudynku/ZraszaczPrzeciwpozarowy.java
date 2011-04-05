@@ -15,7 +15,7 @@ public class ZraszaczPrzeciwpozarowy extends Urzadzenie {
             this.idUrzadzenia = (new MsUrzadzenieDAO()).dodaj(this.idPokoju);
             this.moc = 30;
             (new MsUrzadzenieDAO()).ustawMoc(this.idUrzadzenia, moc);
-            this.nazwa = "Zraszacz przeciwpozarowy#"+idUrzadzenia;
+            this.nazwa = "Zraszacz przeciwpożarowy#"+idUrzadzenia;
             (new MsUrzadzenieDAO()).ustawNazwa(this.idUrzadzenia, nazwa);
             this.pracuje = false;
 	}
