@@ -63,6 +63,3 @@ CREATE TABLE GazPrad(
 	cena float
 )
 GO
-
-INSERT GazPrad VALUES ('Gaz', 4)
-INSERT GazPrad VALUES ('Prad', 3)
