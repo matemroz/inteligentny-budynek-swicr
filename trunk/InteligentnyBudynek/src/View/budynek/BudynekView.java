@@ -207,8 +207,9 @@ public class BudynekView extends FrameView {
         jLabel17 = new javax.swing.JLabel();
         jTextField4 = new javax.swing.JTextField();
         jTextField5 = new javax.swing.JTextField();
-        jButton29 = new javax.swing.JButton();
+        dodaj1 = new javax.swing.JButton();
         jLabel51 = new javax.swing.JLabel();
+        zapisz1 = new javax.swing.JButton();
         dodaj = new javax.swing.JFrame();
         jPanel10 = new javax.swing.JPanel();
         jButton28 = new javax.swing.JButton();
@@ -226,7 +227,8 @@ public class BudynekView extends FrameView {
         jLabel22 = new javax.swing.JLabel();
         jTextField9 = new javax.swing.JTextField();
         jTextField10 = new javax.swing.JTextField();
-        jButton30 = new javax.swing.JButton();
+        dodaj3 = new javax.swing.JButton();
+        zapisz3 = new javax.swing.JButton();
         jLabel52 = new javax.swing.JLabel();
         analizatorGazow = new javax.swing.JFrame();
         jPanel12 = new javax.swing.JPanel();
@@ -237,10 +239,11 @@ public class BudynekView extends FrameView {
         jTextField12 = new javax.swing.JTextField();
         jLabel25 = new javax.swing.JLabel();
         jTextField13 = new javax.swing.JTextField();
+        zapisz2 = new javax.swing.JButton();
         jLabel26 = new javax.swing.JLabel();
         jTextField14 = new javax.swing.JTextField();
         jTextField15 = new javax.swing.JTextField();
-        jButton31 = new javax.swing.JButton();
+        dodaj2 = new javax.swing.JButton();
         jLabel53 = new javax.swing.JLabel();
         czujnikTemperatury = new javax.swing.JFrame();
         jPanel13 = new javax.swing.JPanel();
@@ -251,10 +254,11 @@ public class BudynekView extends FrameView {
         jTextField17 = new javax.swing.JTextField();
         jLabel29 = new javax.swing.JLabel();
         jTextField18 = new javax.swing.JTextField();
+        zapisz4 = new javax.swing.JButton();
         jLabel30 = new javax.swing.JLabel();
         jTextField19 = new javax.swing.JTextField();
         jTextField20 = new javax.swing.JTextField();
-        jButton32 = new javax.swing.JButton();
+        dodaj4 = new javax.swing.JButton();
         jLabel54 = new javax.swing.JLabel();
         gniazdko = new javax.swing.JFrame();
         jPanel14 = new javax.swing.JPanel();
@@ -262,13 +266,14 @@ public class BudynekView extends FrameView {
         jLabel31 = new javax.swing.JLabel();
         jTextField21 = new javax.swing.JTextField();
         jLabel32 = new javax.swing.JLabel();
+        zapisz5 = new javax.swing.JButton();
         jTextField22 = new javax.swing.JTextField();
         jLabel33 = new javax.swing.JLabel();
         jTextField23 = new javax.swing.JTextField();
         jLabel34 = new javax.swing.JLabel();
         jTextField24 = new javax.swing.JTextField();
         jTextField25 = new javax.swing.JTextField();
-        jButton33 = new javax.swing.JButton();
+        dodaj5 = new javax.swing.JButton();
         jLabel55 = new javax.swing.JLabel();
         klimatyzator = new javax.swing.JFrame();
         jPanel15 = new javax.swing.JPanel();
@@ -282,7 +287,8 @@ public class BudynekView extends FrameView {
         jLabel38 = new javax.swing.JLabel();
         jTextField29 = new javax.swing.JTextField();
         jTextField30 = new javax.swing.JTextField();
-        jButton34 = new javax.swing.JButton();
+        dodaj6 = new javax.swing.JButton();
+        zapisz6 = new javax.swing.JButton();
         jLabel56 = new javax.swing.JLabel();
         punktGrzewczy = new javax.swing.JFrame();
         jPanel16 = new javax.swing.JPanel();
@@ -296,7 +302,8 @@ public class BudynekView extends FrameView {
         jLabel42 = new javax.swing.JLabel();
         jTextField34 = new javax.swing.JTextField();
         jTextField35 = new javax.swing.JTextField();
-        jButton35 = new javax.swing.JButton();
+        dodaj7 = new javax.swing.JButton();
+        zapisz7 = new javax.swing.JButton();
         jLabel57 = new javax.swing.JLabel();
         punktSwietlny = new javax.swing.JFrame();
         jPanel17 = new javax.swing.JPanel();
@@ -310,7 +317,8 @@ public class BudynekView extends FrameView {
         jLabel46 = new javax.swing.JLabel();
         jTextField39 = new javax.swing.JTextField();
         jTextField40 = new javax.swing.JTextField();
-        jButton36 = new javax.swing.JButton();
+        dodaj8 = new javax.swing.JButton();
+        zapisz8 = new javax.swing.JButton();
         jLabel58 = new javax.swing.JLabel();
         zraszaczPrzeciwpozarowy = new javax.swing.JFrame();
         jPanel18 = new javax.swing.JPanel();
@@ -324,7 +332,8 @@ public class BudynekView extends FrameView {
         jLabel50 = new javax.swing.JLabel();
         jTextField44 = new javax.swing.JTextField();
         jTextField45 = new javax.swing.JTextField();
-        jButton37 = new javax.swing.JButton();
+        zapisz9 = new javax.swing.JButton();
+        dodaj9 = new javax.swing.JButton();
         jLabel59 = new javax.swing.JLabel();
 
         mainPanel.setName("mainPanel"); // NOI18N
@@ -407,7 +416,7 @@ public class BudynekView extends FrameView {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(114, 114, 114)
                         .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(button3, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addContainerGap()
@@ -520,7 +529,7 @@ public class BudynekView extends FrameView {
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(button10, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(button2, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel6Layout.setVerticalGroup(
@@ -635,7 +644,7 @@ public class BudynekView extends FrameView {
                         .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(103, 103, 103)
                         .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 125, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 144, Short.MAX_VALUE)
                         .addComponent(button7, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel9Layout.createSequentialGroup()
                         .addGap(175, 175, 175)
@@ -661,7 +670,7 @@ public class BudynekView extends FrameView {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(77, 77, 77)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -673,14 +682,14 @@ public class BudynekView extends FrameView {
                             .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(38, 38, 38)
-                        .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap(149, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(51, 51, 51)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -849,7 +858,7 @@ public class BudynekView extends FrameView {
         jScrollPane2.setName("jScrollPane2"); // NOI18N
 
         jList1.setModel(new javax.swing.AbstractListModel() {
-            String[] strings = { "Alarm 1", "Alarm 2", "Czujnik ruchu 1" };
+            String[] strings = { "Alarm 1", "Alarm 2", "Czujnik ruchu 3", "Zraszacz przeciwpożarowy 4", "Gniazdko 7" };
             public int getSize() { return strings.length; }
             public Object getElementAt(int i) { return strings[i]; }
         });
@@ -884,7 +893,7 @@ public class BudynekView extends FrameView {
                                 .addComponent(jButton16))))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGap(59, 59, 59)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(337, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
@@ -1344,12 +1353,15 @@ public class BudynekView extends FrameView {
         jTextField5.setText(resourceMap.getString("jTextField5.text")); // NOI18N
         jTextField5.setName("jTextField5"); // NOI18N
 
-        jButton29.setText(resourceMap.getString("jButton29.text")); // NOI18N
-        jButton29.setName("jButton29"); // NOI18N
+        dodaj1.setText(resourceMap.getString("dodaj1.text")); // NOI18N
+        dodaj1.setName("dodaj1"); // NOI18N
 
         jLabel51.setFont(resourceMap.getFont("jLabel51.font")); // NOI18N
         jLabel51.setText(resourceMap.getString("jLabel51.text")); // NOI18N
         jLabel51.setName("jLabel51"); // NOI18N
+
+        zapisz1.setText(resourceMap.getString("zapisz1.text")); // NOI18N
+        zapisz1.setName("zapisz1"); // NOI18N
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -1360,25 +1372,30 @@ public class BudynekView extends FrameView {
                     .addComponent(label3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addGap(38, 38, 38)
-                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel7Layout.createSequentialGroup()
-                                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel15))
-                                .addGap(21, 21, 21)
                                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jTextField2)
-                                    .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)))
+                                    .addGroup(jPanel7Layout.createSequentialGroup()
+                                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel15))
+                                        .addGap(21, 21, 21)
+                                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(jTextField2)
+                                            .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)))
+                                    .addGroup(jPanel7Layout.createSequentialGroup()
+                                        .addComponent(jLabel16)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jTextField3))
+                                    .addComponent(jLabel17))
+                                .addGap(28, 28, 28)
+                                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(40, 40, 40)
+                                .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel7Layout.createSequentialGroup()
-                                .addComponent(jLabel16)
+                                .addComponent(dodaj1)
                                 .addGap(18, 18, 18)
-                                .addComponent(jTextField3))
-                            .addComponent(jLabel17)
-                            .addComponent(jButton29))
-                        .addGap(28, 28, 28)
-                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(40, 40, 40)
-                        .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(zapisz1))))
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addGap(181, 181, 181)
                         .addComponent(jLabel51)))
@@ -1409,7 +1426,9 @@ public class BudynekView extends FrameView {
                     .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
-                .addComponent(jButton29)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(dodaj1)
+                    .addComponent(zapisz1))
                 .addGap(27, 27, 27))
         );
 
@@ -1529,8 +1548,11 @@ public class BudynekView extends FrameView {
 
         jTextField10.setName("jTextField10"); // NOI18N
 
-        jButton30.setText(resourceMap.getString("jButton30.text")); // NOI18N
-        jButton30.setName("jButton30"); // NOI18N
+        dodaj3.setText(resourceMap.getString("dodaj3.text")); // NOI18N
+        dodaj3.setName("dodaj3"); // NOI18N
+
+        zapisz3.setText(resourceMap.getString("zapisz3.text")); // NOI18N
+        zapisz3.setName("zapisz3"); // NOI18N
 
         jLabel52.setFont(resourceMap.getFont("jLabel52.font")); // NOI18N
         jLabel52.setText(resourceMap.getString("jLabel52.text")); // NOI18N
@@ -1545,25 +1567,30 @@ public class BudynekView extends FrameView {
                     .addComponent(label4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel11Layout.createSequentialGroup()
                         .addGap(38, 38, 38)
-                        .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel11Layout.createSequentialGroup()
-                                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel20))
-                                .addGap(21, 21, 21)
                                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jTextField7)
-                                    .addComponent(jTextField6, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)))
+                                    .addGroup(jPanel11Layout.createSequentialGroup()
+                                        .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel20))
+                                        .addGap(21, 21, 21)
+                                        .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(jTextField7)
+                                            .addComponent(jTextField6, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)))
+                                    .addGroup(jPanel11Layout.createSequentialGroup()
+                                        .addComponent(jLabel21)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jTextField8))
+                                    .addComponent(jLabel22))
+                                .addGap(28, 28, 28)
+                                .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(40, 40, 40)
+                                .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel11Layout.createSequentialGroup()
-                                .addComponent(jLabel21)
-                                .addGap(18, 18, 18)
-                                .addComponent(jTextField8))
-                            .addComponent(jLabel22)
-                            .addComponent(jButton30))
-                        .addGap(28, 28, 28)
-                        .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(40, 40, 40)
-                        .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(dodaj3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(zapisz3))))
                     .addGroup(jPanel11Layout.createSequentialGroup()
                         .addGap(181, 181, 181)
                         .addComponent(jLabel52)))
@@ -1594,7 +1621,9 @@ public class BudynekView extends FrameView {
                     .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
-                .addComponent(jButton30)
+                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(dodaj3)
+                    .addComponent(zapisz3))
                 .addGap(27, 27, 27))
         );
 
@@ -1644,6 +1673,9 @@ public class BudynekView extends FrameView {
 
         jTextField13.setName("jTextField13"); // NOI18N
 
+        zapisz2.setText(resourceMap.getString("zapisz2.text")); // NOI18N
+        zapisz2.setName("zapisz2"); // NOI18N
+
         jLabel26.setFont(resourceMap.getFont("jLabel26.font")); // NOI18N
         jLabel26.setText(resourceMap.getString("jLabel26.text")); // NOI18N
         jLabel26.setName("jLabel26"); // NOI18N
@@ -1652,8 +1684,8 @@ public class BudynekView extends FrameView {
 
         jTextField15.setName("jTextField15"); // NOI18N
 
-        jButton31.setText(resourceMap.getString("jButton31.text")); // NOI18N
-        jButton31.setName("jButton31"); // NOI18N
+        dodaj2.setText(resourceMap.getString("dodaj2.text")); // NOI18N
+        dodaj2.setName("dodaj2"); // NOI18N
 
         jLabel53.setFont(resourceMap.getFont("jLabel53.font")); // NOI18N
         jLabel53.setText(resourceMap.getString("jLabel53.text")); // NOI18N
@@ -1668,25 +1700,30 @@ public class BudynekView extends FrameView {
                     .addComponent(label5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel12Layout.createSequentialGroup()
                         .addGap(38, 38, 38)
-                        .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel12Layout.createSequentialGroup()
-                                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel24))
-                                .addGap(21, 21, 21)
                                 .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jTextField12)
-                                    .addComponent(jTextField11, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)))
+                                    .addGroup(jPanel12Layout.createSequentialGroup()
+                                        .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel24))
+                                        .addGap(21, 21, 21)
+                                        .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(jTextField12)
+                                            .addComponent(jTextField11, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)))
+                                    .addGroup(jPanel12Layout.createSequentialGroup()
+                                        .addComponent(jLabel25)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jTextField13))
+                                    .addComponent(jLabel26))
+                                .addGap(28, 28, 28)
+                                .addComponent(jTextField14, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(40, 40, 40)
+                                .addComponent(jTextField15, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel12Layout.createSequentialGroup()
-                                .addComponent(jLabel25)
-                                .addGap(18, 18, 18)
-                                .addComponent(jTextField13))
-                            .addComponent(jLabel26)
-                            .addComponent(jButton31))
-                        .addGap(28, 28, 28)
-                        .addComponent(jTextField14, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(40, 40, 40)
-                        .addComponent(jTextField15, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(dodaj2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(zapisz2))))
                     .addGroup(jPanel12Layout.createSequentialGroup()
                         .addGap(181, 181, 181)
                         .addComponent(jLabel53)))
@@ -1717,7 +1754,9 @@ public class BudynekView extends FrameView {
                     .addComponent(jTextField14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
-                .addComponent(jButton31)
+                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(dodaj2)
+                    .addComponent(zapisz2))
                 .addGap(27, 27, 27))
         );
 
@@ -1769,6 +1808,9 @@ public class BudynekView extends FrameView {
 
         jTextField18.setName("jTextField18"); // NOI18N
 
+        zapisz4.setText(resourceMap.getString("zapisz4.text")); // NOI18N
+        zapisz4.setName("zapisz4"); // NOI18N
+
         jLabel30.setFont(resourceMap.getFont("jLabel30.font")); // NOI18N
         jLabel30.setText(resourceMap.getString("jLabel30.text")); // NOI18N
         jLabel30.setName("jLabel30"); // NOI18N
@@ -1777,8 +1819,8 @@ public class BudynekView extends FrameView {
 
         jTextField20.setName("jTextField20"); // NOI18N
 
-        jButton32.setText(resourceMap.getString("jButton32.text")); // NOI18N
-        jButton32.setName("jButton32"); // NOI18N
+        dodaj4.setText(resourceMap.getString("dodaj4.text")); // NOI18N
+        dodaj4.setName("dodaj4"); // NOI18N
 
         jLabel54.setFont(resourceMap.getFont("jLabel54.font")); // NOI18N
         jLabel54.setText(resourceMap.getString("jLabel54.text")); // NOI18N
@@ -1793,25 +1835,30 @@ public class BudynekView extends FrameView {
                     .addComponent(label6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel13Layout.createSequentialGroup()
                         .addGap(38, 38, 38)
-                        .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel13Layout.createSequentialGroup()
-                                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel28))
-                                .addGap(21, 21, 21)
                                 .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jTextField17)
-                                    .addComponent(jTextField16, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)))
+                                    .addGroup(jPanel13Layout.createSequentialGroup()
+                                        .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel28))
+                                        .addGap(21, 21, 21)
+                                        .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(jTextField17)
+                                            .addComponent(jTextField16, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)))
+                                    .addGroup(jPanel13Layout.createSequentialGroup()
+                                        .addComponent(jLabel29)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jTextField18))
+                                    .addComponent(jLabel30))
+                                .addGap(28, 28, 28)
+                                .addComponent(jTextField19, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(40, 40, 40)
+                                .addComponent(jTextField20, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel13Layout.createSequentialGroup()
-                                .addComponent(jLabel29)
-                                .addGap(18, 18, 18)
-                                .addComponent(jTextField18))
-                            .addComponent(jLabel30)
-                            .addComponent(jButton32))
-                        .addGap(28, 28, 28)
-                        .addComponent(jTextField19, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(40, 40, 40)
-                        .addComponent(jTextField20, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(dodaj4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(zapisz4))))
                     .addGroup(jPanel13Layout.createSequentialGroup()
                         .addGap(181, 181, 181)
                         .addComponent(jLabel54)))
@@ -1842,7 +1889,9 @@ public class BudynekView extends FrameView {
                     .addComponent(jTextField19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
-                .addComponent(jButton32)
+                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(dodaj4)
+                    .addComponent(zapisz4))
                 .addGap(27, 27, 27))
         );
 
@@ -1890,6 +1939,9 @@ public class BudynekView extends FrameView {
         jLabel32.setText(resourceMap.getString("jLabel32.text")); // NOI18N
         jLabel32.setName("jLabel32"); // NOI18N
 
+        zapisz5.setText(resourceMap.getString("zapisz5.text")); // NOI18N
+        zapisz5.setName("zapisz5"); // NOI18N
+
         jTextField22.setName("jTextField22"); // NOI18N
 
         jLabel33.setFont(resourceMap.getFont("jLabel33.font")); // NOI18N
@@ -1906,8 +1958,8 @@ public class BudynekView extends FrameView {
 
         jTextField25.setName("jTextField25"); // NOI18N
 
-        jButton33.setText(resourceMap.getString("jButton33.text")); // NOI18N
-        jButton33.setName("jButton33"); // NOI18N
+        dodaj5.setText(resourceMap.getString("dodaj5.text")); // NOI18N
+        dodaj5.setName("dodaj5"); // NOI18N
 
         jLabel55.setFont(resourceMap.getFont("jLabel55.font")); // NOI18N
         jLabel55.setText(resourceMap.getString("jLabel55.text")); // NOI18N
@@ -1922,25 +1974,30 @@ public class BudynekView extends FrameView {
                     .addComponent(label7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel14Layout.createSequentialGroup()
                         .addGap(38, 38, 38)
-                        .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel14Layout.createSequentialGroup()
-                                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel31, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel32))
-                                .addGap(21, 21, 21)
                                 .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jTextField22)
-                                    .addComponent(jTextField21, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)))
+                                    .addGroup(jPanel14Layout.createSequentialGroup()
+                                        .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel31, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel32))
+                                        .addGap(21, 21, 21)
+                                        .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(jTextField22)
+                                            .addComponent(jTextField21, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)))
+                                    .addGroup(jPanel14Layout.createSequentialGroup()
+                                        .addComponent(jLabel33)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jTextField23))
+                                    .addComponent(jLabel34))
+                                .addGap(28, 28, 28)
+                                .addComponent(jTextField24, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(40, 40, 40)
+                                .addComponent(jTextField25, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel14Layout.createSequentialGroup()
-                                .addComponent(jLabel33)
-                                .addGap(18, 18, 18)
-                                .addComponent(jTextField23))
-                            .addComponent(jLabel34)
-                            .addComponent(jButton33))
-                        .addGap(28, 28, 28)
-                        .addComponent(jTextField24, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(40, 40, 40)
-                        .addComponent(jTextField25, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(dodaj5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(zapisz5))))
                     .addGroup(jPanel14Layout.createSequentialGroup()
                         .addGap(181, 181, 181)
                         .addComponent(jLabel55)))
@@ -1971,7 +2028,9 @@ public class BudynekView extends FrameView {
                     .addComponent(jTextField24, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField25, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
-                .addComponent(jButton33)
+                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(dodaj5)
+                    .addComponent(zapisz5))
                 .addGap(27, 27, 27))
         );
 
@@ -2041,8 +2100,11 @@ public class BudynekView extends FrameView {
 
         jTextField30.setName("jTextField30"); // NOI18N
 
-        jButton34.setText(resourceMap.getString("jButton34.text")); // NOI18N
-        jButton34.setName("jButton34"); // NOI18N
+        dodaj6.setText(resourceMap.getString("dodaj6.text")); // NOI18N
+        dodaj6.setName("dodaj6"); // NOI18N
+
+        zapisz6.setText(resourceMap.getString("zapisz6.text")); // NOI18N
+        zapisz6.setName("zapisz6"); // NOI18N
 
         jLabel56.setFont(resourceMap.getFont("jLabel56.font")); // NOI18N
         jLabel56.setText(resourceMap.getString("jLabel56.text")); // NOI18N
@@ -2057,25 +2119,30 @@ public class BudynekView extends FrameView {
                     .addComponent(label8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel15Layout.createSequentialGroup()
                         .addGap(38, 38, 38)
-                        .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel15Layout.createSequentialGroup()
-                                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel35, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel36))
-                                .addGap(21, 21, 21)
                                 .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jTextField27)
-                                    .addComponent(jTextField26, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)))
+                                    .addGroup(jPanel15Layout.createSequentialGroup()
+                                        .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel35, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel36))
+                                        .addGap(21, 21, 21)
+                                        .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(jTextField27)
+                                            .addComponent(jTextField26, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)))
+                                    .addGroup(jPanel15Layout.createSequentialGroup()
+                                        .addComponent(jLabel37)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jTextField28))
+                                    .addComponent(jLabel38))
+                                .addGap(28, 28, 28)
+                                .addComponent(jTextField29, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(40, 40, 40)
+                                .addComponent(jTextField30, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel15Layout.createSequentialGroup()
-                                .addComponent(jLabel37)
-                                .addGap(18, 18, 18)
-                                .addComponent(jTextField28))
-                            .addComponent(jLabel38)
-                            .addComponent(jButton34))
-                        .addGap(28, 28, 28)
-                        .addComponent(jTextField29, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(40, 40, 40)
-                        .addComponent(jTextField30, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(dodaj6)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(zapisz6))))
                     .addGroup(jPanel15Layout.createSequentialGroup()
                         .addGap(181, 181, 181)
                         .addComponent(jLabel56)))
@@ -2106,7 +2173,9 @@ public class BudynekView extends FrameView {
                     .addComponent(jTextField29, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField30, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
-                .addComponent(jButton34)
+                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(dodaj6)
+                    .addComponent(zapisz6))
                 .addGap(27, 27, 27))
         );
 
@@ -2184,8 +2253,11 @@ public class BudynekView extends FrameView {
 
         jTextField35.setName("jTextField35"); // NOI18N
 
-        jButton35.setText(resourceMap.getString("jButton35.text")); // NOI18N
-        jButton35.setName("jButton35"); // NOI18N
+        dodaj7.setText(resourceMap.getString("dodaj7.text")); // NOI18N
+        dodaj7.setName("dodaj7"); // NOI18N
+
+        zapisz7.setText(resourceMap.getString("zapisz7.text")); // NOI18N
+        zapisz7.setName("zapisz7"); // NOI18N
 
         jLabel57.setFont(resourceMap.getFont("jLabel57.font")); // NOI18N
         jLabel57.setText(resourceMap.getString("jLabel57.text")); // NOI18N
@@ -2200,25 +2272,30 @@ public class BudynekView extends FrameView {
                     .addComponent(label9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel16Layout.createSequentialGroup()
                         .addGap(38, 38, 38)
-                        .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel16Layout.createSequentialGroup()
-                                .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel39, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel40))
-                                .addGap(21, 21, 21)
                                 .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jTextField32)
-                                    .addComponent(jTextField31, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)))
+                                    .addGroup(jPanel16Layout.createSequentialGroup()
+                                        .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel39, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel40))
+                                        .addGap(21, 21, 21)
+                                        .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(jTextField32)
+                                            .addComponent(jTextField31, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)))
+                                    .addGroup(jPanel16Layout.createSequentialGroup()
+                                        .addComponent(jLabel41)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jTextField33))
+                                    .addComponent(jLabel42))
+                                .addGap(28, 28, 28)
+                                .addComponent(jTextField34, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(40, 40, 40)
+                                .addComponent(jTextField35, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel16Layout.createSequentialGroup()
-                                .addComponent(jLabel41)
-                                .addGap(18, 18, 18)
-                                .addComponent(jTextField33))
-                            .addComponent(jLabel42)
-                            .addComponent(jButton35))
-                        .addGap(28, 28, 28)
-                        .addComponent(jTextField34, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(40, 40, 40)
-                        .addComponent(jTextField35, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(dodaj7)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(zapisz7))))
                     .addGroup(jPanel16Layout.createSequentialGroup()
                         .addGap(181, 181, 181)
                         .addComponent(jLabel57)))
@@ -2249,7 +2326,9 @@ public class BudynekView extends FrameView {
                     .addComponent(jTextField34, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField35, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
-                .addComponent(jButton35)
+                .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(dodaj7)
+                    .addComponent(zapisz7))
                 .addGap(27, 27, 27))
         );
 
@@ -2337,8 +2416,11 @@ public class BudynekView extends FrameView {
 
         jTextField40.setName("jTextField40"); // NOI18N
 
-        jButton36.setText(resourceMap.getString("jButton36.text")); // NOI18N
-        jButton36.setName("jButton36"); // NOI18N
+        dodaj8.setText(resourceMap.getString("dodaj8.text")); // NOI18N
+        dodaj8.setName("dodaj8"); // NOI18N
+
+        zapisz8.setText(resourceMap.getString("zapisz8.text")); // NOI18N
+        zapisz8.setName("zapisz8"); // NOI18N
 
         jLabel58.setFont(resourceMap.getFont("jLabel58.font")); // NOI18N
         jLabel58.setText(resourceMap.getString("jLabel58.text")); // NOI18N
@@ -2353,25 +2435,30 @@ public class BudynekView extends FrameView {
                     .addComponent(label10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel17Layout.createSequentialGroup()
                         .addGap(38, 38, 38)
-                        .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel17Layout.createSequentialGroup()
-                                .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel43, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel44))
-                                .addGap(21, 21, 21)
                                 .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jTextField37)
-                                    .addComponent(jTextField36, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)))
+                                    .addGroup(jPanel17Layout.createSequentialGroup()
+                                        .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel43, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel44))
+                                        .addGap(21, 21, 21)
+                                        .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(jTextField37)
+                                            .addComponent(jTextField36, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)))
+                                    .addGroup(jPanel17Layout.createSequentialGroup()
+                                        .addComponent(jLabel45)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jTextField38))
+                                    .addComponent(jLabel46))
+                                .addGap(28, 28, 28)
+                                .addComponent(jTextField39, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(40, 40, 40)
+                                .addComponent(jTextField40, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel17Layout.createSequentialGroup()
-                                .addComponent(jLabel45)
-                                .addGap(18, 18, 18)
-                                .addComponent(jTextField38))
-                            .addComponent(jLabel46)
-                            .addComponent(jButton36))
-                        .addGap(28, 28, 28)
-                        .addComponent(jTextField39, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(40, 40, 40)
-                        .addComponent(jTextField40, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(dodaj8)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(zapisz8))))
                     .addGroup(jPanel17Layout.createSequentialGroup()
                         .addGap(181, 181, 181)
                         .addComponent(jLabel58)))
@@ -2402,7 +2489,9 @@ public class BudynekView extends FrameView {
                     .addComponent(jTextField39, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField40, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
-                .addComponent(jButton36)
+                .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(dodaj8)
+                    .addComponent(zapisz8))
                 .addGap(27, 27, 27))
         );
 
@@ -2502,8 +2591,11 @@ public class BudynekView extends FrameView {
 
         jTextField45.setName("jTextField45"); // NOI18N
 
-        jButton37.setText(resourceMap.getString("jButton37.text")); // NOI18N
-        jButton37.setName("jButton37"); // NOI18N
+        zapisz9.setText(resourceMap.getString("zapisz9.text")); // NOI18N
+        zapisz9.setName("zapisz9"); // NOI18N
+
+        dodaj9.setText(resourceMap.getString("dodaj9.text")); // NOI18N
+        dodaj9.setName("dodaj9"); // NOI18N
 
         jLabel59.setFont(resourceMap.getFont("jLabel59.font")); // NOI18N
         jLabel59.setText(resourceMap.getString("jLabel59.text")); // NOI18N
@@ -2518,25 +2610,30 @@ public class BudynekView extends FrameView {
                     .addComponent(label11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel18Layout.createSequentialGroup()
                         .addGap(38, 38, 38)
-                        .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel18Layout.createSequentialGroup()
-                                .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel47, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel48))
-                                .addGap(21, 21, 21)
                                 .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jTextField42)
-                                    .addComponent(jTextField41, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)))
+                                    .addGroup(jPanel18Layout.createSequentialGroup()
+                                        .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel47, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel48))
+                                        .addGap(21, 21, 21)
+                                        .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(jTextField42)
+                                            .addComponent(jTextField41, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)))
+                                    .addGroup(jPanel18Layout.createSequentialGroup()
+                                        .addComponent(jLabel49)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jTextField43))
+                                    .addComponent(jLabel50))
+                                .addGap(28, 28, 28)
+                                .addComponent(jTextField44, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(40, 40, 40)
+                                .addComponent(jTextField45, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel18Layout.createSequentialGroup()
-                                .addComponent(jLabel49)
-                                .addGap(18, 18, 18)
-                                .addComponent(jTextField43))
-                            .addComponent(jLabel50)
-                            .addComponent(jButton37))
-                        .addGap(28, 28, 28)
-                        .addComponent(jTextField44, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(40, 40, 40)
-                        .addComponent(jTextField45, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(dodaj9)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(zapisz9))))
                     .addGroup(jPanel18Layout.createSequentialGroup()
                         .addGap(181, 181, 181)
                         .addComponent(jLabel59)))
@@ -2567,7 +2664,9 @@ public class BudynekView extends FrameView {
                     .addComponent(jTextField44, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField45, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
-                .addComponent(jButton37)
+                .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(dodaj9)
+                    .addComponent(zapisz9))
                 .addGap(27, 27, 27))
         );
 
@@ -2797,54 +2896,86 @@ public class BudynekView extends FrameView {
     }//GEN-LAST:event_jButton2MouseClicked
 
     private void jButton16MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton16MouseClicked
-         int urzadzenie = jComboBox1.getSelectedIndex();
+        String urzadzenie = (String)jList1.getSelectedValue();
+        String[] parser = urzadzenie.split(" ");
+        int i = parser.length;
+        int id = Integer.parseInt(parser[i-1]);
 
-        switch (urzadzenie){
+        int nr = 9;
+        if (parser[0].compareTo("Alarm") == 0)
+            nr = 0;
+        else if ((parser[0].compareTo("Analizator") == 0))
+            nr = 1;
+        else if ((parser[1].compareTo("ruchu") == 0))
+            nr = 2;
+        else if ((parser[1].compareTo("temperatury") == 0))
+            nr = 3;
+        else if ((parser[0].compareTo("Gniazdko") == 0))
+            nr = 4;
+        else if ((parser[0].compareTo("Klimatyzator") == 0))
+            nr = 5;
+        else if ((parser[1].compareTo("grzewczy") == 0))
+            nr = 6;
+        else if ((parser[1].compareTo("świetlny") == 0))
+            nr = 7;
+        else if ((parser[0].compareTo("Zraszacz") == 0))
+            nr = 8;
+        
+        switch (nr){
             case 0:
                 alarm.setSize(400, 450);
                 alarm.setLocationRelativeTo(null);
                 alarm.setVisible(true);
+                dodaj1.setVisible(false);
                 break;
             case 1:
                 analizatorGazow.setSize(400, 450);
                 analizatorGazow.setLocationRelativeTo(null);
                 analizatorGazow.setVisible(true);
+                dodaj2.setVisible(false);
                 break;
             case 2:
                 czujnikRuchu.setSize(400, 450);
                 czujnikRuchu.setLocationRelativeTo(null);
                 czujnikRuchu.setVisible(true);
+                dodaj3.setVisible(false);
                 break;
             case 3:
                 czujnikTemperatury.setSize(400, 450);
                 czujnikTemperatury.setLocationRelativeTo(null);
                 czujnikTemperatury.setVisible(true);
+                dodaj4.setVisible(false);
                 break;
             case 4:
                 gniazdko.setSize(400, 450);
                 gniazdko.setLocationRelativeTo(null);
                 gniazdko.setVisible(true);
+                dodaj5.setVisible(false);
                 break;
             case 5:
                 klimatyzator.setSize(400, 450);
                 klimatyzator.setLocationRelativeTo(null);
                 klimatyzator.setVisible(true);
+                dodaj6.setVisible(false);
                 break;
             case 6:
                 punktGrzewczy.setSize(400, 450);
                 punktGrzewczy.setLocationRelativeTo(null);
                 punktGrzewczy.setVisible(true);
+                dodaj7.setVisible(false);
                 break;
             case 7:
                 punktSwietlny.setSize(400, 450);
                 punktSwietlny.setLocationRelativeTo(null);
                 punktSwietlny.setVisible(true);
+                dodaj8.setVisible(false);
                 break;
             case 8:
 
                 zraszaczPrzeciwpozarowy.setSize(400, 450);
                 zraszaczPrzeciwpozarowy.setLocationRelativeTo(null);
                 zraszaczPrzeciwpozarowy.setVisible(true);
+                dodaj9.setVisible(false);
                 break;
         }
 
@@ -2861,47 +2992,56 @@ public class BudynekView extends FrameView {
                 alarm.setSize(400, 450);
                 alarm.setLocationRelativeTo(null);
                 alarm.setVisible(true);
+                zapisz1.setVisible(false);
                 break;
             case 1:
                 analizatorGazow.setSize(400, 450);
                 analizatorGazow.setLocationRelativeTo(null);
                 analizatorGazow.setVisible(true);
+                zapisz2.setVisible(false);
                 break;
             case 2:
                 czujnikRuchu.setSize(400, 450);
                 czujnikRuchu.setLocationRelativeTo(null);
                 czujnikRuchu.setVisible(true);
+                zapisz3.setVisible(false);
                 break;
             case 3:
                 czujnikTemperatury.setSize(400, 450);
                 czujnikTemperatury.setLocationRelativeTo(null);
                 czujnikTemperatury.setVisible(true);
+                zapisz4.setVisible(false);
                 break;
             case 4:
                 gniazdko.setSize(400, 450);
                 gniazdko.setLocationRelativeTo(null);
                 gniazdko.setVisible(true);
+                zapisz5.setVisible(false);
                 break;
             case 5:
                 klimatyzator.setSize(400, 450);
                 klimatyzator.setLocationRelativeTo(null);
                 klimatyzator.setVisible(true);
+                zapisz6.setVisible(false);
                 break;
             case 6:
                 punktGrzewczy.setSize(400, 450);
                 punktGrzewczy.setLocationRelativeTo(null);
                 punktGrzewczy.setVisible(true);
+                zapisz7.setVisible(false);
                 break;
             case 7:
                 punktSwietlny.setSize(400, 450);
                 punktSwietlny.setLocationRelativeTo(null);
                 punktSwietlny.setVisible(true);
+                zapisz8.setVisible(false);
                 break;
             case 8:
 
                 zraszaczPrzeciwpozarowy.setSize(400, 450);
                 zraszaczPrzeciwpozarowy.setLocationRelativeTo(null);
                 zraszaczPrzeciwpozarowy.setVisible(true);
+                zapisz9.setVisible(false);
                 break;
         }
 
@@ -2912,7 +3052,7 @@ public class BudynekView extends FrameView {
 
     private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
         int id = jList1.getSelectedIndex();
-        jList1.remove(id);
+        int size = jList1.getComponentCount();
         jList1.clearSelection();
 
     }//GEN-LAST:event_jButton4MouseClicked
@@ -2938,6 +3078,15 @@ public class BudynekView extends FrameView {
     private javax.swing.JFrame czujnikRuchu;
     private javax.swing.JFrame czujnikTemperatury;
     private javax.swing.JFrame dodaj;
+    private javax.swing.JButton dodaj1;
+    private javax.swing.JButton dodaj2;
+    private javax.swing.JButton dodaj3;
+    private javax.swing.JButton dodaj4;
+    private javax.swing.JButton dodaj5;
+    private javax.swing.JButton dodaj6;
+    private javax.swing.JButton dodaj7;
+    private javax.swing.JButton dodaj8;
+    private javax.swing.JButton dodaj9;
     private javax.swing.JFrame gniazdko;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
@@ -2959,16 +3108,7 @@ public class BudynekView extends FrameView {
     private javax.swing.JButton jButton26;
     private javax.swing.JButton jButton27;
     private javax.swing.JButton jButton28;
-    private javax.swing.JButton jButton29;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton30;
-    private javax.swing.JButton jButton31;
-    private javax.swing.JButton jButton32;
-    private javax.swing.JButton jButton33;
-    private javax.swing.JButton jButton34;
-    private javax.swing.JButton jButton35;
-    private javax.swing.JButton jButton36;
-    private javax.swing.JButton jButton37;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
@@ -3135,6 +3275,15 @@ public class BudynekView extends FrameView {
     private javax.swing.JFrame sypialnia1;
     private javax.swing.JFrame sypialnia2;
     private javax.swing.JFrame sypialnia3;
+    private javax.swing.JButton zapisz1;
+    private javax.swing.JButton zapisz2;
+    private javax.swing.JButton zapisz3;
+    private javax.swing.JButton zapisz4;
+    private javax.swing.JButton zapisz5;
+    private javax.swing.JButton zapisz6;
+    private javax.swing.JButton zapisz7;
+    private javax.swing.JButton zapisz8;
+    private javax.swing.JButton zapisz9;
     private javax.swing.JFrame zraszaczPrzeciwpozarowy;
     // End of variables declaration//GEN-END:variables
 
