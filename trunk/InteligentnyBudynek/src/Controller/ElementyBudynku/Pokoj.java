@@ -12,6 +12,7 @@ public class Pokoj {
 	public Pokoj(int idPokoju){
             this.idPokoju = idPokoju;
             this.nazwa = (new MsPokojDAO()).pobierzNazwa(this.idPokoju);
+            this.Urzadzenia = (new MsPokojDAO()).wylistujUrzadzenia(this.idPokoju);
 	}
 
         public Pokoj(int idPokoju, String nazwa){
@@ -43,9 +44,9 @@ public class Pokoj {
                         + this.nazwa + " w bazie danych. Zmiana nie została zarejestrowana!");
             }
              */
-
 	}
 
+        //Zwraca listę idUrzadzen z pokoju
 	public List wylistujUrzadzenia(){
             return Urzadzenia;
 	}
