@@ -5,7 +5,46 @@ import java.util.*;
 
 public class DatabaseUtils {
 
-    public static boolean executeCommand(String tableName, List<String> columnNames, List<String> values){
+    public static boolean insertCommand(String tableName, List<String> columnNames, List<String> values){
+        boolean success = false;
+        StringBuilder sql = new StringBuilder("INSERT INTO ");
+        sql.append(tableName).append(" (");
+        Iterator itColumnNames = columnNames.iterator();
+
+        while(itColumnNames.hasNext()){
+            sql.append(itColumnNames.next()).append(", ");
+        }
+
+        sql.deleteCharAt(sql.lastIndexOf(","));
+        sql.append(") VALUES (");
+        Iterator itValues = values.iterator();
+        while(itValues.hasNext()){
+            String value = itValues.next().toString();
+            if(value.equals("getDate()"))
+                sql.append(value).append(", ");
+            else
+                sql.append("'").append(value).append("'").append(", ");
+        }
+        sql.deleteCharAt(sql.lastIndexOf(","));
+        sql.append(" );");
+
+        System.out.println(sql.toString());
+
+        try {
+            Statement st = ConnectionManager.getDatabaseConnection().createStatement();
+            st.execute(sql.toString());
+            success = true;
+        } catch (SQLException ex) {
+            System.err.println("Błąd przy wykonywyniu operacji INSERT w bazie. \n"
+                    + ex.getSQLState()
+                    + "\n" + ex.getErrorCode());
+            success = false;
+        }
+
+        return success;
+    }
+
+    public static ResultSet insertCommandWithKeyResult(String tableName, List<String> columnNames, List<String> values){
         StringBuilder sql = new StringBuilder("INSERT INTO ");
         sql.append(tableName).append(" (");
         Iterator itColumnNames = columnNames.iterator();
@@ -25,71 +64,17 @@ public class DatabaseUtils {
 
         System.out.println(sql.toString());
 
-        boolean resultSuccess = false;
-
+        ResultSet rs = null;
         try {
             Statement st = ConnectionManager.getDatabaseConnection().createStatement();
-            resultSuccess = st.execute(sql.toString());
+            st.execute(sql.toString(), st.RETURN_GENERATED_KEYS);
+            rs = st.getGeneratedKeys();
         } catch (SQLException ex) {
             System.err.println("Błąd przy wykonywyniu operacji INSERT w bazie. \n"
                     + ex.getSQLState()
                     + "\n" + ex.getErrorCode());
-
         }
-    return resultSuccess;
-    }
-
-    public static boolean executeCommandWithOutput(String tableName, List<String> columnNames, List<String> columnTypes, List<String> values) {
-        StringBuilder sql = new StringBuilder("DECLARE");
-        sql.append(" @").append(tableName).append("Var").append(" table ( ");
-        sql.append("new").append("Id").append(tableName).append(" int").append(", ");
-
-        Iterator itColumnNames = columnNames.iterator();
-        Iterator itColumnTypes = columnTypes.iterator();
-
-        if (columnNames.size() != columnTypes.size()) {
-            System.out.println("Nieodpowiednio przypisane typy pól do nazw!");
-            return false;
-        }
-
-        while (itColumnNames.hasNext()) {
-            sql.append(itColumnNames.next()).append(" ").append(itColumnTypes.next()).append(", ");
-        }
-        sql.deleteCharAt(sql.lastIndexOf(","));
-        sql.append("); ");
-        itColumnNames = null;
-
-        sql.append("INSERT ").append(tableName);
-        sql.append(" OUTPUT ");
-        sql.append("INSERTED.id").append(tableName).append(", ");
-        itColumnNames = columnNames.iterator();
-        while (itColumnNames.hasNext()) {
-            sql.append("INSERTED.").append(itColumnNames.next()).append(", ");
-        }
-        sql.deleteCharAt(sql.lastIndexOf(","));
-        sql.append("INTO @").append(tableName).append("Var");
-        sql.append(" VALUES (");
-        Iterator itValues = values.iterator();
-        while (itValues.hasNext()) {
-            sql.append("'");
-            sql.append(itValues.next()).append("', ");
-        }
-        sql.deleteCharAt(sql.lastIndexOf(","));
-        sql.append(");");
-
-        boolean resultSuccess = false;
-
-        System.out.println(sql.toString());
-        try {
-            Statement st = ConnectionManager.getDatabaseConnection().createStatement();
-            resultSuccess = st.execute(sql.toString());
-        } catch (SQLException ex) {
-            System.err.println("Błąd przy wykonywyniu operacji INSERT w bazie. \n"
-                    + ex.getSQLState()
-                    + "\n" + ex.getErrorCode());
-
-        }
-        return resultSuccess;
+    return rs;
     }
 
     public static int updateCommand(String tableName, String columnName, String value, String condition){
@@ -150,7 +135,10 @@ public class DatabaseUtils {
         sql.append(" WHERE ");
         sql.append(condition);
 
+        System.out.println(sql.toString());
+
         try {
+            st = ConnectionManager.getDatabaseConnection().createStatement();
             if ((rs = st.executeQuery(sql.toString())) == null) {
                 return null;
             }
@@ -191,11 +179,16 @@ public class DatabaseUtils {
         Statement st = null;
 
         StringBuilder sql = new StringBuilder("SELECT ");
-        sql.append(colName).append(" FROM ").append(tableName).append(" WHERE ").append(condition);
+        if(condition.equals("")){
+            sql.append(colName).append(" FROM ").append(tableName);
+        } else {
+            sql.append(colName).append(" FROM ").append(tableName).append(" WHERE ").append(condition);
+        }
+        System.out.println(sql.toString());
+
         try {
-            if ((rs = st.executeQuery(sql.toString())) == null) {
-                return null;
-            }
+            st = ConnectionManager.getDatabaseConnection().createStatement();
+            rs = st.executeQuery(sql.toString());
         } catch (SQLException ex) {
             System.err.println("Błąd przy wykonywnaniu operacji SELECT w bazie. \n"
                     + ex.getSQLState()
@@ -204,20 +197,24 @@ public class DatabaseUtils {
         return rs;
     }
 
-    public static void main(String[] args) {
-      /*  List<String> columnNames = new ArrayList<String>();
-        columnNames.add("idPokoju");
-        columnNames.add("nazwa");
-        columnNames.add("moc");
-        columnNames.add("poborGazu");
+    //Nie ma mozliwosci chyba, zeby sprawdzic return
+    public static boolean deleteCommand(String tableName, String condition){
+        ResultSet rs = null;
+        Statement st = null;
 
+        StringBuilder sql = new StringBuilder("DELETE FROM ");
+        sql.append(tableName).append(" WHERE ").append(condition);
+        System.out.println(sql.toString());
 
-        List<String> values = new ArrayList<String>();
-        values.add("1");
-        values.add("Salon");
-        values.add("30");
-        values.add("0");*/
-
-        DatabaseUtils.updateCommand("Urzadzenia", "moc", "70", "idUrzadzenia = '1'");
+        try {
+            st = ConnectionManager.getDatabaseConnection().createStatement();
+            st.execute(sql.toString());
+            
+        } catch (SQLException ex) {
+            System.err.println("Błąd przy wykonywnaniu operacji DELETE w bazie. \n"
+                    + ex.getSQLState()
+                    + "\n" + ex.getErrorCode());
+        }
+        return true;
     }
 }
