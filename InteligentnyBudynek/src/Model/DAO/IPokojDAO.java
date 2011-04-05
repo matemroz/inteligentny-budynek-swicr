@@ -9,7 +9,7 @@ public interface IPokojDAO {
 
     boolean usun(int idPokoju);
 
-    String ustawNazwe(int idPokoju, String nazwa) ;
+    boolean ustawNazwe(int idPokoju, String nazwa) ;
 
     String pobierzNazwa(int idPokoju);
 
