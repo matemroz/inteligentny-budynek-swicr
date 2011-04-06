@@ -17,12 +17,12 @@ public class Klimatyzator extends Urzadzenie {
             this.idPokoju = idPokoju;
             this.idUrzadzenia = (new MsUrzadzenieDAO()).dodaj(this.idPokoju);
 
-            this.nazwa = "Klimatyzator";
+            this.nazwa = "Klimatyzator#" + this.idUrzadzenia;
             (new MsUrzadzenieDAO()).ustawNazwa(this.idUrzadzenia, this.nazwa);
 
             this.moc = 300;
             (new MsUrzadzenieDAO()).ustawMoc(this.idUrzadzenia, this.moc);
-
+            this.pracuje = false;
         }
 
 	public Klimatyzator( int idUrzadzenia, int idPokoju){
@@ -30,7 +30,8 @@ public class Klimatyzator extends Urzadzenie {
                 this.idPokoju = idPokoju;
                 this.nazwa = (new MsUrzadzenieDAO()).pobierzNazwa(this.idUrzadzenia);
                 this.moc = (new MsUrzadzenieDAO()).pobierzMoc(this.idUrzadzenia);
-	}
+                this.pracuje = false;
+        }
 
 	public boolean czyPracuje(int idUrzadzenia){
 		return (new MsUrzadzenieDAO()).czyPracuje(idUrzadzenia);

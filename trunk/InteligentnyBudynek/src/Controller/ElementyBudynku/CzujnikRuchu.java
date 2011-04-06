@@ -15,13 +15,14 @@ public class CzujnikRuchu extends Urzadzenie {
             this.idPokoju = idPokoju;
             this.idUrzadzenia = (new MsUrzadzenieDAO()).dodaj(this.idPokoju);
 
-            this.nazwa = "Czujnik ruchu";
+            this.nazwa = "Czujnik ruchu#" + this.idUrzadzenia;
             ( new MsUrzadzenieDAO()).ustawNazwa(this.idUrzadzenia, this.nazwa);
 
             this.moc = 2;
             ( new MsUrzadzenieDAO()).ustawMoc(this.idUrzadzenia, this.moc);
 
             this.ruch = false;
+            this.pracuje = false;
         }
 
 	public CzujnikRuchu(int idUrzadzenia, int idPokoju){
@@ -30,6 +31,7 @@ public class CzujnikRuchu extends Urzadzenie {
                 this.nazwa = (new MsUrzadzenieDAO()).pobierzNazwa(this.idUrzadzenia);
                 this.moc = ( new MsUrzadzenieDAO()).pobierzMoc(this.idUrzadzenia);
                 this.ruch = false;
+                this.pracuje = false;
         }
 
         public boolean czyPracuje(int idUrzadzenia) {

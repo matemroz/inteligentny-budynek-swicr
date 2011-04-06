@@ -16,11 +16,12 @@ public class CzujnikTemperatury extends Urzadzenie {
             this.idPokoju = idPokoju;
             this.idUrzadzenia = ( new MsUrzadzenieDAO()).dodaj(this.idPokoju);
 
-            this.nazwa = "Czujnik temperatury";
+            this.nazwa = "Czujnik temperatury#" + this.idUrzadzenia;
             ( new MsUrzadzenieDAO()).ustawNazwa(this.idUrzadzenia, this.nazwa);
 
             this.moc = 2;
             ( new MsUrzadzenieDAO()).ustawMoc(this.idUrzadzenia, this.moc);
+            this.pracuje = false;
         }
 
 	public CzujnikTemperatury( int idUrzadzenia, int idPokoju){
@@ -28,6 +29,7 @@ public class CzujnikTemperatury extends Urzadzenie {
                 this.idPokoju = idPokoju;
                 this.nazwa = ( new MsUrzadzenieDAO()).pobierzNazwa(this.idUrzadzenia);
                 this.moc = ( new MsUrzadzenieDAO()).pobierzMoc(this.idUrzadzenia);
+                this.pracuje = false;
 	}
 
         public boolean czyPracuje(int idUrzadzenia) {

@@ -17,7 +17,7 @@ public class Gniazdko extends Urzadzenie {
             this.mocUrzadzenia = 500;
             ( new MsUrzadzenieDAO()).ustawMoc(this.idUrzadzenia, this.mocUrzadzenia);
 
-            this.nazwa = "Gniazdko";
+            this.nazwa = "Gniazdko#" + this.idUrzadzenia;
             ( new MsUrzadzenieDAO()).ustawNazwa(this.idUrzadzenia, this.nazwa);
 
             this.czyPodlaczone = false;
