@@ -13,14 +13,16 @@ public class Drzwi extends Urzadzenie {
             this.idPokoju = idPokoju;
             this.idUrzadzenia = ( new MsUrzadzenieDAO()).dodaj(this.idPokoju);
 
-            this.nazwa = "Drzwi";
+            this.nazwa = "Drzwi#" + this.idUrzadzenia;
             ( new MsUrzadzenieDAO()).ustawNazwa(this.idUrzadzenia, this.nazwa);
+            this.otwarte = false;
         }
 
 	public Drzwi( int idUrzadzenia, int idPokoju){
                 this.idUrzadzenia = idUrzadzenia;
                 this.idPokoju = idPokoju;
                 this.nazwa = ( new MsUrzadzenieDAO()).pobierzNazwa(this.idUrzadzenia);
+                this.otwarte = false;
 	}
 
         public boolean wlacz() {

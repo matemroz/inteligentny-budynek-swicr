@@ -17,11 +17,12 @@ public class AnalizatorGazow extends Urzadzenie {
             this.idPokoju = idPokoju;
             this.idUrzadzenia = ( new MsUrzadzenieDAO()).dodaj(this.idPokoju);
 
-            this.nazwa = "Analizator gazów";
+            this.nazwa = "Analizator gazów#" + this.idUrzadzenia;
             (new MsUrzadzenieDAO()).ustawNazwa(this.idUrzadzenia, this.nazwa);
 
             this.moc = 10;
             (new MsUrzadzenieDAO()).ustawMoc(this.idUrzadzenia, this.moc);
+            this.pracuje = false;
         }
 
 	public AnalizatorGazow(int idUrzadzenia, int idPokoju){
@@ -29,6 +30,7 @@ public class AnalizatorGazow extends Urzadzenie {
             this.idPokoju = idPokoju;
             this.nazwa = (new MsUrzadzenieDAO()).pobierzNazwa(this.idUrzadzenia);
             this.moc = (new MsUrzadzenieDAO()).pobierzMoc(this.idUrzadzenia);
+            this.pracuje = false;
         }
 /*Nie wiem czy o to chodziło ale w necie znalazłem że poziom CO powyżej
  * 26PPM( cząsteczek CO na milion cząsteczek tlenu) jest niebezpieczny
