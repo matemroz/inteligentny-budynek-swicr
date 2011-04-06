@@ -11,6 +11,8 @@
 
 package View.budynek;
 
+import Controller.Utils.Konwerter;
+import Model.DAO.MsGazPradDAO;
 import Model.DAO.MsPokojDAO;
 import Model.DAO.MsUrzadzenieDAO;
 import Model.Utils.ConnectionManager;
@@ -29,12 +31,12 @@ import javax.swing.ListSelectionModel;
 public class KosztyView extends javax.swing.JDialog {
 
     /** Creates new form KosztyView */
-    public KosztyView(java.awt.Frame parent, boolean modal) throws SQLException {
-        super(parent, modal);
+    public KosztyView() throws SQLException {
+        super();
+        ConnectionManager.getDatabaseConnection();
         initList();
         initComponents();
         
-        //jListaUrzadzen = new JList(listModel);
     }
 
     /** This method is called from within the constructor to
@@ -49,15 +51,15 @@ public class KosztyView extends javax.swing.JDialog {
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jListaUrzadzen = new javax.swing.JList();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18));
         jLabel1.setText("Koszty");
         jLabel1.setName("jLabelKoszty"); // NOI18N
 
@@ -73,23 +75,14 @@ public class KosztyView extends javax.swing.JDialog {
         });
         jScrollPane1.setViewportView(jListaUrzadzen);
 
-        jTextField1.setName("jTFCzas"); // NOI18N
-
-        jTextField2.setName("jTFKoszt"); // NOI18N
-
         jLabel2.setText("Czas pracy:");
         jLabel2.setName("jLabel2"); // NOI18N
 
         jLabel3.setText("Koszt:");
         jLabel3.setName("jLabel3"); // NOI18N
 
-        jButton1.setText("OK");
-        jButton1.setName("jButtonOK"); // NOI18N
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton1MouseClicked(evt);
-            }
-        });
+        jLabel4.setText("00:00:00");
+        jLabel4.setName("jLabel4"); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -98,19 +91,21 @@ public class KosztyView extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 83, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGap(55, 55, 55)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(76, 76, 76)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel2)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel1))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jTextField2)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jButton1))
-                .addContainerGap())
+                            .addComponent(jLabel3))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel4)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(55, 55, 55)
+                        .addComponent(jLabel1)))
+                .addGap(128, 128, 128))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -124,30 +119,28 @@ public class KosztyView extends javax.swing.JDialog {
                         .addComponent(jLabel1)
                         .addGap(72, 72, 72)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2))
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel4))
                         .addGap(32, 32, 32)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 89, Short.MAX_VALUE)
-                        .addComponent(jButton1)))
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel5))))
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-        System.out.println("aaa");
-    }//GEN-LAST:event_jButton1MouseClicked
-
     private void jListaUrzadzenValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jListaUrzadzenValueChanged
-        int selected = jListaUrzadzen.getSelectedIndex();
-        //TODO:liczenie kosztów
-
-        int czas = (new MsUrzadzenieDAO()).pobierzCzasPracy((Integer)list.get(selected));
-        System.out.println();
+            int selected = jListaUrzadzen.getSelectedIndex();
+            double prad = (new MsGazPradDAO()).pobierzCenePradu();
+            MsUrzadzenieDAO dao = new MsUrzadzenieDAO();
+            int idUrzadzenia = (Integer) list.get(selected);
+            int czas = dao.pobierzCzasPracy(idUrzadzenia);//czas pracy
+            double moc = dao.pobierzMoc(idUrzadzenia);//moc
+            jLabel4.setText(Konwerter.czasSekNaGodz(czas));//wyswietlanie czasu
+            double kwh = czas*moc/3600;//TODO: dla kWh dzielenie przez 3,600,000
+            jLabel5.setText(kwh*prad+" zł");//wyswietlanie mocy
     }//GEN-LAST:event_jListaUrzadzenValueChanged
 
     /**
@@ -158,10 +151,16 @@ public class KosztyView extends javax.swing.JDialog {
             public void run() {
                 KosztyView dialog;
                 try {
-                    dialog = new KosztyView(new javax.swing.JFrame(), true);
+                    dialog = new KosztyView();
                     dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                        @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
+                            try {
+                                ConnectionManager.disconnectFromDatabase();
+                                System.exit(0);
+                            } catch (SQLException ex) {
+                                Logger.getLogger(KosztyView.class.getName()).log(Level.SEVERE, null, ex);
+                            }
                     }
                 });
                 dialog.setVisible(true);
@@ -175,7 +174,7 @@ public class KosztyView extends javax.swing.JDialog {
     }
 
     private void initList() throws SQLException{//wczytywanie nazw urzadzen z bazy danych do listy
-        ConnectionManager.getDatabaseConnection();
+        //ConnectionManager.getDatabaseConnection();
         listModel = new DefaultListModel();
 
         int idPokoju = 1;//TODO: dla wszystkich pokojów
@@ -188,18 +187,17 @@ public class KosztyView extends javax.swing.JDialog {
             listModel.addElement(nazwaUrzadzenia);
         }
 
-        ConnectionManager.disconnectFromDatabase();
+        //ConnectionManager.disconnectFromDatabase();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JList jListaUrzadzen;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
 
     private DefaultListModel listModel;
