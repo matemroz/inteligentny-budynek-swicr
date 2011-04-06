@@ -4,6 +4,9 @@
 
 package View.budynek;
 
+import Controller.ElementyBudynku.Pietro;
+import Controller.ElementyBudynku.Pokoj;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import org.jdesktop.application.Action;
@@ -13,10 +16,13 @@ import org.jdesktop.application.FrameView;
 import org.jdesktop.application.TaskMonitor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
+import javax.swing.DefaultListModel;
 import javax.swing.Timer;
 import javax.swing.Icon;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
+import javax.swing.JList;
 import view.budynek.BudynekAboutBox;
 
 /**
@@ -131,6 +137,7 @@ public class BudynekView extends FrameView {
         button8 = new java.awt.Button();
         jButton1 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        jButton15 = new javax.swing.JButton();
         menuBar = new javax.swing.JMenuBar();
         javax.swing.JMenu fileMenu = new javax.swing.JMenu();
         javax.swing.JMenuItem exitMenuItem = new javax.swing.JMenuItem();
@@ -199,11 +206,11 @@ public class BudynekView extends FrameView {
         jPanel7 = new javax.swing.JPanel();
         label3 = new java.awt.Label();
         jLabel14 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        alarmId = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        alarmMoc = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        alarmStan = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
         jTextField4 = new javax.swing.JTextField();
         jTextField5 = new javax.swing.JTextField();
@@ -219,11 +226,11 @@ public class BudynekView extends FrameView {
         jPanel11 = new javax.swing.JPanel();
         label4 = new java.awt.Label();
         jLabel19 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
+        ruchuId = new javax.swing.JTextField();
         jLabel20 = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
+        ruchuMoc = new javax.swing.JTextField();
         jLabel21 = new javax.swing.JLabel();
-        jTextField8 = new javax.swing.JTextField();
+        ruchuStan = new javax.swing.JTextField();
         jLabel22 = new javax.swing.JLabel();
         jTextField9 = new javax.swing.JTextField();
         jTextField10 = new javax.swing.JTextField();
@@ -719,6 +726,14 @@ public class BudynekView extends FrameView {
             }
         });
 
+        jButton15.setText(resourceMap.getString("jButton15.text")); // NOI18N
+        jButton15.setName("jButton15"); // NOI18N
+        jButton15.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton15MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
         mainPanel.setLayout(mainPanelLayout);
         mainPanelLayout.setHorizontalGroup(
@@ -726,6 +741,7 @@ public class BudynekView extends FrameView {
             .addGroup(mainPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton15, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE)
                     .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE)
                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE))
                 .addGap(45, 45, 45)
@@ -740,7 +756,9 @@ public class BudynekView extends FrameView {
                         .addGap(35, 35, 35)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton15, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(37, Short.MAX_VALUE))
         );
@@ -861,11 +879,6 @@ public class BudynekView extends FrameView {
 
         jScrollPane2.setName("jScrollPane2"); // NOI18N
 
-        jList1.setModel(new javax.swing.AbstractListModel() {
-            String[] strings = { "Alarm 1", "Alarm 2", "Czujnik ruchu 3", "Zraszacz przeciwpożarowy 4", "Gniazdko 7" };
-            public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
-        });
         jList1.setName("jList1"); // NOI18N
         jScrollPane2.setViewportView(jList1);
 
@@ -884,10 +897,11 @@ public class BudynekView extends FrameView {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(78, 78, 78)
+                        .addGap(66, 66, 66)
                         .addComponent(jButton2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButton4)
+                        .addGap(18, 18, 18)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel5Layout.createSequentialGroup()
                                 .addGap(22, 22, 22)
@@ -906,12 +920,12 @@ public class BudynekView extends FrameView {
                 .addGap(23, 23, 23)
                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(41, 41, 41)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(193, 193, 193)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(35, 35, 35)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton16)
                     .addComponent(jButton4)
-                    .addComponent(jButton2)
-                    .addComponent(jButton16))
+                    .addComponent(jButton2))
                 .addContainerGap(28, Short.MAX_VALUE))
         );
 
@@ -920,7 +934,7 @@ public class BudynekView extends FrameView {
         sypialnia1Layout.setHorizontalGroup(
             sypialnia1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, sypialnia1Layout.createSequentialGroup()
-                .addContainerGap(25, Short.MAX_VALUE)
+                .addContainerGap(24, Short.MAX_VALUE)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26))
         );
@@ -1330,22 +1344,22 @@ public class BudynekView extends FrameView {
         jLabel14.setText(resourceMap.getString("jLabel14.text")); // NOI18N
         jLabel14.setName("jLabel14"); // NOI18N
 
-        jTextField1.setText(resourceMap.getString("jTextField1.text")); // NOI18N
-        jTextField1.setName("jTextField1"); // NOI18N
+        alarmId.setText(resourceMap.getString("alarmId.text")); // NOI18N
+        alarmId.setName("alarmId"); // NOI18N
 
         jLabel15.setFont(resourceMap.getFont("jLabel15.font")); // NOI18N
         jLabel15.setText(resourceMap.getString("jLabel15.text")); // NOI18N
         jLabel15.setName("jLabel15"); // NOI18N
 
-        jTextField2.setText(resourceMap.getString("jTextField2.text")); // NOI18N
-        jTextField2.setName("jTextField2"); // NOI18N
+        alarmMoc.setText(resourceMap.getString("alarmMoc.text")); // NOI18N
+        alarmMoc.setName("alarmMoc"); // NOI18N
 
         jLabel16.setFont(resourceMap.getFont("jLabel16.font")); // NOI18N
         jLabel16.setText(resourceMap.getString("jLabel16.text")); // NOI18N
         jLabel16.setName("jLabel16"); // NOI18N
 
-        jTextField3.setText(resourceMap.getString("jTextField3.text")); // NOI18N
-        jTextField3.setName("jTextField3"); // NOI18N
+        alarmStan.setText(resourceMap.getString("alarmStan.text")); // NOI18N
+        alarmStan.setName("alarmStan"); // NOI18N
 
         jLabel17.setFont(resourceMap.getFont("jLabel17.font")); // NOI18N
         jLabel17.setText(resourceMap.getString("jLabel17.text")); // NOI18N
@@ -1359,6 +1373,11 @@ public class BudynekView extends FrameView {
 
         dodaj1.setText(resourceMap.getString("dodaj1.text")); // NOI18N
         dodaj1.setName("dodaj1"); // NOI18N
+        dodaj1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                dodaj1MouseClicked(evt);
+            }
+        });
 
         jLabel51.setFont(resourceMap.getFont("jLabel51.font")); // NOI18N
         jLabel51.setText(resourceMap.getString("jLabel51.text")); // NOI18N
@@ -1385,12 +1404,12 @@ public class BudynekView extends FrameView {
                                             .addComponent(jLabel15))
                                         .addGap(21, 21, 21)
                                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(jTextField2)
-                                            .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)))
+                                            .addComponent(alarmMoc)
+                                            .addComponent(alarmId, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)))
                                     .addGroup(jPanel7Layout.createSequentialGroup()
                                         .addComponent(jLabel16)
                                         .addGap(18, 18, 18)
-                                        .addComponent(jTextField3))
+                                        .addComponent(alarmStan))
                                     .addComponent(jLabel17))
                                 .addGap(28, 28, 28)
                                 .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1415,15 +1434,15 @@ public class BudynekView extends FrameView {
                 .addGap(20, 20, 20)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel14)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(alarmId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel15)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(alarmMoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(27, 27, 27)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel16)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(alarmStan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(41, 41, 41)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel17)
@@ -1529,20 +1548,20 @@ public class BudynekView extends FrameView {
         jLabel19.setText(resourceMap.getString("jLabel19.text")); // NOI18N
         jLabel19.setName("jLabel19"); // NOI18N
 
-        jTextField6.setText(resourceMap.getString("jTextField6.text")); // NOI18N
-        jTextField6.setName("jTextField6"); // NOI18N
+        ruchuId.setText(resourceMap.getString("ruchuId.text")); // NOI18N
+        ruchuId.setName("ruchuId"); // NOI18N
 
         jLabel20.setFont(resourceMap.getFont("jLabel20.font")); // NOI18N
         jLabel20.setText(resourceMap.getString("jLabel20.text")); // NOI18N
         jLabel20.setName("jLabel20"); // NOI18N
 
-        jTextField7.setName("jTextField7"); // NOI18N
+        ruchuMoc.setName("ruchuMoc"); // NOI18N
 
         jLabel21.setFont(resourceMap.getFont("jLabel21.font")); // NOI18N
         jLabel21.setText(resourceMap.getString("jLabel21.text")); // NOI18N
         jLabel21.setName("jLabel21"); // NOI18N
 
-        jTextField8.setName("jTextField8"); // NOI18N
+        ruchuStan.setName("ruchuStan"); // NOI18N
 
         jLabel22.setFont(resourceMap.getFont("jLabel22.font")); // NOI18N
         jLabel22.setText(resourceMap.getString("jLabel22.text")); // NOI18N
@@ -1580,12 +1599,12 @@ public class BudynekView extends FrameView {
                                             .addComponent(jLabel20))
                                         .addGap(21, 21, 21)
                                         .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(jTextField7)
-                                            .addComponent(jTextField6, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)))
+                                            .addComponent(ruchuMoc)
+                                            .addComponent(ruchuId, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)))
                                     .addGroup(jPanel11Layout.createSequentialGroup()
                                         .addComponent(jLabel21)
                                         .addGap(18, 18, 18)
-                                        .addComponent(jTextField8))
+                                        .addComponent(ruchuStan))
                                     .addComponent(jLabel22))
                                 .addGap(28, 28, 28)
                                 .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1610,15 +1629,15 @@ public class BudynekView extends FrameView {
                 .addGap(20, 20, 20)
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel19)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(ruchuId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel20)
-                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(ruchuMoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(27, 27, 27)
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel21)
-                    .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(ruchuStan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(41, 41, 41)
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel22)
@@ -2754,6 +2773,13 @@ public class BudynekView extends FrameView {
         setStatusBar(statusPanel);
     }// </editor-fold>//GEN-END:initComponents
 
+
+    //Obiekty:
+
+    DefaultListModel model;
+    List pokoje;
+
+
     private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
 
   Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -2825,6 +2851,14 @@ public class BudynekView extends FrameView {
 
   sypialnia1.setLocationRelativeTo(null);
         sypialnia1.setVisible(true);
+
+        model  = new DefaultListModel();
+        jList1.setModel(model);
+        Pokoj pokoj = (Pokoj)pokoje.get(1);
+        List listaUrzadzen = pokoj.wylistujUrzadzenia();
+        for(int i =0; i < listaUrzadzen.size(); i++)
+            model.add(i, listaUrzadzen.get(i));
+           
     }//GEN-LAST:event_jPanel8MouseClicked
 
     private void jPanel9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel9MouseClicked
@@ -2901,7 +2935,7 @@ public class BudynekView extends FrameView {
 
     private void jButton16MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton16MouseClicked
         String urzadzenie = (String)jList1.getSelectedValue();
-        String[] parser = urzadzenie.split(" ");
+        String[] parser = urzadzenie.split("#");
         int i = parser.length;
         int id = Integer.parseInt(parser[i-1]);
 
@@ -2910,27 +2944,30 @@ public class BudynekView extends FrameView {
             nr = 0;
         else if ((parser[0].compareTo("Analizator") == 0))
             nr = 1;
-        else if ((parser[1].compareTo("ruchu") == 0))
+        else if ((parser[1].compareTo("Czujnik ruchu") == 0))
             nr = 2;
-        else if ((parser[1].compareTo("temperatury") == 0))
+        else if ((parser[1].compareTo("Czujnik temperatury") == 0))
             nr = 3;
         else if ((parser[0].compareTo("Gniazdko") == 0))
             nr = 4;
         else if ((parser[0].compareTo("Klimatyzator") == 0))
             nr = 5;
-        else if ((parser[1].compareTo("grzewczy") == 0))
+        else if ((parser[1].compareTo("Punkt grzewczy") == 0))
             nr = 6;
-        else if ((parser[1].compareTo("świetlny") == 0))
+        else if ((parser[1].compareTo("Punkt świetlny") == 0))
             nr = 7;
-        else if ((parser[0].compareTo("Zraszacz") == 0))
+        else if ((parser[0].compareTo("Zraszacz przeciwpożarowy") == 0))
             nr = 8;
-        
+
+
+
         switch (nr){
             case 0:
                 alarm.setSize(400, 450);
                 alarm.setLocationRelativeTo(null);
                 alarm.setVisible(true);
                 dodaj1.setVisible(false);
+
                 break;
             case 1:
                 analizatorGazow.setSize(400, 450);
@@ -3056,16 +3093,30 @@ public class BudynekView extends FrameView {
 
     private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
         int id = jList1.getSelectedIndex();
-        int size = jList1.getComponentCount();
+        model.remove(id);
         jList1.clearSelection();
 
     }//GEN-LAST:event_jButton4MouseClicked
+
+    private void jButton15MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton15MouseClicked
+
+        Pietro pietro = new Pietro();
+        this.pokoje = pietro.wylistujPokoje();
+        
+    }//GEN-LAST:event_jButton15MouseClicked
+
+    private void dodaj1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dodaj1MouseClicked
+        model.addElement("Alarm#"+this.alarmId.getText());
+    }//GEN-LAST:event_dodaj1MouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JFrame Kuchnia;
     private javax.swing.JFrame Salon;
     private javax.swing.JFrame Toaleta;
     private javax.swing.JFrame alarm;
+    private javax.swing.JTextField alarmId;
+    private javax.swing.JTextField alarmMoc;
+    private javax.swing.JTextField alarmStan;
     private javax.swing.JFrame analizatorGazow;
     private java.awt.Button button1;
     private java.awt.Button button10;
@@ -3098,6 +3149,7 @@ public class BudynekView extends FrameView {
     private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton13;
     private javax.swing.JButton jButton14;
+    private javax.swing.JButton jButton15;
     private javax.swing.JButton jButton16;
     private javax.swing.JButton jButton17;
     private javax.swing.JButton jButton18;
@@ -3210,7 +3262,6 @@ public class BudynekView extends FrameView {
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField11;
     private javax.swing.JTextField jTextField12;
@@ -3221,7 +3272,6 @@ public class BudynekView extends FrameView {
     private javax.swing.JTextField jTextField17;
     private javax.swing.JTextField jTextField18;
     private javax.swing.JTextField jTextField19;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField20;
     private javax.swing.JTextField jTextField21;
     private javax.swing.JTextField jTextField22;
@@ -3232,7 +3282,6 @@ public class BudynekView extends FrameView {
     private javax.swing.JTextField jTextField27;
     private javax.swing.JTextField jTextField28;
     private javax.swing.JTextField jTextField29;
-    private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField30;
     private javax.swing.JTextField jTextField31;
     private javax.swing.JTextField jTextField32;
@@ -3251,9 +3300,6 @@ public class BudynekView extends FrameView {
     private javax.swing.JTextField jTextField44;
     private javax.swing.JTextField jTextField45;
     private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField jTextField9;
     private javax.swing.JFrame klimatyzator;
     private javax.swing.JFrame koszty;
@@ -3273,6 +3319,9 @@ public class BudynekView extends FrameView {
     private javax.swing.JFrame projektuj;
     private javax.swing.JFrame punktGrzewczy;
     private javax.swing.JFrame punktSwietlny;
+    private javax.swing.JTextField ruchuId;
+    private javax.swing.JTextField ruchuMoc;
+    private javax.swing.JTextField ruchuStan;
     private javax.swing.JLabel statusAnimationLabel;
     private javax.swing.JLabel statusMessageLabel;
     private javax.swing.JPanel statusPanel;

@@ -58,4 +58,10 @@ public class Urzadzenie {
     public void setIdPokoju(int idPokoju) {
         this.idPokoju = idPokoju;
     }
+    @Override
+    public String toString(){
+        String string = this.nazwa + "#" + this.idUrzadzenia;
+
+        return string;
+    }
 }
