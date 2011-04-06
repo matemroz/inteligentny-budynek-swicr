@@ -4,11 +4,12 @@
 
 package View.budynek;
 
-import Controller.ElementyBudynku.Pietro;
-import Controller.ElementyBudynku.Pokoj;
-import java.awt.Component;
+import Controller.ElementyBudynku.*;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.jdesktop.application.Action;
 import org.jdesktop.application.ResourceMap;
 import org.jdesktop.application.SingleFrameApplication;
@@ -22,7 +23,6 @@ import javax.swing.Timer;
 import javax.swing.Icon;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
-import javax.swing.JList;
 import view.budynek.BudynekAboutBox;
 
 /**
@@ -88,7 +88,34 @@ public class BudynekView extends FrameView {
                 }
             }
         });
+        /*Tutaj inicjalizujemy okna i drzwi*/
+        d = new Drzwi(1,2);
+        o = new Okno(1,2);
     }
+
+
+    /* Metoda do otwierania/zamykania okien na panelu View*/
+    private void changeWindowState(Okno o, String nazwaPokoju) {
+        if (o.czyOtwarte()) {
+            o.zamknij();
+            System.out.println("Zamknięto okno w "+nazwaPokoju+".");
+        } else {
+            o.otworz();
+            System.out.println("Otworzono okno w "+nazwaPokoju+".");
+        }
+    }
+
+    /* Metoda do otwierania/zamykania drzwi na panelu View*/
+    private void changeDoorState(Drzwi d, String nazwaPokoju) {
+        if (d.czyOtwarte()) {
+            d.zamknij();
+            System.out.println("Zamknięto drzwi w "+nazwaPokoju+".");
+        } else {
+            d.otworz();
+            System.out.println("Otworzono drzwi w "+nazwaPokoju+".");
+        }
+    }
+
 
     @Action
     public void showAboutBox() {
@@ -2781,15 +2808,20 @@ public class BudynekView extends FrameView {
 
 
     private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
-
-  Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-  int height = screenSize.height;
-  int width = screenSize.width;
-  koszty.setSize(width/2, height/2);
-
-  koszty.setLocationRelativeTo(null);
-
-   koszty.setVisible(true);
+        try {
+            kv = new KosztyView();
+            kv.setVisible(true);
+            /*
+            Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+            int height = screenSize.height;
+            int width = screenSize.width;
+            koszty.setSize(width/2, height/2);
+            koszty.setLocationRelativeTo(null);
+            koszty.setVisible(true);
+             */
+        } catch (SQLException ex) {
+            Logger.getLogger(BudynekView.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
     }//GEN-LAST:event_jButton3MouseClicked
 
@@ -2888,7 +2920,7 @@ public class BudynekView extends FrameView {
     }//GEN-LAST:event_button4ActionPerformed
 
     private void button5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button5ActionPerformed
-        // TODO add your handling code here:
+        changeWindowState(o, "Sypialnia1");
     }//GEN-LAST:event_button5ActionPerformed
 
     private void button6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button6ActionPerformed
@@ -2916,7 +2948,7 @@ public class BudynekView extends FrameView {
     }//GEN-LAST:event_button11ActionPerformed
 
     private void button12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button12ActionPerformed
-        // TODO add your handling code here:
+        changeDoorState(d, "Sypialnia1");
     }//GEN-LAST:event_button12ActionPerformed
 
     private void jButton27MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton27MouseClicked
@@ -3347,4 +3379,9 @@ public class BudynekView extends FrameView {
     private int busyIconIndex = 0;
 
     private JDialog aboutBox;
+
+    /*Tutaj deklarujemy okna i drzwi*/
+    Okno o;
+    Drzwi d;
+    KosztyView kv;
 }
