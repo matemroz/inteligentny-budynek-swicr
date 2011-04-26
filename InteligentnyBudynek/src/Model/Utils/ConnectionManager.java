@@ -14,7 +14,7 @@ public class ConnectionManager {
         private ConnectionManager(){
             try {
                     java.lang.Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-                    conn = java.sql.DriverManager.getConnection("jdbc:sqlserver://DON-LAPTOP:1433;DatabaseName=InteligentnyBudynek;user=budynek;password=haslo;SelectMethod=cursor ");
+                    conn = java.sql.DriverManager.getConnection("jdbc:sqlserver://192.168.1.101:1433;DatabaseName=InteligentnyBudynek;user=budynek;password=haslo;SelectMethod=cursor ");
                     System.out.println("Polączono z bazką\n");
             } catch (Exception ex){
                 ex.printStackTrace();
@@ -40,6 +40,9 @@ public class ConnectionManager {
                 conn.close();
         }
 
+        public static void main(String[] args) throws SQLException{
+            getDatabaseConnection();
+        }
 }
 
 		

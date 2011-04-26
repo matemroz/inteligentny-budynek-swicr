@@ -6,17 +6,22 @@ import java.util.List;
 public class Pokoj {
 
 	private int idPokoju;
+        private int idPietra;
 	private String nazwa;
 	private List Urzadzenia;
 
-	public Pokoj(int idPokoju){
+        public Pokoj(){}
+
+	public Pokoj(int idPokoju, int idPietra){
             this.idPokoju = idPokoju;
+            this.idPietra = idPietra;
             this.nazwa = (new MsPokojDAO()).pobierzNazwa(this.idPokoju);
             this.Urzadzenia = (new MsPokojDAO()).wylistujUrzadzenia(this.idPokoju);
 	}
 
-        public Pokoj(int idPokoju, String nazwa){
+        public Pokoj(int idPokoju, int idPietra, String nazwa){
             this.idPokoju = idPokoju;
+            this.idPietra = idPietra;
             this.nazwa = nazwa;
             (new MsPokojDAO()).ustawNazwe(this.idPokoju, nazwa);
 	}

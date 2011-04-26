@@ -1,8 +1,10 @@
 package Controller.Utils;
 
 public class Formater {
-    public static String formatujIDUrzadzenia(int id, String nazwaUrzadzenia){
-        String idUrzadzenia =  nazwaUrzadzenia + "#" + id;
-        return idUrzadzenia;
+
+    public static String formatujID(int id, String nazwa) {
+        String idMod = nazwa + "#" + id;
+        return idMod;
     }
+
 }

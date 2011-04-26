@@ -11,6 +11,10 @@ public class Urzadzenie {
     public Urzadzenie() {
     }
 
+    public Urzadzenie(int idUrzadzenia) {
+        this.idUrzadzenia = idUrzadzenia;
+    }
+
     public String pobierzNazwa() {
         return (new MsUrzadzenieDAO()).pobierzNazwa(this.idUrzadzenia);
     }
@@ -31,10 +35,37 @@ public class Urzadzenie {
         return (new MsUrzadzenieDAO()).usun(idUrzadzenia);
     }
 
-     /*
+    public double pobierzMocUrzadzenia() {
+        return (new MsUrzadzenieDAO()).pobierzMoc(idUrzadzenia);
+    }
+
+    public double pobierzPoborGazuUrzadzenia() {
+        return (new MsUrzadzenieDAO()).pobierzPoborGazu(idUrzadzenia);
+    }
+
+    public boolean ustawMocUrzadzenia(double mocUrzadzenia) {
+        return (new MsUrzadzenieDAO()).ustawMoc(idUrzadzenia, mocUrzadzenia);
+    }
+
+    public boolean ustawPoborGazuUrzadzenia(double poborGazuUrzadzenia) {
+        return (new MsUrzadzenieDAO()).ustawMoc(idUrzadzenia, poborGazuUrzadzenia);
+    }
+
+    public void wlacz() {
+        new MsUrzadzenieDAO().rejestrujWlaczenie(this.idUrzadzenia);
+    }
+
+    public void wylacz() {
+        new MsUrzadzenieDAO().rejestrujWylaczenie(idUrzadzenia);
+    }
+
+    public boolean czyPracuje(){
+       return new MsUrzadzenieDAO().czyPracuje(this.idUrzadzenia);
+    }
+
+    /*
      * Metody wygenerowane na podstawie pól
      */
-
     public int getIdUrzadzenia() {
         return this.idUrzadzenia;
     }
@@ -58,10 +89,18 @@ public class Urzadzenie {
     public void setIdPokoju(int idPokoju) {
         this.idPokoju = idPokoju;
     }
-    @Override
-    public String toString(){
-        String string = this.nazwa + "#" + this.idUrzadzenia;
 
+    public void ustawPoziomPracy(int poziomPracy) {
+        (new MsUrzadzenieDAO()).ustawPoziomPracy(this.idUrzadzenia, poziomPracy);
+    }
+
+    public int pobierzPoziomPracy(){
+        return  (new MsUrzadzenieDAO()).pobierzPoziomPracy(this.idUrzadzenia);
+    }
+
+    @Override
+    public String toString() {
+        String string = this.nazwa + "#" + this.idUrzadzenia;
         return string;
     }
 }

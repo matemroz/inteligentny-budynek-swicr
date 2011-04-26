@@ -15,7 +15,7 @@ public class PunktSwietlny extends Urzadzenie {
             this.idUrzadzenia = (new MsUrzadzenieDAO()).dodaj(this.idPokoju);
             this.moc = 30;
             (new MsUrzadzenieDAO()).ustawMoc(this.idUrzadzenia, this.moc);
-            this.nazwa = "Punkt świetlny#"+this.idUrzadzenia;
+            this.nazwa = "Punkt świetlny";
             (new MsUrzadzenieDAO()).ustawNazwa(this.idUrzadzenia, this.nazwa);
             this.pracuje = false;
 	}

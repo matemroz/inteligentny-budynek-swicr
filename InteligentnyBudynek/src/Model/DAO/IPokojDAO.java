@@ -12,6 +12,10 @@ public interface IPokojDAO {
     boolean ustawNazwe(int idPokoju, String nazwa) ;
 
     String pobierzNazwa(int idPokoju);
+    
+    int pobierzIdPietra(int idPokoju);
+    
+    void ustawIdPietra (int idPokoju, int idPietra);
 
     List<Urzadzenie> wylistujUrzadzenia(int idPokoju);
 }

@@ -17,7 +17,7 @@ public class AnalizatorGazow extends Urzadzenie {
             this.idPokoju = idPokoju;
             this.idUrzadzenia = ( new MsUrzadzenieDAO()).dodaj(this.idPokoju);
 
-            this.nazwa = "Analizator gazów#" + this.idUrzadzenia;
+            this.nazwa = "Analizator gazów";
             (new MsUrzadzenieDAO()).ustawNazwa(this.idUrzadzenia, this.nazwa);
 
             this.moc = 10;
@@ -47,13 +47,16 @@ public class AnalizatorGazow extends Urzadzenie {
                 return(new MsUrzadzenieDAO()).ustawMoc(this.idUrzadzenia, moc);
         }
 
-	public boolean wlacz(){
-            return (new MsUrzadzenieDAO()).rejestrujWlaczenie(this.idUrzadzenia);
-	}
 
-	public boolean wylacz(){
-            return ( new MsUrzadzenieDAO()).rejestrujWylaczenie(idUrzadzenia);
-	}
+    @Override
+    public void wlacz() {
+        new MsUrzadzenieDAO().rejestrujWlaczenie(this.idUrzadzenia);
+    }
+
+    @Override
+    public void wylacz() {
+        new MsUrzadzenieDAO().rejestrujWylaczenie(this.idUrzadzenia);
+    }
 
 
 	public boolean czyNiebezpiecznyCO(){
@@ -102,4 +105,10 @@ public class AnalizatorGazow extends Urzadzenie {
         public void setPracuje( boolean pracuje){
             this.pracuje = pracuje;
         }
+
+
+    @Override
+    public int getIdUrzadzenia(){
+        return idUrzadzenia;
+    }
 }

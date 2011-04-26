@@ -49,7 +49,7 @@ CREATE TABLE PracaUrzadzenia(
   startPracy DATETIME,
   koniecPracy DATETIME,
   czasPracy as convert(int,datediff(s, startPracy, koniecPracy)),
-  poziomPracy int NOT NULL
+  poziomPracy int
 )
 GO
 
@@ -62,4 +62,7 @@ CREATE TABLE GazPrad(
     nazwa VARCHAR(40),
 	cena float
 )
+GO
+
+ALTER TABLE dbo.Urzadzenia ADD poziomPracy int;
 GO
