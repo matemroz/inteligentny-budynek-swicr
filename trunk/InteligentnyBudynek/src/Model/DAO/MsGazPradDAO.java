@@ -4,11 +4,12 @@ import Model.Utils.DatabaseUtils;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class MsGazPradDAO implements IGazPradDAO{
 
-    public double pobierzCenePradu() {
+public class MsGazPradDAO implements IGazPradDAO {
+
+	public double pobierzCenePradu() {
          double cenaPradu = 0.0;
-         ResultSet rs = DatabaseUtils.queryCommand("cena", "GazPrad", "nazwa='Prad'");
+         ResultSet rs = DatabaseUtils.queryCommand("cena", "InteligentnyBudynek.dbo.GazPrad", "nazwa='Prąd'");
 
          if(rs == null)
             return -1;
@@ -24,7 +25,7 @@ public class MsGazPradDAO implements IGazPradDAO{
     }
 
     public boolean ustawCenePradu(double cenaPradu) {
-        int result = DatabaseUtils.updateCommand("GazPrad", "cena", Double.toString(cenaPradu), "nazwa='Prad'");
+        int result = DatabaseUtils.updateCommand("GazPrad", "cena", Double.toString(cenaPradu), "nazwa='Prąd'");
         if (result != 1) {
             System.err.println("Nie dokonano zmiany ceny prądu!");
             return false;
