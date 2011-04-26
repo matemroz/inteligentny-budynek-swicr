@@ -1,10 +1,12 @@
 package Model.DAO;
 
-import Model.Utils.*;
+import Model.Utils.DatabaseUtils;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class MsUrzadzenieDAO implements IUrzadzenieDAO {
 
@@ -12,7 +14,8 @@ public class MsUrzadzenieDAO implements IUrzadzenieDAO {
     }
 
     public int znajdzUrzadzenie(int idUrzadzenia) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        // throw new UnsupportedOperationException("Not supported yet.");
+        return -1;
     }
 
     /**
@@ -81,7 +84,7 @@ public class MsUrzadzenieDAO implements IUrzadzenieDAO {
      */
     public String pobierzNazwa(int idUrzadzenia) {
         String nazwa = "";
-        ResultSet rs = DatabaseUtils.queryCommand("nazwa", "Urzadzenia", "idUrzadzenia='" + idUrzadzenia + "'");
+        ResultSet rs = DatabaseUtils.queryCommand("nazwa", "InteligentnyBudynek.dbo.Urzadzenia", "idUrzadzenia='" + idUrzadzenia + "'");
 
         if (rs == null) {
             return null;
@@ -106,12 +109,41 @@ public class MsUrzadzenieDAO implements IUrzadzenieDAO {
         return true;
     }
 
+    public boolean ustawPoziomPracy(int idUrzadzenia, int poziomPracy) {
+        int result = DatabaseUtils.updateCommand("Urzadzenia", "poziomPracy", Integer.toString(poziomPracy), "idUrzadzenia = '" + idUrzadzenia + "'");
+        if (result != 1) {
+            System.err.println("Nie dokonano zmiany mocy urządzenia!");
+            return false;
+        }
+        return true;
+    }
+
+    public int pobierzPoziomPracy(int idUrzadzenia) {
+        int poziomPracy = 0;
+        ResultSet rs = DatabaseUtils.queryCommand("poziomPracy", "InteligentnyBudynek.dbo.Urzadzenia", "idUrzadzenia='" + idUrzadzenia + "'");
+
+        if (rs == null) {
+            return -1;
+        }
+        try {
+            while (rs.next()) {
+                if (Integer.parseInt(rs.getString("poziomPracy")) > 0) {
+                    poziomPracy = Integer.parseInt(rs.getString("poziomPracy"));
+                }
+            }
+        } catch (SQLException ex) {
+            System.err.println("Niepowodzenie przy próbie pobrania poziomPracy!");
+            poziomPracy = -1;
+        }
+        return poziomPracy;
+    }
+
     /**
      * @return zwraca < 0 w wypadku niepowodzenia
      */
     public double pobierzMoc(int idUrzadzenia) {
         double moc = 0.0;
-        ResultSet rs = DatabaseUtils.queryCommand("moc", "Urzadzenia", "idUrzadzenia='" + idUrzadzenia + "'");
+        ResultSet rs = DatabaseUtils.queryCommand("moc", "InteligentnyBudynek.dbo.Urzadzenia", "idUrzadzenia='" + idUrzadzenia + "'");
 
         if (rs == null) {
             return -1;
@@ -136,20 +168,22 @@ public class MsUrzadzenieDAO implements IUrzadzenieDAO {
         return true;
     }
 
+    @Override
     public double pobierzPoborGazu(int idUrzadzenia) {
         double poborGazu = 0.0;
-        ResultSet rs = DatabaseUtils.queryCommand("poborGazu", "Urzadzenia", "idUrzadzenia='" + idUrzadzenia + "'");
-
-        if (rs == null) {
-            return -1;
-        }
         try {
+            ResultSet rs = DatabaseUtils.queryCommand("poborGazu", "Urzadzenia", "idUrzadzenia='" + idUrzadzenia + "'");
+            if (rs == null || rs.getString("poborGazu").equals("NULL") || rs.getString("poborGazu") == null) {
+                System.out.println("poborGazu jest null");
+                return 0.0;
+            }
             while (rs.next()) {
                 poborGazu = Double.parseDouble(rs.getString("poborGazu"));
             }
+
         } catch (SQLException ex) {
-            System.err.println("Niepowodzenie przy próbie pobrania poboru gazu!");
-            poborGazu = -1;
+            System.err.println("Niepowodzenie przy probie pobrania poborGazu");
+            poborGazu = 0.0;
         }
         return poborGazu;
     }
@@ -195,7 +229,8 @@ public class MsUrzadzenieDAO implements IUrzadzenieDAO {
             System.err.println("Niepowodzenie przy próbie pobrania poboru danych pracy urzadzenia!");
         }
 
-        if (!(startPracy.equals(koniecPracy))) {
+        if (koniecPracy == null && startPracy != null) {
+            System.err.println("dupa");
             pracuje = true;
         }
 
@@ -205,18 +240,22 @@ public class MsUrzadzenieDAO implements IUrzadzenieDAO {
     public boolean rejestrujWlaczenie(int idUrzadzenia) {
         boolean success = false;
 
-        if (czyPracuje(idUrzadzenia)) {
-            return success;
-        }
-
         List<String> columnNames = new ArrayList<String>();
         List<String> values = new ArrayList<String>();
 
+        String nazwaUrzadzenia = pobierzNazwa(idUrzadzenia);
+        if (nazwaUrzadzenia.equals("Punkt świetlny") || nazwaUrzadzenia.equals("Punkt grzewczy") || nazwaUrzadzenia.equals("Klimatyzator")) {
+            columnNames.add("poziomPracy");
+            values.add(Integer.toString(new MsUrzadzenieDAO().pobierzPoziomPracy(idUrzadzenia)));
+        }
+
         columnNames.add("idUrzadzenia");
         columnNames.add("startPracy");
+
         values.add(Integer.toString(idUrzadzenia));
         values.add("getDate()");
         DatabaseUtils.insertCommand("PracaUrzadzenia", columnNames, values);
+
         success = true;
 
         return success;
@@ -225,24 +264,24 @@ public class MsUrzadzenieDAO implements IUrzadzenieDAO {
     public boolean rejestrujWylaczenie(int idUrzadzenia) {
         boolean success = false;
 
-        if (!czyPracuje(idUrzadzenia)) {
-            return success;
+        if (czyPracuje(idUrzadzenia) == true) {
+            String tableName = "PracaUrzadzenia";
+            String columnName = "koniecPracy";
+            String value = "getDate()";
+            String condition = "idUrzadzenia = '" + idUrzadzenia + "'";
+            DatabaseUtils.updateCommand(tableName, columnName, value, condition);
+            success = true;
+        } else {
+            System.err.println("Problemy z wyłączeniem urządzenia!");
         }
 
-        String tableName = "PracaUrzadzenia";
-        String columnName = "koniecPracy";
-        String value = "getDate()";
-        String condition = "idUrzadzenia = '" + idUrzadzenia + "'";
-        DatabaseUtils.updateCommand(tableName, columnName, value, condition);
-
-        success = true;
 
         return success;
     }
 
     public int pobierzCzasPracy(int idUrzadzenia) {
         int czasPracy = 0;
-        ResultSet rs = DatabaseUtils.queryCommand("czasPracy", "PracaUrzadzenia", "idUrzadzenia='" + idUrzadzenia + "'");
+        ResultSet rs = DatabaseUtils.queryCommand("czasPracy", "InteligentnyBudynek.dbo.PracaUrzadzenia", "idUrzadzenia='" + idUrzadzenia + "'");
 
         if (rs == null) {
             return -1;
@@ -256,5 +295,10 @@ public class MsUrzadzenieDAO implements IUrzadzenieDAO {
             czasPracy = -1;
         }
         return czasPracy;
+    }
+
+    public static void main(String[] args) {
+        // System.out.println((new MsUrzadzenieDAO()).czyPracuje(1));
+        new MsUrzadzenieDAO().rejestrujWlaczenie(1);
     }
 }

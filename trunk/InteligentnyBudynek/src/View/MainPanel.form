@@ -180,7 +180,6 @@
         <Component class="javax.swing.JButton" name="btnKoszty">
           <Properties>
             <Property name="text" type="java.lang.String" value="Koszty urz&#x105;dze&#x144;"/>
-            <Property name="enabled" type="boolean" value="false"/>
             <Property name="name" type="java.lang.String" value="btnKoszty" noResource="true"/>
           </Properties>
           <Events>

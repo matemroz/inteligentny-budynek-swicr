@@ -1,26 +1,28 @@
 package Model.DAO;
 
-import Controller.ElementyBudynku.Urzadzenie;
 import Model.Utils.DatabaseUtils;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MsPokojDAO implements IPokojDAO {
+public class MsPokojDAO {
 
     /*
      * Zwracane idPokoju z bazy
      */
-    public int dodaj(String nazwa) {
+    public int dodajPokoj(String nazwa, int idPietra) {
         List<String> columnNames = new ArrayList<String>();
         columnNames.add("nazwa");
+        columnNames.add("idPietra");
 
         List<String> columnTypes = new ArrayList<String>();
         columnTypes.add("Varchar(40)");
+        columnTypes.add("int");
 
         List<String> values = new ArrayList<String>();
         values.add(nazwa);
+        values.add(Integer.toString(idPietra));
 
         ResultSet rs = DatabaseUtils.insertCommandWithKeyResult("Pokoj", columnNames, values);
 
@@ -81,9 +83,9 @@ public class MsPokojDAO implements IPokojDAO {
      * Zwracana jest lista urządzeń z pokoju
      */
     public List wylistujUrzadzenia(int idPokoju) {
-        List<Integer> idUrzadzen = new ArrayList<Integer>();
+        List<Integer> urzadzenia = new ArrayList<Integer>();
 
-        ResultSet rs = DatabaseUtils.queryCommand("idUrzadzenia", "Urzadzenia", "idPokoju='" + idPokoju + "'");
+        ResultSet rs = DatabaseUtils.queryCommand("idUrzadzenia", "InteligentnyBudynek.dbo.Urzadzenia", "idPokoju='" + idPokoju + "'");
 
         if (rs == null) {
             return null;
@@ -92,12 +94,16 @@ public class MsPokojDAO implements IPokojDAO {
             while (rs.next()) {
                 int idUrzadzenia = Integer.parseInt(rs.getString("idUrzadzenia"));
                 System.out.println(idUrzadzenia);
-                idUrzadzen.add(idUrzadzenia);
+                urzadzenia.add(idUrzadzenia);
             }
         } catch (SQLException ex) {
             System.err.println("Niepowodzenie przy próbie pobrania poboru pracy urzadzenia!");
         }
-        return idUrzadzen;
+        return urzadzenia;
+    }
+
+    public static void main(String[] args){
+        (new MsPokojDAO()).wylistujUrzadzenia(1);
     }
 
 }

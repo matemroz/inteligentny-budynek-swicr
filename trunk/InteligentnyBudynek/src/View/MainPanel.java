@@ -79,7 +79,6 @@ public class MainPanel extends javax.swing.JFrame {
         });
 
         btnKoszty.setText("Koszty urządzeń");
-        btnKoszty.setEnabled(false);
         btnKoszty.setName("btnKoszty"); // NOI18N
         btnKoszty.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -253,6 +252,9 @@ public class MainPanel extends javax.swing.JFrame {
     }//GEN-LAST:event_mItProjektujActionPerformed
 
     private void mItKosztyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mItKosztyActionPerformed
+        if (cbListaPieter.getSelectedItem().toString()=="wybierz...") {
+            return;
+        }
         try {
             selectedPietro = new Pietro(Integer.parseInt(cbListaPieter.getSelectedItem().toString().split("#")[1]));
             kosztyView = new KosztyPanel(this, true, selectedPietro.wylistujPokoje());
@@ -270,7 +272,6 @@ public class MainPanel extends javax.swing.JFrame {
         if (!cbListaPieter.getSelectedItem().toString().equals("wybierz...")) {
             selectedPietro = new Pietro(Integer.parseInt(cbListaPieter.getSelectedItem().toString().split("#")[1]));
             utworzPokoje(selectedPietro.wylistujPokoje());
-            btnKoszty.setEnabled(true);
         }
 }//GEN-LAST:event_cbListaPieterItemStateChanged
 

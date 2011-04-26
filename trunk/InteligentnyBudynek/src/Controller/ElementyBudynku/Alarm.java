@@ -4,23 +4,22 @@ import Model.DAO.MsUrzadzenieDAO;
 
 public class Alarm extends Urzadzenie {
 
+    public Alarm(int idPokoju) {
+        this.idPokoju = idPokoju;
+        this.idUrzadzenia = (new MsUrzadzenieDAO()).dodaj(this.idPokoju);
 
-    public Alarm(int idPokoju){
-            this.idPokoju = idPokoju;
-            this.idUrzadzenia = (new MsUrzadzenieDAO()).dodaj(this.idPokoju);
+        this.nazwa = "Alarm";
+        (new MsUrzadzenieDAO()).ustawNazwa(this.idUrzadzenia, this.nazwa);
 
-            this.nazwa = "Alarm";
-            (new MsUrzadzenieDAO()).ustawNazwa(this.idUrzadzenia, this.nazwa);
-
-            this.moc = 30;
-            (new MsUrzadzenieDAO()).ustawMoc(this.idUrzadzenia, this.moc);
+        this.moc = 30;
+        (new MsUrzadzenieDAO()).ustawMoc(this.idUrzadzenia, this.moc);
     }
 
-    public Alarm(int idPokoju, int idUrzadzenia){
-            this.idPokoju = idPokoju;
-            this.idUrzadzenia = idUrzadzenia;
-            this.nazwa = (new MsUrzadzenieDAO()).pobierzNazwa(this.idUrzadzenia);
-            this.moc = (new MsUrzadzenieDAO()).pobierzMoc(this.idUrzadzenia);
+    public Alarm(int idPokoju, int idUrzadzenia) {
+        this.idPokoju = idPokoju;
+        this.idUrzadzenia = idUrzadzenia;
+        this.nazwa = (new MsUrzadzenieDAO()).pobierzNazwa(this.idUrzadzenia);
+        this.moc = (new MsUrzadzenieDAO()).pobierzMoc(this.idUrzadzenia);
     }
 
     public boolean czyPracuje(int idUrzadzenia) {
@@ -28,19 +27,21 @@ public class Alarm extends Urzadzenie {
     }
 
     public double pobierzMoc() {
-         return (new MsUrzadzenieDAO()).pobierzMoc(this.idUrzadzenia);
+        return (new MsUrzadzenieDAO()).pobierzMoc(this.idUrzadzenia);
     }
 
     public boolean ustawMoc(double moc) {
         return (new MsUrzadzenieDAO()).ustawMoc(this.idUrzadzenia, moc);
     }
 
-    public boolean wlacz() {
-        return (new MsUrzadzenieDAO()).rejestrujWlaczenie(this.idUrzadzenia);
+    @Override
+    public void wlacz() {
+        new MsUrzadzenieDAO().rejestrujWlaczenie(this.idUrzadzenia);
     }
 
-    public boolean wylacz() {
-        return (new MsUrzadzenieDAO()).rejestrujWylaczenie(this.idUrzadzenia);
+    @Override
+    public void wylacz() {
+        new MsUrzadzenieDAO().rejestrujWylaczenie(this.idUrzadzenia);
     }
 
     public double getMoc() {
@@ -59,6 +60,10 @@ public class Alarm extends Urzadzenie {
         this.pracuje = pracuje;
     }
 
+    @Override
+    public int getIdUrzadzenia() {
+        return idUrzadzenia;
+    }
     private double moc;
     private String nazwa;
     private boolean pracuje;

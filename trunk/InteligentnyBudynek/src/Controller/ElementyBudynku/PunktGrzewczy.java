@@ -17,7 +17,7 @@ public class PunktGrzewczy extends Urzadzenie {
         public PunktGrzewczy(int idPokoju){
             this.idPokoju = idPokoju;
             this.idUrzadzenia = (new MsUrzadzenieDAO()).dodaj(this.idPokoju);
-            this.nazwa = "Punkt grzewczy#"+this.idUrzadzenia;
+            this.nazwa = "Punkt grzewczy";
             (new MsUrzadzenieDAO()).ustawNazwa(this.idUrzadzenia, this.nazwa);
             this.poziomDzialania = 0;//TODO: poziom dzialania
             this.pracuje = false;
@@ -79,6 +79,7 @@ public class PunktGrzewczy extends Urzadzenie {
             //TODO: obsluga bazy? czy przechowujemy poziomDzialania?
 	}
 
+    @Override
 	public void wlacz(){
             boolean ifSuccess = (new MsUrzadzenieDAO()).rejestrujWlaczenie(this.idUrzadzenia);
             if (ifSuccess) {
@@ -90,6 +91,7 @@ public class PunktGrzewczy extends Urzadzenie {
             }
 	}
 
+    @Override
 	public void wylacz(){
             boolean ifSuccess = (new MsUrzadzenieDAO()).rejestrujWlaczenie(this.idUrzadzenia);
             if (ifSuccess) {
