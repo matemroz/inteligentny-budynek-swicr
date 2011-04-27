@@ -19,8 +19,8 @@ public class UrzadzeniaPanel extends javax.swing.JDialog {
             int idUrzadzenia = (Integer) it.next();
             String nazwaUrzadzenia = (new Urzadzenie(idUrzadzenia)).pobierzNazwa();
             if (nazwaUrzadzenia.equals("Alarm") || nazwaUrzadzenia.equals("Analizator gazów") || nazwaUrzadzenia.equals("Czujnik ruchu")
-                   || nazwaUrzadzenia.equals("Czujnik temperatury") || nazwaUrzadzenia.equals("Gniazdko") || nazwaUrzadzenia.equals("Klimatyzator")
-                   || nazwaUrzadzenia.equals("Punkt grzewczy") || nazwaUrzadzenia.equals("Punkt świetlny") || nazwaUrzadzenia.equals("Zraszacz przeciwpożarowy")) {
+                    || nazwaUrzadzenia.equals("Czujnik temperatury") || nazwaUrzadzenia.equals("Gniazdko") || nazwaUrzadzenia.equals("Klimatyzator")
+                    || nazwaUrzadzenia.equals("Punkt grzewczy") || nazwaUrzadzenia.equals("Punkt świetlny") || nazwaUrzadzenia.equals("Zraszacz przeciwpożarowy")) {
                 modelLstUrzadzenia.addElement((new Urzadzenie(idUrzadzenia)).pobierzNazwa() + "#" + idUrzadzenia);
             }
         }
@@ -29,6 +29,27 @@ public class UrzadzeniaPanel extends javax.swing.JDialog {
         initComponents();
         btnWlacz.setEnabled(false);
         btnWylacz.setEnabled(false);
+        temperatura();
+    }
+
+    private void temperatura() {
+        double temperatura = 20;
+        Iterator it = urzadzenia.iterator();
+        List<Integer> punktyGrzewcze = new ArrayList<Integer>();
+        List<Integer> klimatyzatory = new ArrayList<Integer>();
+
+        while (it.hasNext()) {
+            int idUrzadzenia = (Integer) it.next();
+            String nazwaUrzadzenia = (new Urzadzenie(idUrzadzenia)).pobierzNazwa();
+            if (nazwaUrzadzenia.equals("Klimatyzator") && (new Urzadzenie(idUrzadzenia)).czyPracuje() == true) {
+                temperatura = temperatura - 0.2 * (new Urzadzenie(idUrzadzenia).pobierzPoziomPracy());
+            }
+            if (nazwaUrzadzenia.equals("Punkt grzewczy") && (new Urzadzenie(idUrzadzenia)).czyPracuje() == true) {
+                punktyGrzewcze.add(new Urzadzenie(idUrzadzenia).pobierzPoziomPracy());
+                temperatura = temperatura + 0.2 * (new Urzadzenie(idUrzadzenia).pobierzPoziomPracy());
+            }
+        }
+        lTemperatura.setText(Double.toString(temperatura));
     }
 
     @SuppressWarnings("unchecked")
@@ -49,22 +70,6 @@ public class UrzadzeniaPanel extends javax.swing.JDialog {
         jLabel7 = new javax.swing.JLabel();
         dda = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jSeparator2 = new javax.swing.JSeparator();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox();
-        jComboBox2 = new javax.swing.JComboBox();
-        jComboBox3 = new javax.swing.JComboBox();
-        jComboBox4 = new javax.swing.JComboBox();
-        jComboBox5 = new javax.swing.JComboBox();
-        jComboBox6 = new javax.swing.JComboBox();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
-        btnUstawPlan = new javax.swing.JButton();
-        btnUsunPlan = new javax.swing.JButton();
         btnUstawMoc = new javax.swing.JButton();
         btnDodajUrzadzenie = new javax.swing.JButton();
         btnUsunUrzadzenie = new javax.swing.JButton();
@@ -136,51 +141,6 @@ public class UrzadzeniaPanel extends javax.swing.JDialog {
         jLabel9.setText("m3");
         jLabel9.setName("jLabel9"); // NOI18N
 
-        jLabel10.setText("Plan pracy urządzenia:");
-        jLabel10.setName("jLabel10"); // NOI18N
-
-        jSeparator2.setName("jSeparator2"); // NOI18N
-
-        jLabel11.setText("Data włączenia:");
-        jLabel11.setName("jLabel11"); // NOI18N
-
-        jLabel12.setText("Data wyłączenia:");
-        jLabel12.setName("jLabel12"); // NOI18N
-
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "<rok>" }));
-        jComboBox1.setName("jComboBox1"); // NOI18N
-
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "<miesiąc>" }));
-        jComboBox2.setName("jComboBox2"); // NOI18N
-
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "<dzień>" }));
-        jComboBox3.setName("jComboBox3"); // NOI18N
-
-        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "<rok>" }));
-        jComboBox4.setName("jComboBox4"); // NOI18N
-
-        jComboBox5.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "<miesiąc>" }));
-        jComboBox5.setName("jComboBox5"); // NOI18N
-
-        jComboBox6.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "<dzień>" }));
-        jComboBox6.setName("jComboBox6"); // NOI18N
-
-        jTextField3.setName("jTextField3"); // NOI18N
-
-        jTextField4.setName("jTextField4"); // NOI18N
-
-        jLabel13.setText("HH:MM:SS");
-        jLabel13.setName("jLabel13"); // NOI18N
-
-        jLabel14.setText("HH:MM:SS");
-        jLabel14.setName("jLabel14"); // NOI18N
-
-        btnUstawPlan.setText("Ustaw plan");
-        btnUstawPlan.setName("btnUstawPlan"); // NOI18N
-
-        btnUsunPlan.setText("Usuń plan");
-        btnUsunPlan.setName("btnUsunPlan"); // NOI18N
-
         btnUstawMoc.setText("ustaw");
         btnUstawMoc.setEnabled(false);
         btnUstawMoc.setName("btnUstawMoc"); // NOI18N
@@ -200,6 +160,11 @@ public class UrzadzeniaPanel extends javax.swing.JDialog {
 
         btnUsunUrzadzenie.setText("Usuń urządzenie");
         btnUsunUrzadzenie.setName("btnUsunUrzadzenie"); // NOI18N
+        btnUsunUrzadzenie.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnUsunUrzadzenieMouseClicked(evt);
+            }
+        });
 
         jLabel3.setText("Poziom pracy:");
         jLabel3.setName("jLabel3"); // NOI18N
@@ -235,16 +200,11 @@ public class UrzadzeniaPanel extends javax.swing.JDialog {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btnUsunUrzadzenie, javax.swing.GroupLayout.DEFAULT_SIZE, 192, Short.MAX_VALUE)
-                                    .addComponent(btnDodajUrzadzenie, javax.swing.GroupLayout.DEFAULT_SIZE, 192, Short.MAX_VALUE)))
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -252,42 +212,6 @@ public class UrzadzeniaPanel extends javax.swing.JDialog {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel5)
                                 .addGap(262, 262, 262))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel10)
-                                .addGap(384, 384, 384))
-                            .addComponent(jSeparator2, javax.swing.GroupLayout.DEFAULT_SIZE, 493, Short.MAX_VALUE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(jLabel12)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(jComboBox6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(jTextField4))
-                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                            .addComponent(jLabel11)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel14)
-                                        .addComponent(jLabel13)))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(272, 272, 272)
-                                    .addComponent(btnUstawPlan)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(btnUsunPlan)))
                             .addComponent(jLabel4)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addGroup(layout.createSequentialGroup()
@@ -323,102 +247,75 @@ public class UrzadzeniaPanel extends javax.swing.JDialog {
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                                 .addComponent(jLabel17))
                                             .addComponent(jLabel9))))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(216, 216, 216)
-                        .addComponent(jLabel3)))
-                .addContainerGap())
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE))
+                            .addComponent(jLabel3))
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnDodajUrzadzenie, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 202, Short.MAX_VALUE)
+                            .addComponent(btnUsunUrzadzenie, javax.swing.GroupLayout.DEFAULT_SIZE, 202, Short.MAX_VALUE))
+                        .addGap(499, 499, 499))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel1)
-                .addGap(8, 8, 8)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel5)
+                        .addComponent(jLabel1)
                         .addGap(8, 8, 8)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel5)
+                                .addGap(8, 8, 8)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel3)
+                                    .addComponent(cbPoziomPracy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnUstawMoc))
+                                .addGap(9, 9, 9)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(jLabel6)
+                                            .addComponent(lMoc))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(jLabel7)
+                                            .addComponent(lPoborGazu))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(jLabel15)
+                                            .addComponent(lTemperatura)))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(dda)
+                                            .addComponent(jLabel17))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabel9)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabel16)))
+                                .addGap(36, 36, 36)
+                                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 231, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(185, 185, 185)
+                        .addComponent(jLabel4)
+                        .addGap(6, 6, 6)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3)
-                            .addComponent(cbPoziomPracy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnUstawMoc))
-                        .addGap(9, 9, 9)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel6)
-                                    .addComponent(lMoc))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel7)
-                                    .addComponent(lPoborGazu))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel15)
-                                    .addComponent(lTemperatura)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(dda)
-                                    .addComponent(jLabel17))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel9)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel16)))
-                        .addGap(36, 36, 36)
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(3, 3, 3)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, Short.MAX_VALUE)
-                                .addComponent(btnDodajUrzadzenie)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnUsunUrzadzenie)
-                                .addGap(20, 20, 20))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(79, 79, 79)
-                                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(2, 2, 2)
-                                .addComponent(jLabel10)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel11)
-                                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel13))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel12)
-                                    .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jComboBox6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel14))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(btnUsunPlan)
-                                    .addComponent(btnUstawPlan))
-                                .addContainerGap())))))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(185, 185, 185)
-                .addComponent(jLabel4)
-                .addGap(6, 6, 6)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(lStanPracy))
-                .addGap(11, 11, 11)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnWlacz)
-                    .addComponent(btnWylacz))
-                .addContainerGap(164, Short.MAX_VALUE))
+                            .addComponent(jLabel2)
+                            .addComponent(lStanPracy))
+                        .addGap(11, 11, 11)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnWlacz)
+                            .addComponent(btnWylacz))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnDodajUrzadzenie)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnUsunUrzadzenie)
+                .addGap(23, 23, 23))
         );
 
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-        setBounds((screenSize.width-727)/2, (screenSize.height-455)/2, 727, 455);
+        setBounds((screenSize.width-727)/2, (screenSize.height-372)/2, 727, 372);
     }// </editor-fold>//GEN-END:initComponents
 
     private void lstUrzadzeniaValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lstUrzadzeniaValueChanged
@@ -477,6 +374,7 @@ public class UrzadzeniaPanel extends javax.swing.JDialog {
             int poziomPracy = Integer.parseInt(cbPoziomPracy.getSelectedItem().toString());
             new Urzadzenie(id).ustawPoziomPracy(poziomPracy);
         }
+        temperatura();
 }//GEN-LAST:event_btnUstawMocMouseClicked
 
     private void btnWlaczMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnWlaczMouseClicked
@@ -496,6 +394,7 @@ public class UrzadzeniaPanel extends javax.swing.JDialog {
             btnWylacz.setEnabled(true);
             System.err.println(" WŁĄCZENIE URZADZENIA");
         }
+        temperatura();
     }//GEN-LAST:event_btnWlaczMouseClicked
 
     private void btnWylaczMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnWylaczMouseClicked
@@ -516,7 +415,15 @@ public class UrzadzeniaPanel extends javax.swing.JDialog {
             btnWylacz.setEnabled(false);
             System.err.println("WyŁĄCZENIEM URZADZENIA");
         }
+        temperatura();
     }//GEN-LAST:event_btnWylaczMouseClicked
+
+    private void btnUsunUrzadzenieMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUsunUrzadzenieMouseClicked
+        String selected = lstUrzadzenia.getSelectedValue().toString();
+        int id = Integer.parseInt(selected.split("#")[1]);
+        (new Urzadzenie()).usun(id);
+        modelLstUrzadzenia.removeElement(lstUrzadzenia.getSelectedValue());
+    }//GEN-LAST:event_btnUsunUrzadzenieMouseClicked
 
     public static DefaultListModel getLstUrzadzenia() {
         return modelLstUrzadzenia;
@@ -544,25 +451,12 @@ public class UrzadzeniaPanel extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDodajUrzadzenie;
     private javax.swing.JButton btnUstawMoc;
-    private javax.swing.JButton btnUstawPlan;
-    private javax.swing.JButton btnUsunPlan;
     private javax.swing.JButton btnUsunUrzadzenie;
     private javax.swing.JButton btnWlacz;
     private javax.swing.JButton btnWylacz;
     private javax.swing.JComboBox cbPoziomPracy;
     private javax.swing.JLabel dda;
-    private javax.swing.JComboBox jComboBox1;
-    private javax.swing.JComboBox jComboBox2;
-    private javax.swing.JComboBox jComboBox3;
-    private javax.swing.JComboBox jComboBox4;
-    private javax.swing.JComboBox jComboBox5;
-    private javax.swing.JComboBox jComboBox6;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
@@ -575,9 +469,6 @@ public class UrzadzeniaPanel extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
     private javax.swing.JLabel lMoc;
     private javax.swing.JLabel lPoborGazu;
     private javax.swing.JLabel lStanPracy;
