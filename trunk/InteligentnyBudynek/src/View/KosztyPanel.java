@@ -40,7 +40,6 @@ public class KosztyPanel extends javax.swing.JDialog {
         listModel = new DefaultListModel();
         covertListToComboBox(pokoje);
         initComponents();
-        jComboBox1ActionPerformed(null);
     }
 
     /** This method is called from within the constructor to
@@ -70,7 +69,7 @@ public class KosztyPanel extends javax.swing.JDialog {
         setTitle("Koszty"); // NOI18N
         setResizable(false);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18));
         jLabel1.setText("Koszty");
         jLabel1.setName("jLabelKoszty"); // NOI18N
 
@@ -92,18 +91,22 @@ public class KosztyPanel extends javax.swing.JDialog {
         jLabel3.setText("Koszt:");
         jLabel3.setName("jLabel3"); // NOI18N
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18));
         jLabel4.setText("00:00:00");
         jLabel4.setName("jLabel4"); // NOI18N
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18));
         jLabel5.setText("0.00 zł");
 
         jComboBox1.setModel(roomListModel);
         jComboBox1.setName("jComboBox1"); // NOI18N
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+        jComboBox1.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
+            public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
+            }
+            public void popupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {
+                jComboBox1PopupMenuWillBecomeInvisible(evt);
+            }
+            public void popupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {
             }
         });
 
@@ -203,18 +206,10 @@ public class KosztyPanel extends javax.swing.JDialog {
         setBounds((screenSize.width-472)/2, (screenSize.height-358)/2, 472, 358);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        int selectedRoomID = Integer.parseInt(jComboBox1.getSelectedItem().toString().split("#")[1]);
-        try {
-            initList(selectedRoomID);
-        } catch (SQLException ex) {
-            Logger.getLogger(KosztyPanel.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-    }//GEN-LAST:event_jComboBox1ActionPerformed
-
     private void jListaUrzadzenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jListaUrzadzenMouseClicked
-
+        if(jListaUrzadzen.getModel().getSize()==0) {
+            return;
+        }
         int selectedID =  Integer.parseInt(jListaUrzadzen.getSelectedValue().toString().split("#")[1]);
         double prad = (new MsGazPradDAO()).pobierzCenePradu();
         MsUrzadzenieDAO dao = new MsUrzadzenieDAO();
@@ -229,6 +224,19 @@ public class KosztyPanel extends javax.swing.JDialog {
         cenaPanel = new CenaPanel(this, true);
         cenaPanel.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jComboBox1PopupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_jComboBox1PopupMenuWillBecomeInvisible
+        if (jComboBox1.getSelectedItem().toString().equals("wybierz...")){
+            listModel.clear();
+            return;
+        }
+        int selectedRoomID = Integer.parseInt(jComboBox1.getSelectedItem().toString().split("#")[1]);
+        try {
+            initList(selectedRoomID);
+        } catch (SQLException ex) {
+            Logger.getLogger(KosztyPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jComboBox1PopupMenuWillBecomeInvisible
 
     /**
      * @param args the command line arguments
@@ -275,6 +283,7 @@ public class KosztyPanel extends javax.swing.JDialog {
 
     private void covertListToComboBox(List<Pokoj> pokoje) {
         roomListModel = new DefaultComboBoxModel();
+        roomListModel.addElement("wybierz...");
         Iterator<Pokoj> it = pokoje.iterator();
         Pokoj p = new Pokoj();
         while (it.hasNext()) {
