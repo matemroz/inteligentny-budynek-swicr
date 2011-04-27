@@ -11,6 +11,9 @@
 
 package View;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author matemroz
@@ -18,7 +21,7 @@ package View;
 public class OknaPanel extends javax.swing.JDialog {
 
     /** Creates new form OknaPanel */
-    public OknaPanel(java.awt.Frame parent, boolean modal) {
+    public OknaPanel(java.awt.Frame parent, boolean modal, List<Integer> urzadzenia, int idPokoju) {
         super(parent, modal);
         initComponents();
     }
@@ -32,20 +35,79 @@ public class OknaPanel extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        lstOkna = new javax.swing.JList();
+        btnOtworz = new javax.swing.JButton();
+        btnZamknij = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+
+        jLabel1.setText("Lista okien:");
+        jLabel1.setName("jLabel1"); // NOI18N
+
+        jScrollPane1.setName("jScrollPane1"); // NOI18N
+
+        lstOkna.setName("lstOkna"); // NOI18N
+        jScrollPane1.setViewportView(lstOkna);
+
+        btnOtworz.setText("Otwórz");
+        btnOtworz.setName("btnOtworz"); // NOI18N
+
+        btnZamknij.setText("Zamknij");
+        btnZamknij.setName("btnZamknij"); // NOI18N
+
+        jLabel2.setText("Stan:");
+        jLabel2.setName("jLabel2"); // NOI18N
+
+        jLabel3.setText("...");
+        jLabel3.setName("jLabel3"); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnOtworz)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnZamknij))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel3))))
+                    .addComponent(jLabel1))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnOtworz)
+                            .addComponent(btnZamknij))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3)))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
-        pack();
+        java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+        setBounds((screenSize.width-349)/2, (screenSize.height-338)/2, 349, 338);
     }// </editor-fold>//GEN-END:initComponents
 
     /**
@@ -54,7 +116,7 @@ public class OknaPanel extends javax.swing.JDialog {
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                OknaPanel dialog = new OknaPanel(new javax.swing.JFrame(), true);
+                OknaPanel dialog = new OknaPanel(new javax.swing.JFrame(), true, new ArrayList<Integer>(), 0);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     public void windowClosing(java.awt.event.WindowEvent e) {
                         System.exit(0);
@@ -66,6 +128,13 @@ public class OknaPanel extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnOtworz;
+    private javax.swing.JButton btnZamknij;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JList lstOkna;
     // End of variables declaration//GEN-END:variables
 
 }

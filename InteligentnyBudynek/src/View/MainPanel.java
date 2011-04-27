@@ -342,7 +342,7 @@ public class MainPanel extends javax.swing.JFrame {
             btnOkna.addActionListener(new ActionListener() {
 
                 public void actionPerformed(ActionEvent e) {
-                    OknaPanel op = new OknaPanel(new JFrame(), true);
+                    OknaPanel op = new OknaPanel(new JFrame(), true, p.wylistujUrzadzenia(), idPokoju);
                     op.setVisible(true);
                 }
             });
@@ -354,7 +354,7 @@ public class MainPanel extends javax.swing.JFrame {
             btnDrzwi.addActionListener(new ActionListener() {
 
                 public void actionPerformed(ActionEvent e) {
-                    DrzwiPanel dp = new DrzwiPanel(new JFrame(), true);
+                    DrzwiPanel dp = new DrzwiPanel(new JFrame(), true, p.wylistujUrzadzenia(), idPokoju);
                     dp.setVisible(true);
                 }
             });
@@ -397,7 +397,7 @@ public class MainPanel extends javax.swing.JFrame {
             btnOkna.addActionListener(new ActionListener() {
 
                 public void actionPerformed(ActionEvent e) {
-                    OknaPanel op = new OknaPanel(new JFrame(), true);
+                    OknaPanel op = new OknaPanel(new JFrame(), true, p.wylistujUrzadzenia(), idPokoju);
                     op.setVisible(true);
                 }
             });
@@ -410,7 +410,7 @@ public class MainPanel extends javax.swing.JFrame {
             btnDrzwi.addActionListener(new ActionListener() {
 
                 public void actionPerformed(ActionEvent e) {
-                    DrzwiPanel dp = new DrzwiPanel(new JFrame(), true);
+                    DrzwiPanel dp = new DrzwiPanel(new JFrame(), true, p.wylistujUrzadzenia(), idPokoju);
                     dp.setVisible(true);
                 }
             });
@@ -451,7 +451,7 @@ public class MainPanel extends javax.swing.JFrame {
             btnOkna1.addActionListener(new ActionListener() {
 
                 public void actionPerformed(ActionEvent e) {
-                    OknaPanel op = new OknaPanel(new JFrame(), true);
+                    OknaPanel op = new OknaPanel(new JFrame(), true, p.wylistujUrzadzenia(), idPokoju);
                     op.setVisible(true);
                 }
             });
@@ -463,7 +463,7 @@ public class MainPanel extends javax.swing.JFrame {
             btnDrzwi1.addActionListener(new ActionListener() {
 
                 public void actionPerformed(ActionEvent e) {
-                    DrzwiPanel dp = new DrzwiPanel(new JFrame(), true);
+                    DrzwiPanel dp = new DrzwiPanel(new JFrame(), true, p.wylistujUrzadzenia(), idPokoju);
                     dp.setVisible(true);
                 }
             });
@@ -505,7 +505,7 @@ public class MainPanel extends javax.swing.JFrame {
             btnOkna.addActionListener(new ActionListener() {
 
                 public void actionPerformed(ActionEvent e) {
-                    OknaPanel op = new OknaPanel(new JFrame(), true);
+                    OknaPanel op = new OknaPanel(new JFrame(), true, p.wylistujUrzadzenia(), idPokoju);
                     op.setVisible(true);
                 }
             });
@@ -518,7 +518,7 @@ public class MainPanel extends javax.swing.JFrame {
             btnDrzwi.addActionListener(new ActionListener() {
 
                 public void actionPerformed(ActionEvent e) {
-                    DrzwiPanel dp = new DrzwiPanel(new JFrame(), true);
+                    DrzwiPanel dp = new DrzwiPanel(new JFrame(), true, p.wylistujUrzadzenia(), idPokoju);
                     dp.setVisible(true);
                 }
             });
@@ -558,7 +558,7 @@ public class MainPanel extends javax.swing.JFrame {
             btnOkna1.addActionListener(new ActionListener() {
 
                 public void actionPerformed(ActionEvent e) {
-                    OknaPanel op = new OknaPanel(new JFrame(), true);
+                    OknaPanel op = new OknaPanel(new JFrame(), true, p.wylistujUrzadzenia(), idPokoju);
                     op.setVisible(true);
                 }
             });
@@ -570,7 +570,7 @@ public class MainPanel extends javax.swing.JFrame {
             btnDrzwi1.addActionListener(new ActionListener() {
 
                 public void actionPerformed(ActionEvent e) {
-                    DrzwiPanel dp = new DrzwiPanel(new JFrame(), true);
+                    DrzwiPanel dp = new DrzwiPanel(new JFrame(), true, p.wylistujUrzadzenia(), idPokoju);
                     dp.setVisible(true);
                 }
             });
@@ -610,7 +610,7 @@ public class MainPanel extends javax.swing.JFrame {
             btnOkna2.addActionListener(new ActionListener() {
 
                 public void actionPerformed(ActionEvent e) {
-                    OknaPanel op = new OknaPanel(new JFrame(), true);
+                    OknaPanel op = new OknaPanel(new JFrame(), true, p.wylistujUrzadzenia(), idPokoju);
                     op.setVisible(true);
                 }
             });
@@ -622,7 +622,7 @@ public class MainPanel extends javax.swing.JFrame {
             btnDrzwi2.addActionListener(new ActionListener() {
 
                 public void actionPerformed(ActionEvent e) {
-                    DrzwiPanel dp = new DrzwiPanel(new JFrame(), true);
+                    DrzwiPanel dp = new DrzwiPanel(new JFrame(), true, p.wylistujUrzadzenia(), idPokoju);
                     dp.setVisible(true);
                 }
             });
@@ -664,7 +664,7 @@ public class MainPanel extends javax.swing.JFrame {
             btnOkna.addActionListener(new ActionListener() {
 
                 public void actionPerformed(ActionEvent e) {
-                    OknaPanel op = new OknaPanel(new JFrame(), true);
+                    OknaPanel op = new OknaPanel(new JFrame(), true, p.wylistujUrzadzenia(), idPokoju);
                     op.setVisible(true);
                 }
             });
@@ -677,7 +677,7 @@ public class MainPanel extends javax.swing.JFrame {
             btnDrzwi.addActionListener(new ActionListener() {
 
                 public void actionPerformed(ActionEvent e) {
-                    DrzwiPanel dp = new DrzwiPanel(new JFrame(), true);
+                    DrzwiPanel dp = new DrzwiPanel(new JFrame(), true, p.wylistujUrzadzenia(), idPokoju);
                     dp.setVisible(true);
                 }
             });
@@ -717,7 +717,7 @@ public class MainPanel extends javax.swing.JFrame {
             btnOkna1.addActionListener(new ActionListener() {
 
                 public void actionPerformed(ActionEvent e) {
-                    OknaPanel op = new OknaPanel(new JFrame(), true);
+                    OknaPanel op = new OknaPanel(new JFrame(), true, p.wylistujUrzadzenia(), idPokoju);
                     op.setVisible(true);
                 }
             });
@@ -729,7 +729,7 @@ public class MainPanel extends javax.swing.JFrame {
             btnDrzwi1.addActionListener(new ActionListener() {
 
                 public void actionPerformed(ActionEvent e) {
-                    DrzwiPanel dp = new DrzwiPanel(new JFrame(), true);
+                    DrzwiPanel dp = new DrzwiPanel(new JFrame(), true, p.wylistujUrzadzenia(), idPokoju);
                     dp.setVisible(true);
                 }
             });
@@ -769,7 +769,7 @@ public class MainPanel extends javax.swing.JFrame {
             btnOkna2.addActionListener(new ActionListener() {
 
                 public void actionPerformed(ActionEvent e) {
-                    OknaPanel op = new OknaPanel(new JFrame(), true);
+                    OknaPanel op = new OknaPanel(new JFrame(), true, p.wylistujUrzadzenia(), idPokoju);
                     op.setVisible(true);
                 }
             });
@@ -781,7 +781,7 @@ public class MainPanel extends javax.swing.JFrame {
             btnDrzwi2.addActionListener(new ActionListener() {
 
                 public void actionPerformed(ActionEvent e) {
-                    DrzwiPanel dp = new DrzwiPanel(new JFrame(), true);
+                    DrzwiPanel dp = new DrzwiPanel(new JFrame(), true, p.wylistujUrzadzenia(), idPokoju);
                     dp.setVisible(true);
                 }
             });
@@ -823,7 +823,7 @@ public class MainPanel extends javax.swing.JFrame {
             btnOkna3.addActionListener(new ActionListener() {
 
                 public void actionPerformed(ActionEvent e) {
-                    OknaPanel op = new OknaPanel(new JFrame(), true);
+                    OknaPanel op = new OknaPanel(new JFrame(), true, p.wylistujUrzadzenia(), idPokoju);
                     op.setVisible(true);
                 }
             });
@@ -835,7 +835,7 @@ public class MainPanel extends javax.swing.JFrame {
             btnDrzwi3.addActionListener(new ActionListener() {
 
                 public void actionPerformed(ActionEvent e) {
-                    DrzwiPanel dp = new DrzwiPanel(new JFrame(), true);
+                    DrzwiPanel dp = new DrzwiPanel(new JFrame(), true, p.wylistujUrzadzenia(), idPokoju);
                     dp.setVisible(true);
                 }
             });
@@ -878,7 +878,7 @@ public class MainPanel extends javax.swing.JFrame {
             btnOkna.addActionListener(new ActionListener() {
 
                 public void actionPerformed(ActionEvent e) {
-                    OknaPanel op = new OknaPanel(new JFrame(), true);
+                    OknaPanel op = new OknaPanel(new JFrame(), true, p.wylistujUrzadzenia(), idPokoju);
                     op.setVisible(true);
                 }
             });
@@ -891,7 +891,7 @@ public class MainPanel extends javax.swing.JFrame {
             btnDrzwi.addActionListener(new ActionListener() {
 
                 public void actionPerformed(ActionEvent e) {
-                    DrzwiPanel dp = new DrzwiPanel(new JFrame(), true);
+                    DrzwiPanel dp = new DrzwiPanel(new JFrame(), true, p.wylistujUrzadzenia(), idPokoju);
                     dp.setVisible(true);
                 }
             });
@@ -932,7 +932,7 @@ public class MainPanel extends javax.swing.JFrame {
             btnOkna1.addActionListener(new ActionListener() {
 
                 public void actionPerformed(ActionEvent e) {
-                    OknaPanel op = new OknaPanel(new JFrame(), true);
+                    OknaPanel op = new OknaPanel(new JFrame(), true, p.wylistujUrzadzenia(), idPokoju);
                     op.setVisible(true);
                 }
             });
@@ -944,7 +944,7 @@ public class MainPanel extends javax.swing.JFrame {
             btnDrzwi1.addActionListener(new ActionListener() {
 
                 public void actionPerformed(ActionEvent e) {
-                    DrzwiPanel dp = new DrzwiPanel(new JFrame(), true);
+                    DrzwiPanel dp = new DrzwiPanel(new JFrame(), true, p.wylistujUrzadzenia(), idPokoju);
                     dp.setVisible(true);
                 }
             });
@@ -984,7 +984,7 @@ public class MainPanel extends javax.swing.JFrame {
             btnOkna2.addActionListener(new ActionListener() {
 
                 public void actionPerformed(ActionEvent e) {
-                    OknaPanel op = new OknaPanel(new JFrame(), true);
+                    OknaPanel op = new OknaPanel(new JFrame(), true, p.wylistujUrzadzenia(), idPokoju);
                     op.setVisible(true);
                 }
             });
@@ -996,7 +996,7 @@ public class MainPanel extends javax.swing.JFrame {
             btnDrzwi2.addActionListener(new ActionListener() {
 
                 public void actionPerformed(ActionEvent e) {
-                    DrzwiPanel dp = new DrzwiPanel(new JFrame(), true);
+                    DrzwiPanel dp = new DrzwiPanel(new JFrame(), true, p.wylistujUrzadzenia(), idPokoju);
                     dp.setVisible(true);
                 }
             });
@@ -1036,7 +1036,7 @@ public class MainPanel extends javax.swing.JFrame {
             btnOkna3.addActionListener(new ActionListener() {
 
                 public void actionPerformed(ActionEvent e) {
-                    OknaPanel op = new OknaPanel(new JFrame(), true);
+                    OknaPanel op = new OknaPanel(new JFrame(), true, p.wylistujUrzadzenia(), idPokoju);
                     op.setVisible(true);
                 }
             });
@@ -1048,7 +1048,7 @@ public class MainPanel extends javax.swing.JFrame {
             btnDrzwi3.addActionListener(new ActionListener() {
 
                 public void actionPerformed(ActionEvent e) {
-                    DrzwiPanel dp = new DrzwiPanel(new JFrame(), true);
+                    DrzwiPanel dp = new DrzwiPanel(new JFrame(), true, p.wylistujUrzadzenia(), idPokoju);
                     dp.setVisible(true);
                 }
             });
@@ -1088,7 +1088,7 @@ public class MainPanel extends javax.swing.JFrame {
             btnOkna4.addActionListener(new ActionListener() {
 
                 public void actionPerformed(ActionEvent e) {
-                    OknaPanel op = new OknaPanel(new JFrame(), true);
+                    OknaPanel op = new OknaPanel(new JFrame(), true, p.wylistujUrzadzenia(), idPokoju);
                     op.setVisible(true);
                 }
             });
@@ -1100,7 +1100,7 @@ public class MainPanel extends javax.swing.JFrame {
             btnDrzwi4.addActionListener(new ActionListener() {
 
                 public void actionPerformed(ActionEvent e) {
-                    DrzwiPanel dp = new DrzwiPanel(new JFrame(), true);
+                    DrzwiPanel dp = new DrzwiPanel(new JFrame(), true, p.wylistujUrzadzenia(), idPokoju);
                     dp.setVisible(true);
                 }
             });
