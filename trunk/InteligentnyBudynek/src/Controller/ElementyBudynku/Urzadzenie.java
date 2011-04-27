@@ -103,4 +103,8 @@ public class Urzadzenie {
         String string = this.nazwa + "#" + this.idUrzadzenia;
         return string;
     }
+
+    public int dodaj(int idPokoju, String string) {
+        return (new MsUrzadzenieDAO()).dodaj(idPokoju, nazwa);
+    }
 }

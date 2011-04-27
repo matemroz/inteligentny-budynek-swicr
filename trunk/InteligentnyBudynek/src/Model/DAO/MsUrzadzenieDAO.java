@@ -18,6 +18,44 @@ public class MsUrzadzenieDAO implements IUrzadzenieDAO {
         return -1;
     }
 
+    public int dodaj(int idPokoju, String nazwaUrzadzenia) {
+        List<String> columnNames = new ArrayList<String>();
+        columnNames.add("idPokoju");
+        columnNames.add("nazwa");
+        columnNames.add("moc");
+        columnNames.add("poborGazu");
+
+        List<String> columnTypes = new ArrayList<String>();
+        columnTypes.add("int");
+        columnTypes.add("Varchar(40)");
+        columnTypes.add("float");
+        columnTypes.add("float");
+
+        String idPok = Integer.toString(idPokoju);
+
+        List<String> values = new ArrayList<String>();
+        values.add(idPok);
+        values.add(nazwaUrzadzenia);
+        values.add("0");
+        values.add("0");
+
+        ResultSet rs = DatabaseUtils.insertCommandWithKeyResult("Urzadzenia", columnNames, values);
+
+        if (rs == null) {
+            return -2;
+        }
+        int id = -1;
+        try {
+            while (rs.next()) {
+                id = Integer.parseInt(rs.getString(1));
+            }
+        } catch (SQLException ex) {
+            System.err.println("Nie udało uzyskać się id dodanego urządzenia");
+            id = -1;
+        }
+        return id;
+    }
+
     /**
      * @return zwraca < 0 w wypadku niepowodzenia lub id dodanego urzadzenia
      */
@@ -111,7 +149,7 @@ public class MsUrzadzenieDAO implements IUrzadzenieDAO {
 
     public boolean ustawStan(int idUrzadzenia, String stanUrzadzenia) {
 
-        int result = DatabaseUtils.updateCommand("Urzadzenia", "stan", stanUrzadzenia, "idUrzadzenia = '" + idUrzadzenia + "'");
+        int result = DatabaseUtils.updateCommand("Urzadzenia", "stan", "'" + stanUrzadzenia + "'", "idUrzadzenia = '" + idUrzadzenia + "'");
         if (result != 1) {
             System.err.println("Nie dokonano zmiany stanu okna!");
             return false;
@@ -310,5 +348,23 @@ public class MsUrzadzenieDAO implements IUrzadzenieDAO {
     public static void main(String[] args) {
         // System.out.println((new MsUrzadzenieDAO()).czyPracuje(1));
         new MsUrzadzenieDAO().rejestrujWlaczenie(1);
+    }
+
+    public String pobierzStan(int idUrzadzenia) {
+        String stan = "";
+        ResultSet rs = DatabaseUtils.queryCommand("stan", "InteligentnyBudynek.dbo.Urzadzenia", "idUrzadzenia='" + idUrzadzenia + "'");
+
+        if (rs == null) {
+            return null;
+        }
+        try {
+            while (rs.next()) {
+                stan = rs.getString("stan");
+            }
+        } catch (SQLException ex) {
+            System.err.println("Niepowodzenie przy próbie pobrania mocy!");
+            stan = null;
+        }
+        return stan;
     }
 }

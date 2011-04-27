@@ -239,7 +239,7 @@ public class MainPanel extends javax.swing.JFrame {
     }//GEN-LAST:event_btnProjektujMouseClicked
 
     private void btnKosztyMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnKosztyMouseClicked
-        if (cbListaPieter.getSelectedItem().toString()=="wybierz...") {
+        if (cbListaPieter.getSelectedItem().toString() == "wybierz...") {
             return;
         }
         try {
@@ -257,7 +257,7 @@ public class MainPanel extends javax.swing.JFrame {
     }//GEN-LAST:event_mItProjektujActionPerformed
 
     private void mItKosztyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mItKosztyActionPerformed
-        if (cbListaPieter.getSelectedItem().toString()=="wybierz...") {
+        if (cbListaPieter.getSelectedItem().toString() == "wybierz...") {
             return;
         }
         try {
@@ -277,7 +277,7 @@ public class MainPanel extends javax.swing.JFrame {
 
         cbListaPieter.removeAllItems();
         cbListaPieter.addItem("wybierz...");
-        
+
         if (cbListaBudynkow.getSelectedItem() != null) {
             String wybranyBudynek = cbListaBudynkow.getSelectedItem().toString();
             if (!wybranyBudynek.equals("wybierz...")) {
@@ -322,8 +322,8 @@ public class MainPanel extends javax.swing.JFrame {
             pp.setSize(width, height);
             rightPanel.add(pp);
 
-            final Pokoj p = pokoje.get(0);
-            final int idPokoju = p.getIdPokoju();
+            p = pokoje.get(0);
+            idPokoju = p.getIdPokoju();
             String nazwaPokoju = p.getNazwa() + "#" + idPokoju;
             JLabel lNazwaPokoju = new JLabel(nazwaPokoju);
             lNazwaPokoju.setLocation(0, 0);
@@ -378,8 +378,8 @@ public class MainPanel extends javax.swing.JFrame {
             pp.setSize(width, height);
             rightPanel.add(pp);
 
-            final Pokoj p = pokoje.get(0);
-            final int idPokoju = p.getIdPokoju();
+            p = pokoje.get(0);
+            idPokoju = p.getIdPokoju();
             String nazwaPokoju = p.getNazwa() + "#" + idPokoju;
             JLabel lNazwaPokoju = new JLabel(nazwaPokoju);
             lNazwaPokoju.setLocation(0, 0);
@@ -432,8 +432,8 @@ public class MainPanel extends javax.swing.JFrame {
             rightPanel.add(pp1);
 
 
-            final Pokoj p1 = pokoje.get(1);
-            final int idPokoju1 = p1.getIdPokoju();
+            p1 = pokoje.get(1);
+            idPokoju1 = p1.getIdPokoju();
             String nazwaPokoju1 = p1.getNazwa() + "#" + idPokoju1;
             JLabel lNazwaPokoju1 = new JLabel(nazwaPokoju1);
             lNazwaPokoju1.setLocation(0, 0);
@@ -460,7 +460,7 @@ public class MainPanel extends javax.swing.JFrame {
             btnOkna1.addActionListener(new ActionListener() {
 
                 public void actionPerformed(ActionEvent e) {
-                    OknaPanel op = new OknaPanel(new JFrame(), true, p.wylistujUrzadzenia(), idPokoju);
+                    OknaPanel op = new OknaPanel(new JFrame(), true, p1.wylistujUrzadzenia(), idPokoju);
                     op.setVisible(true);
                 }
             });
@@ -472,7 +472,7 @@ public class MainPanel extends javax.swing.JFrame {
             btnDrzwi1.addActionListener(new ActionListener() {
 
                 public void actionPerformed(ActionEvent e) {
-                    DrzwiPanel dp = new DrzwiPanel(new JFrame(), true, p.wylistujUrzadzenia(), idPokoju);
+                    DrzwiPanel dp = new DrzwiPanel(new JFrame(), true, p1.wylistujUrzadzenia(), idPokoju);
                     dp.setVisible(true);
                 }
             });
@@ -487,8 +487,8 @@ public class MainPanel extends javax.swing.JFrame {
             pp.setSize(width, height);
             rightPanel.add(pp);
 
-            final Pokoj p = pokoje.get(0);
-            final int idPokoju = p.getIdPokoju();
+            p = pokoje.get(0);
+            idPokoju = p.getIdPokoju();
             String nazwaPokoju = p.getNazwa() + "#" + idPokoju;
             JLabel lNazwaPokoju = new JLabel(nazwaPokoju);
             lNazwaPokoju.setLocation(0, 0);
@@ -539,8 +539,8 @@ public class MainPanel extends javax.swing.JFrame {
             pp1.setSize(width, height);
             rightPanel.add(pp1);
 
-            final Pokoj p1 = pokoje.get(1);
-            final int idPokoju1 = p1.getIdPokoju();
+            p1 = pokoje.get(1);
+            idPokoju1 = p1.getIdPokoju();
             String nazwaPokoju1 = p1.getNazwa() + "#" + idPokoju1;
             JLabel lNazwaPokoju1 = new JLabel(nazwaPokoju1);
             lNazwaPokoju1.setLocation(0, 0);
@@ -567,7 +567,7 @@ public class MainPanel extends javax.swing.JFrame {
             btnOkna1.addActionListener(new ActionListener() {
 
                 public void actionPerformed(ActionEvent e) {
-                    OknaPanel op = new OknaPanel(new JFrame(), true, p.wylistujUrzadzenia(), idPokoju);
+                    OknaPanel op = new OknaPanel(new JFrame(), true, p1.wylistujUrzadzenia(), idPokoju);
                     op.setVisible(true);
                 }
             });
@@ -579,7 +579,7 @@ public class MainPanel extends javax.swing.JFrame {
             btnDrzwi1.addActionListener(new ActionListener() {
 
                 public void actionPerformed(ActionEvent e) {
-                    DrzwiPanel dp = new DrzwiPanel(new JFrame(), true, p.wylistujUrzadzenia(), idPokoju);
+                    DrzwiPanel dp = new DrzwiPanel(new JFrame(), true, p1.wylistujUrzadzenia(), idPokoju);
                     dp.setVisible(true);
                 }
             });
@@ -591,8 +591,8 @@ public class MainPanel extends javax.swing.JFrame {
             pp2.setSize(width, height);
             rightPanel.add(pp2);
 
-            final Pokoj p2 = pokoje.get(2);
-            final int idPokoju2 = p2.getIdPokoju();
+            p2 = pokoje.get(2);
+            idPokoju2 = p2.getIdPokoju();
             String nazwaPokoju2 = p2.getNazwa() + "#" + idPokoju2;
             JLabel lNazwaPokoju2 = new JLabel(nazwaPokoju2);
             lNazwaPokoju2.setLocation(0, 0);
@@ -619,7 +619,7 @@ public class MainPanel extends javax.swing.JFrame {
             btnOkna2.addActionListener(new ActionListener() {
 
                 public void actionPerformed(ActionEvent e) {
-                    OknaPanel op = new OknaPanel(new JFrame(), true, p.wylistujUrzadzenia(), idPokoju);
+                    OknaPanel op = new OknaPanel(new JFrame(), true, p2.wylistujUrzadzenia(), idPokoju);
                     op.setVisible(true);
                 }
             });
@@ -631,7 +631,7 @@ public class MainPanel extends javax.swing.JFrame {
             btnDrzwi2.addActionListener(new ActionListener() {
 
                 public void actionPerformed(ActionEvent e) {
-                    DrzwiPanel dp = new DrzwiPanel(new JFrame(), true, p.wylistujUrzadzenia(), idPokoju);
+                    DrzwiPanel dp = new DrzwiPanel(new JFrame(), true, p2.wylistujUrzadzenia(), idPokoju);
                     dp.setVisible(true);
                 }
             });
@@ -646,8 +646,8 @@ public class MainPanel extends javax.swing.JFrame {
             rightPanel.add(pp);
 
 
-            final Pokoj p = pokoje.get(0);
-            final int idPokoju = p.getIdPokoju();
+            p = pokoje.get(0);
+            idPokoju = p.getIdPokoju();
             String nazwaPokoju = p.getNazwa() + "#" + idPokoju;
             JLabel lNazwaPokoju = new JLabel(nazwaPokoju);
             lNazwaPokoju.setLocation(0, 0);
@@ -698,8 +698,8 @@ public class MainPanel extends javax.swing.JFrame {
             pp1.setSize(width, height);
             rightPanel.add(pp1);
 
-            final Pokoj p1 = pokoje.get(1);
-            final int idPokoju1 = p1.getIdPokoju();
+            p1 = pokoje.get(1);
+            idPokoju1 = p1.getIdPokoju();
             String nazwaPokoju1 = p1.getNazwa() + "#" + idPokoju1;
             JLabel lNazwaPokoju1 = new JLabel(nazwaPokoju1);
             lNazwaPokoju1.setLocation(0, 0);
@@ -726,7 +726,7 @@ public class MainPanel extends javax.swing.JFrame {
             btnOkna1.addActionListener(new ActionListener() {
 
                 public void actionPerformed(ActionEvent e) {
-                    OknaPanel op = new OknaPanel(new JFrame(), true, p.wylistujUrzadzenia(), idPokoju);
+                    OknaPanel op = new OknaPanel(new JFrame(), true, p1.wylistujUrzadzenia(), idPokoju);
                     op.setVisible(true);
                 }
             });
@@ -738,7 +738,7 @@ public class MainPanel extends javax.swing.JFrame {
             btnDrzwi1.addActionListener(new ActionListener() {
 
                 public void actionPerformed(ActionEvent e) {
-                    DrzwiPanel dp = new DrzwiPanel(new JFrame(), true, p.wylistujUrzadzenia(), idPokoju);
+                    DrzwiPanel dp = new DrzwiPanel(new JFrame(), true, p1.wylistujUrzadzenia(), idPokoju);
                     dp.setVisible(true);
                 }
             });
@@ -751,8 +751,8 @@ public class MainPanel extends javax.swing.JFrame {
             rightPanel.add(pp2);
 
 
-            final Pokoj p2 = pokoje.get(2);
-            final int idPokoju2 = p2.getIdPokoju();
+            p2 = pokoje.get(2);
+            idPokoju2 = p2.getIdPokoju();
             String nazwaPokoju2 = p2.getNazwa() + "#" + idPokoju2;
             JLabel lNazwaPokoju2 = new JLabel(nazwaPokoju2);
             lNazwaPokoju2.setLocation(0, 0);
@@ -778,7 +778,7 @@ public class MainPanel extends javax.swing.JFrame {
             btnOkna2.addActionListener(new ActionListener() {
 
                 public void actionPerformed(ActionEvent e) {
-                    OknaPanel op = new OknaPanel(new JFrame(), true, p.wylistujUrzadzenia(), idPokoju);
+                    OknaPanel op = new OknaPanel(new JFrame(), true, p2.wylistujUrzadzenia(), idPokoju);
                     op.setVisible(true);
                 }
             });
@@ -790,7 +790,7 @@ public class MainPanel extends javax.swing.JFrame {
             btnDrzwi2.addActionListener(new ActionListener() {
 
                 public void actionPerformed(ActionEvent e) {
-                    DrzwiPanel dp = new DrzwiPanel(new JFrame(), true, p.wylistujUrzadzenia(), idPokoju);
+                    DrzwiPanel dp = new DrzwiPanel(new JFrame(), true, p2.wylistujUrzadzenia(), idPokoju);
                     dp.setVisible(true);
                 }
             });
@@ -803,8 +803,8 @@ public class MainPanel extends javax.swing.JFrame {
             pp3.setSize(width, height);
             rightPanel.add(pp3);
 
-            final Pokoj p3 = pokoje.get(3);
-            final int idPokoju3 = p3.getIdPokoju();
+            p3 = pokoje.get(3);
+            idPokoju3 = p3.getIdPokoju();
             String nazwaPokoju3 = p3.getNazwa() + "#" + idPokoju3;
             JLabel lNazwaPokoju3 = new JLabel(nazwaPokoju3);
             lNazwaPokoju3.setLocation(0, 0);
@@ -832,7 +832,7 @@ public class MainPanel extends javax.swing.JFrame {
             btnOkna3.addActionListener(new ActionListener() {
 
                 public void actionPerformed(ActionEvent e) {
-                    OknaPanel op = new OknaPanel(new JFrame(), true, p.wylistujUrzadzenia(), idPokoju);
+                    OknaPanel op = new OknaPanel(new JFrame(), true, p3.wylistujUrzadzenia(), idPokoju);
                     op.setVisible(true);
                 }
             });
@@ -844,7 +844,7 @@ public class MainPanel extends javax.swing.JFrame {
             btnDrzwi3.addActionListener(new ActionListener() {
 
                 public void actionPerformed(ActionEvent e) {
-                    DrzwiPanel dp = new DrzwiPanel(new JFrame(), true, p.wylistujUrzadzenia(), idPokoju);
+                    DrzwiPanel dp = new DrzwiPanel(new JFrame(), true, p3.wylistujUrzadzenia(), idPokoju);
                     dp.setVisible(true);
                 }
             });
@@ -859,8 +859,8 @@ public class MainPanel extends javax.swing.JFrame {
             pp.setSize(width, height);
             rightPanel.add(pp);
 
-            final Pokoj p = pokoje.get(0);
-            final int idPokoju = p.getIdPokoju();
+            p = pokoje.get(0);
+            idPokoju = p.getIdPokoju();
             String nazwaPokoju = p.getNazwa() + "#" + idPokoju;
             JLabel lNazwaPokoju = new JLabel(nazwaPokoju);
             lNazwaPokoju.setLocation(0, 0);
@@ -913,8 +913,8 @@ public class MainPanel extends javax.swing.JFrame {
             rightPanel.add(pp1);
 
 
-            final Pokoj p1 = pokoje.get(1);
-            final int idPokoju1 = p1.getIdPokoju();
+            p1 = pokoje.get(1);
+            idPokoju1 = p1.getIdPokoju();
             String nazwaPokoju1 = p1.getNazwa() + "#" + idPokoju1;
             JLabel lNazwaPokoju1 = new JLabel(nazwaPokoju1);
             lNazwaPokoju1.setLocation(0, 0);
@@ -941,7 +941,7 @@ public class MainPanel extends javax.swing.JFrame {
             btnOkna1.addActionListener(new ActionListener() {
 
                 public void actionPerformed(ActionEvent e) {
-                    OknaPanel op = new OknaPanel(new JFrame(), true, p.wylistujUrzadzenia(), idPokoju);
+                    OknaPanel op = new OknaPanel(new JFrame(), true, p1.wylistujUrzadzenia(), idPokoju);
                     op.setVisible(true);
                 }
             });
@@ -953,7 +953,7 @@ public class MainPanel extends javax.swing.JFrame {
             btnDrzwi1.addActionListener(new ActionListener() {
 
                 public void actionPerformed(ActionEvent e) {
-                    DrzwiPanel dp = new DrzwiPanel(new JFrame(), true, p.wylistujUrzadzenia(), idPokoju);
+                    DrzwiPanel dp = new DrzwiPanel(new JFrame(), true, p1.wylistujUrzadzenia(), idPokoju);
                     dp.setVisible(true);
                 }
             });
@@ -965,8 +965,8 @@ public class MainPanel extends javax.swing.JFrame {
             pp2.setSize(width, height);
             rightPanel.add(pp2);
 
-            final Pokoj p2 = pokoje.get(2);
-            final int idPokoju2 = p2.getIdPokoju();
+            p2 = pokoje.get(2);
+            idPokoju2 = p2.getIdPokoju();
             String nazwaPokoju2 = p2.getNazwa() + "#" + idPokoju2;
             JLabel lNazwaPokoju2 = new JLabel(nazwaPokoju2);
             lNazwaPokoju2.setLocation(0, 0);
@@ -993,7 +993,7 @@ public class MainPanel extends javax.swing.JFrame {
             btnOkna2.addActionListener(new ActionListener() {
 
                 public void actionPerformed(ActionEvent e) {
-                    OknaPanel op = new OknaPanel(new JFrame(), true, p.wylistujUrzadzenia(), idPokoju);
+                    OknaPanel op = new OknaPanel(new JFrame(), true, p2.wylistujUrzadzenia(), idPokoju);
                     op.setVisible(true);
                 }
             });
@@ -1005,7 +1005,7 @@ public class MainPanel extends javax.swing.JFrame {
             btnDrzwi2.addActionListener(new ActionListener() {
 
                 public void actionPerformed(ActionEvent e) {
-                    DrzwiPanel dp = new DrzwiPanel(new JFrame(), true, p.wylistujUrzadzenia(), idPokoju);
+                    DrzwiPanel dp = new DrzwiPanel(new JFrame(), true, p2.wylistujUrzadzenia(), idPokoju);
                     dp.setVisible(true);
                 }
             });
@@ -1018,8 +1018,8 @@ public class MainPanel extends javax.swing.JFrame {
             pp3.setSize(width, height);
             rightPanel.add(pp3);
 
-            final Pokoj p3 = pokoje.get(3);
-            final int idPokoju3 = p3.getIdPokoju();
+            p3 = pokoje.get(3);
+            idPokoju3 = p3.getIdPokoju();
             String nazwaPokoju3 = p3.getNazwa() + "#" + idPokoju3;
             JLabel lNazwaPokoju3 = new JLabel(nazwaPokoju3);
             lNazwaPokoju3.setLocation(0, 0);
@@ -1045,7 +1045,7 @@ public class MainPanel extends javax.swing.JFrame {
             btnOkna3.addActionListener(new ActionListener() {
 
                 public void actionPerformed(ActionEvent e) {
-                    OknaPanel op = new OknaPanel(new JFrame(), true, p.wylistujUrzadzenia(), idPokoju);
+                    OknaPanel op = new OknaPanel(new JFrame(), true, p3.wylistujUrzadzenia(), idPokoju);
                     op.setVisible(true);
                 }
             });
@@ -1057,7 +1057,7 @@ public class MainPanel extends javax.swing.JFrame {
             btnDrzwi3.addActionListener(new ActionListener() {
 
                 public void actionPerformed(ActionEvent e) {
-                    DrzwiPanel dp = new DrzwiPanel(new JFrame(), true, p.wylistujUrzadzenia(), idPokoju);
+                    DrzwiPanel dp = new DrzwiPanel(new JFrame(), true, p3.wylistujUrzadzenia(), idPokoju);
                     dp.setVisible(true);
                 }
             });
@@ -1070,8 +1070,8 @@ public class MainPanel extends javax.swing.JFrame {
             pp4.setSize(width, height);
             rightPanel.add(pp4);
 
-            final Pokoj p4 = pokoje.get(4);
-            final int idPokoju4 = p4.getIdPokoju();
+            p4 = pokoje.get(4);
+            idPokoju4 = p4.getIdPokoju();
             String nazwaPokoju4 = p4.getNazwa() + "#" + idPokoju4;
             JLabel lNazwaPokoju4 = new JLabel(nazwaPokoju4);
             lNazwaPokoju4.setLocation(0, 0);
@@ -1097,7 +1097,7 @@ public class MainPanel extends javax.swing.JFrame {
             btnOkna4.addActionListener(new ActionListener() {
 
                 public void actionPerformed(ActionEvent e) {
-                    OknaPanel op = new OknaPanel(new JFrame(), true, p.wylistujUrzadzenia(), idPokoju);
+                    OknaPanel op = new OknaPanel(new JFrame(), true, p4.wylistujUrzadzenia(), idPokoju);
                     op.setVisible(true);
                 }
             });
@@ -1109,7 +1109,7 @@ public class MainPanel extends javax.swing.JFrame {
             btnDrzwi4.addActionListener(new ActionListener() {
 
                 public void actionPerformed(ActionEvent e) {
-                    DrzwiPanel dp = new DrzwiPanel(new JFrame(), true, p.wylistujUrzadzenia(), idPokoju);
+                    DrzwiPanel dp = new DrzwiPanel(new JFrame(), true, p4.wylistujUrzadzenia(), idPokoju);
                     dp.setVisible(true);
                 }
             });
@@ -1152,4 +1152,14 @@ public class MainPanel extends javax.swing.JFrame {
     private JDialog projektorPanel;
     private static Pietro selectedPietro;
     private KosztyPanel kosztyView;
+    private int idPokoju;
+    private Pokoj p;
+    private int idPokoju1;
+    private Pokoj p1;
+    private int idPokoju2;
+    private Pokoj p2;
+    private int idPokoju3;
+    private Pokoj p3;
+    private int idPokoju4;
+    private Pokoj p4;
 }
