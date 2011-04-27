@@ -79,6 +79,7 @@ public class MainPanel extends javax.swing.JFrame {
         });
 
         btnKoszty.setText("Koszty urządzeń");
+        btnKoszty.setEnabled(false);
         btnKoszty.setName("btnKoszty"); // NOI18N
         btnKoszty.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -104,9 +105,13 @@ public class MainPanel extends javax.swing.JFrame {
 
         cbListaPieter.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "wybierz..." }));
         cbListaPieter.setName("cbPietro"); // NOI18N
-        cbListaPieter.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                cbListaPieterItemStateChanged(evt);
+        cbListaPieter.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
+            public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
+            }
+            public void popupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {
+                cbListaPieterPopupMenuWillBecomeInvisible(evt);
+            }
+            public void popupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {
             }
         });
 
@@ -268,20 +273,11 @@ public class MainPanel extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_mItZamknijActionPerformed
 
-    private void cbListaPieterItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbListaPieterItemStateChanged
-        if (!cbListaPieter.getSelectedItem().toString().equals("wybierz...")) {
-            selectedPietro = new Pietro(Integer.parseInt(cbListaPieter.getSelectedItem().toString().split("#")[1]));
-            utworzPokoje(selectedPietro.wylistujPokoje());
-        }
-}//GEN-LAST:event_cbListaPieterItemStateChanged
-
     private void cbListaBudynkowItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbListaBudynkowItemStateChanged
 
-        //if (cbListaPieter.getItemCount() > 1) {
-        //for (int i = 1; i < cbListaPieter.getItemCount(); i++){
-        cbListaPieter.removeItem(0);
-        //}
-        //}
+        cbListaPieter.removeAllItems();
+        cbListaPieter.addItem("wybierz...");
+        
         if (cbListaBudynkow.getSelectedItem() != null) {
             String wybranyBudynek = cbListaBudynkow.getSelectedItem().toString();
             if (!wybranyBudynek.equals("wybierz...")) {
@@ -295,9 +291,22 @@ public class MainPanel extends javax.swing.JFrame {
             rightPanel.removeAll();
             rightPanel.revalidate();
             rightPanel.repaint();
+            btnKoszty.setEnabled(false);
         }
 
 }//GEN-LAST:event_cbListaBudynkowItemStateChanged
+
+    private void cbListaPieterPopupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_cbListaPieterPopupMenuWillBecomeInvisible
+        rightPanel.removeAll();
+        btnKoszty.setEnabled(false);
+        if (!cbListaPieter.getSelectedItem().toString().equals("wybierz...")) {
+            selectedPietro = new Pietro(Integer.parseInt(cbListaPieter.getSelectedItem().toString().split("#")[1]));
+            utworzPokoje(selectedPietro.wylistujPokoje());
+            btnKoszty.setEnabled(true);
+        }
+        rightPanel.revalidate();
+        rightPanel.repaint();
+    }//GEN-LAST:event_cbListaPieterPopupMenuWillBecomeInvisible
 
     private void utworzPokoje(List<Pokoj> pokoje) {
         int size = pokoje.size();
