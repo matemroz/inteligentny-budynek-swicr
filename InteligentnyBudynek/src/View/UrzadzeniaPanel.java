@@ -17,7 +17,12 @@ public class UrzadzeniaPanel extends javax.swing.JDialog {
         Iterator it = urzadzenia.iterator();
         while (it.hasNext()) {
             int idUrzadzenia = (Integer) it.next();
-            modelLstUrzadzenia.addElement((new Urzadzenie(idUrzadzenia)).pobierzNazwa() + "#" + idUrzadzenia);
+            String nazwaUrzadzenia = (new Urzadzenie(idUrzadzenia)).pobierzNazwa();
+            if (nazwaUrzadzenia.equals("Alarm") || nazwaUrzadzenia.equals("Analizator gazów") || nazwaUrzadzenia.equals("Czujnik ruchu")
+                   || nazwaUrzadzenia.equals("Czujnik temperatury") || nazwaUrzadzenia.equals("Gniazdko") || nazwaUrzadzenia.equals("Klimatyzator")
+                   || nazwaUrzadzenia.equals("Punkt grzewczy") || nazwaUrzadzenia.equals("Punkt świetlny") || nazwaUrzadzenia.equals("Zraszacz przeciwpożarowy")) {
+                modelLstUrzadzenia.addElement((new Urzadzenie(idUrzadzenia)).pobierzNazwa() + "#" + idUrzadzenia);
+            }
         }
 
         this.idPokoju = idPokoju;
@@ -443,7 +448,7 @@ public class UrzadzeniaPanel extends javax.swing.JDialog {
             btnUstawMoc.setEnabled(true);
             if ((new Urzadzenie(id).pobierzPoziomPracy()) > 0) {
                 cbPoziomPracy.setSelectedIndex((new Urzadzenie(id).pobierzPoziomPracy() - 1));
-           }
+            }
         }
 
         double mocUrzadzenia = 0.0;

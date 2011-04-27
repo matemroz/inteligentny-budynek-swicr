@@ -30,15 +30,15 @@ public class OknaPanel extends javax.swing.JDialog {
         this.urzadzenia = urzadzenia;
         this.idPokoju = idPokoju;
 
-        for (int i = 0; i < urzadzenia.size(); i++){
+        for (int i = 0; i < urzadzenia.size(); i++) {
             String nazwaUrzadzenia = (new Urzadzenie(urzadzenia.get(i))).pobierzNazwa();
-            if(nazwaUrzadzenia.equals("Okno")){
-                modelLstOkna.addElement(nazwaUrzadzenia+"#"+urzadzenia.get(i));
+            if (nazwaUrzadzenia.equals("Okno")) {
+                modelLstOkna.addElement(nazwaUrzadzenia + "#" + urzadzenia.get(i));
             }
         }
 
         initComponents();
-        
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -50,7 +50,7 @@ public class OknaPanel extends javax.swing.JDialog {
         btnOtworz = new javax.swing.JButton();
         btnZamknij = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        lStan = new javax.swing.JLabel();
         btnDodaj = new javax.swing.JButton();
         btnUsun = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
@@ -58,6 +58,7 @@ public class OknaPanel extends javax.swing.JDialog {
         jSeparator1 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Okna");
 
         jLabel1.setText("Lista okien:");
         jLabel1.setName("jLabel1"); // NOI18N
@@ -65,20 +66,35 @@ public class OknaPanel extends javax.swing.JDialog {
         jScrollPane1.setName("jScrollPane1"); // NOI18N
 
         lstOkna.setName("lstOkna"); // NOI18N
+        lstOkna.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                lstOknaValueChanged(evt);
+            }
+        });
         jScrollPane1.setViewportView(lstOkna);
 
         btnOtworz.setText("Otwórz");
         btnOtworz.setName("btnOtworz"); // NOI18N
+        btnOtworz.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnOtworzMouseClicked(evt);
+            }
+        });
 
         btnZamknij.setText("Zamknij");
         btnZamknij.setName("btnZamknij"); // NOI18N
+        btnZamknij.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnZamknijMouseClicked(evt);
+            }
+        });
 
         jLabel2.setText("Stan:");
         jLabel2.setName("jLabel2"); // NOI18N
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 11));
-        jLabel3.setText("...");
-        jLabel3.setName("jLabel3"); // NOI18N
+        lStan.setFont(new java.awt.Font("Tahoma", 1, 11));
+        lStan.setText("...");
+        lStan.setName("lStan"); // NOI18N
 
         btnDodaj.setText("Dodaj");
         btnDodaj.setName("btnDodaj"); // NOI18N
@@ -90,6 +106,11 @@ public class OknaPanel extends javax.swing.JDialog {
 
         btnUsun.setText("Usuń");
         btnUsun.setName("btnUsun"); // NOI18N
+        btnUsun.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnUsunMouseClicked(evt);
+            }
+        });
 
         jLabel4.setText("Obsługa okna:");
         jLabel4.setName("jLabel4"); // NOI18N
@@ -119,14 +140,14 @@ public class OknaPanel extends javax.swing.JDialog {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel3))
+                                .addComponent(lStan))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(btnOtworz)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnZamknij))
                             .addComponent(jSeparator1)))
                     .addComponent(jLabel1))
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -152,7 +173,7 @@ public class OknaPanel extends javax.swing.JDialog {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
-                            .addComponent(jLabel3))
+                            .addComponent(lStan))
                         .addGap(103, 103, 103))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -165,9 +186,44 @@ public class OknaPanel extends javax.swing.JDialog {
 
     private void btnDodajMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDodajMouseClicked
         int idUrzadzenia = (new Urzadzenie()).dodaj(idPokoju);
+        new Urzadzenie(idUrzadzenia).ustawNazwa("Okno");
         (new MsUrzadzenieDAO()).ustawStan(idUrzadzenia, "Zamknięte");
         modelLstOkna.addElement("Okno" + "#" + idUrzadzenia);
     }//GEN-LAST:event_btnDodajMouseClicked
+
+    private void btnUsunMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUsunMouseClicked
+        String selected = lstOkna.getSelectedValue().toString();
+        int id = Integer.parseInt(selected.split("#")[1]);
+        (new Urzadzenie()).usun(id);
+        modelLstOkna.removeElement(lstOkna.getSelectedValue());
+    }//GEN-LAST:event_btnUsunMouseClicked
+
+    private void btnOtworzMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnOtworzMouseClicked
+        if (lstOkna.getSelectedValue() != null) {
+            String selected = lstOkna.getSelectedValue().toString();
+            int id = Integer.parseInt(selected.split("#")[1]);
+            (new MsUrzadzenieDAO()).ustawStan(id, "Otwarte");
+            lStan.setText("Otwarte");
+        }
+    }//GEN-LAST:event_btnOtworzMouseClicked
+
+    private void btnZamknijMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnZamknijMouseClicked
+        if (lstOkna.getSelectedValue() != null) {
+            String selected = lstOkna.getSelectedValue().toString();
+            int id = Integer.parseInt(selected.split("#")[1]);
+            (new MsUrzadzenieDAO()).ustawStan(id, "Zamknięte");
+            lStan.setText("Zamknięte");
+        }
+    }//GEN-LAST:event_btnZamknijMouseClicked
+
+    private void lstOknaValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lstOknaValueChanged
+        if (lstOkna.getSelectedValue() != null) {
+            String selected = lstOkna.getSelectedValue().toString();
+            int id = Integer.parseInt(selected.split("#")[1]);
+            String stan = (new MsUrzadzenieDAO()).pobierzStan(id);
+            lStan.setText(stan);
+        }
+    }//GEN-LAST:event_lstOknaValueChanged
 
     /**
      * @param args the command line arguments
@@ -194,11 +250,11 @@ public class OknaPanel extends javax.swing.JDialog {
     private javax.swing.JButton btnZamknij;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JLabel lStan;
     private javax.swing.JList lstOkna;
     // End of variables declaration//GEN-END:variables
     private DefaultListModel modelLstOkna;
