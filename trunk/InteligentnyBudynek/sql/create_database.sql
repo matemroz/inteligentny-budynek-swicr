@@ -66,3 +66,6 @@ GO
 
 ALTER TABLE dbo.Urzadzenia ADD poziomPracy int;
 GO
+
+ALTER TABLE dbo.Urzadzenia ADD stan varchar(50);
+GO
