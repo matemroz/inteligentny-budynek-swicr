@@ -109,6 +109,16 @@ public class MsUrzadzenieDAO implements IUrzadzenieDAO {
         return true;
     }
 
+    public boolean ustawStan(int idUrzadzenia, String stanUrzadzenia) {
+
+        int result = DatabaseUtils.updateCommand("Urzadzenia", "stan", stanUrzadzenia, "idUrzadzenia = '" + idUrzadzenia + "'");
+        if (result != 1) {
+            System.err.println("Nie dokonano zmiany stanu okna!");
+            return false;
+        }
+        return true;
+    }
+
     public boolean ustawPoziomPracy(int idUrzadzenia, int poziomPracy) {
         int result = DatabaseUtils.updateCommand("Urzadzenia", "poziomPracy", Integer.toString(poziomPracy), "idUrzadzenia = '" + idUrzadzenia + "'");
         if (result != 1) {
