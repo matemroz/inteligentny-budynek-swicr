@@ -11,6 +11,9 @@
 
 package View;
 
+import Controller.ElementyBudynku.Budynek;
+import Model.Utils.DatabaseUtils;
+
 /**
  *
  * @author matemroz
@@ -18,9 +21,13 @@ package View;
 public class EdytujPokoj extends javax.swing.JDialog {
 
     /** Creates new form EdytujPokoj */
-    public EdytujPokoj(java.awt.Frame parent, boolean modal) {
+    public EdytujPokoj(java.awt.Frame parent, boolean modal, String s, int idListy) {
         super(parent, modal);
         initComponents();
+        this.s = s;
+        tfNazwaPokoju.setText(s.split("#")[0]);
+        this.index = Integer.parseInt(s.split("#")[1]);
+        this.idListy = idListy;
     }
 
     /** This method is called from within the constructor to
@@ -44,6 +51,11 @@ public class EdytujPokoj extends javax.swing.JDialog {
 
         btnEdytujPokoj.setText("Edytuj");
         btnEdytujPokoj.setName("btnEdytujPokoj"); // NOI18N
+        btnEdytujPokoj.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnEdytujPokojMouseClicked(evt);
+            }
+        });
 
         tfNazwaPokoju.setName("tfNazwaPokoju"); // NOI18N
 
@@ -57,7 +69,7 @@ public class EdytujPokoj extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnEdytujPokoj)
-                    .addComponent(tfNazwaPokoju, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE))
+                    .addComponent(tfNazwaPokoju, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -76,13 +88,22 @@ public class EdytujPokoj extends javax.swing.JDialog {
         setBounds((screenSize.width-186)/2, (screenSize.height-105)/2, 186, 105);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnEdytujPokojMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEdytujPokojMouseClicked
+        if (!tfNazwaPokoju.getText().equals(s)) {
+            DatabaseUtils.updateCommand("Pokoj", "nazwa", "'" + tfNazwaPokoju.getText() + "'", "idPokoju = '" + index + "'");
+            (View.ProjektorPanel.getLstPokoje()).set(idListy, tfNazwaPokoju.getText()+"#"+index);
+            dispose();
+
+        }
+    }//GEN-LAST:event_btnEdytujPokojMouseClicked
+
     /**
     * @param args the command line arguments
     */
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                EdytujPokoj dialog = new EdytujPokoj(new javax.swing.JFrame(), true);
+                EdytujPokoj dialog = new EdytujPokoj(new javax.swing.JFrame(), true, new String(), 0);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     public void windowClosing(java.awt.event.WindowEvent e) {
                         System.exit(0);
@@ -98,5 +119,8 @@ public class EdytujPokoj extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JTextField tfNazwaPokoju;
     // End of variables declaration//GEN-END:variables
+    private String s;
+    private int index;
+    private int idListy;
 
 }

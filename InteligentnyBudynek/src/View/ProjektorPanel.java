@@ -3,6 +3,8 @@ package View;
 import Controller.ElementyBudynku.Budynek;
 import Controller.ElementyBudynku.Pietro;
 import Controller.ElementyBudynku.Pokoj;
+import Model.DAO.MsBudynekDAO;
+import Model.Utils.DatabaseUtils;
 import java.util.Iterator;
 import java.util.List;
 import javax.swing.DefaultListModel;
@@ -15,12 +17,14 @@ public class ProjektorPanel extends javax.swing.JDialog {
         super(parent, modal);
         modelLstBudynki = new DefaultListModel();
         Budynek b = new Budynek();
+       
         List<Integer> lstBud = b.pobierzListeBudynkow();
         Iterator<Integer> itBud = lstBud.iterator();
         while (itBud.hasNext()) {
             int index = itBud.next();
             modelLstBudynki.addElement(Controller.Utils.Formater.formatujID(index, new Budynek(index).getNazwa()));
         }
+
         modelLstPietra = new DefaultListModel();
         modelLstPokoje = new DefaultListModel();
         initComponents();
@@ -150,6 +154,11 @@ public class ProjektorPanel extends javax.swing.JDialog {
 
         btnEdytujPokoj.setText("Edytuj");
         btnEdytujPokoj.setName("btnEdytujPokoj"); // NOI18N
+        btnEdytujPokoj.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnEdytujPokojMouseClicked(evt);
+            }
+        });
 
         btnDodajPokoj.setText("Dodaj");
         btnDodajPokoj.setName("btnDodajPokoj"); // NOI18N
@@ -192,7 +201,7 @@ public class ProjektorPanel extends javax.swing.JDialog {
                             .addComponent(btnEdytujPietro)
                             .addComponent(btnDodajPietro)))
                     .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -258,6 +267,15 @@ public class ProjektorPanel extends javax.swing.JDialog {
     }//GEN-LAST:event_btnEdytujBudynekMouseClicked
 
     private void btnUsunBudynekMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUsunBudynekMouseClicked
+    if (lstBudynki.getSelectedValue() != null){
+        String s = lstBudynki.getSelectedValue().toString();
+        int index = lstBudynki.getSelectedIndex();
+        int id = Integer.parseInt(s.split("#")[1]);
+        boolean usun = new MsBudynekDAO().usun(id);
+        modelLstBudynki.remove(index);
+        lstBudynki.clearSelection();
+         
+    }
     }//GEN-LAST:event_btnUsunBudynekMouseClicked
 
     private void btnDodajPietroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDodajPietroMouseClicked
@@ -267,12 +285,24 @@ public class ProjektorPanel extends javax.swing.JDialog {
     }//GEN-LAST:event_btnDodajPietroMouseClicked
 
     private void btnEdytujPietroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEdytujPietroMouseClicked
-        EdytujPietro edytujPietro = new EdytujPietro(new JFrame(), true);
-        edytujPietro.setVisible(true);
+
+        if (lstPietra.getSelectedValue() != null) {
+            String s = lstPietra.getSelectedValue().toString();
+            int index = lstPietra.getSelectedIndex();
+            EdytujPietro edytujPietro = new EdytujPietro(new JFrame(), true, s, index);
+            edytujPietro.setVisible(true);
+        }
     }//GEN-LAST:event_btnEdytujPietroMouseClicked
 
     private void btnUsunPietroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUsunPietroMouseClicked
-        // TODO add your handling code here:
+           if (lstPietra.getSelectedValue() != null){
+        String s = lstPietra.getSelectedValue().toString();
+        int index = lstPietra.getSelectedIndex();
+        int id = Integer.parseInt(s.split("#")[1]);
+        DatabaseUtils.deleteCommand("Pietro", "idPietra='" + id + "'");
+        modelLstPietra.remove(index);
+        lstPietra.clearSelection();
+        }
     }//GEN-LAST:event_btnUsunPietroMouseClicked
 
     private void btnDodajPokojMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDodajPokojMouseClicked
@@ -282,7 +312,14 @@ public class ProjektorPanel extends javax.swing.JDialog {
     }//GEN-LAST:event_btnDodajPokojMouseClicked
 
     private void btnUsunPokojMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUsunPokojMouseClicked
-        // TODO add your handling code here:
+        if (lstPokoje.getSelectedValue() != null){
+        String s = lstPokoje.getSelectedValue().toString();
+        int index = lstPokoje.getSelectedIndex();
+        int id = Integer.parseInt(s.split("#")[1]);
+        DatabaseUtils.deleteCommand("Pokoj", "idPokoju='" + id + "'");
+        modelLstPokoje.remove(index);
+        //lstPokoje.clearSelection();
+        }
     }//GEN-LAST:event_btnUsunPokojMouseClicked
 
     private void lstBudynkiValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lstBudynkiValueChanged
@@ -292,14 +329,17 @@ public class ProjektorPanel extends javax.swing.JDialog {
         lstPokoje.clearSelection();
         modelLstPokoje.removeAllElements();
 
-        String s = lstBudynki.getSelectedValue().toString();
-        int idBudynku = Integer.parseInt(s.split("#")[1]);
-        Budynek b = new Budynek();
-        List<Integer> lp = b.pobierzListePieter(idBudynku);
-        Iterator<Integer> itBud = lp.iterator();
-        while (itBud.hasNext()) {
-            int index = itBud.next();
-            modelLstPietra.addElement(Controller.Utils.Formater.formatujID(index, new Pietro(index).pobierzNazwe()));
+        
+        if( lstBudynki.isSelectionEmpty() == false){
+            String s = lstBudynki.getSelectedValue().toString();
+            int idBudynku = Integer.parseInt(s.split("#")[1]);
+            Budynek b = new Budynek();
+            List<Integer> lp = b.pobierzListePieter(idBudynku);
+            Iterator<Integer> itBud = lp.iterator();
+            while (itBud.hasNext()) {
+                int index = itBud.next();
+                modelLstPietra.addElement(Controller.Utils.Formater.formatujID(index, new Pietro(index).pobierzNazwe()));
+            }
         }
     }//GEN-LAST:event_lstBudynkiValueChanged
 
@@ -328,6 +368,15 @@ public class ProjektorPanel extends javax.swing.JDialog {
             modelLstPokoje.addElement(Controller.Utils.Formater.formatujID(idPokoju, nazwaPokoju));
         }
     }//GEN-LAST:event_lstPietraValueChanged
+
+    private void btnEdytujPokojMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEdytujPokojMouseClicked
+        if (lstPokoje.getSelectedValue() != null) {
+            String s = lstPokoje.getSelectedValue().toString();
+            int index = lstPokoje.getSelectedIndex();
+            EdytujPokoj edytujPokoj = new EdytujPokoj(new JFrame(), true, s, index);
+            edytujPokoj.setVisible(true);
+        }
+    }//GEN-LAST:event_btnEdytujPokojMouseClicked
 
     /**
      * @param args the command line arguments

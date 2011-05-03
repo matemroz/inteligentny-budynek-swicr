@@ -11,6 +11,9 @@
 
 package View;
 
+import Controller.ElementyBudynku.Budynek;
+import Model.DAO.MsPietroDAO;
+
 /**
  *
  * @author matemroz
@@ -18,9 +21,13 @@ package View;
 public class EdytujPietro extends javax.swing.JDialog {
 
     /** Creates new form EdytujPietro */
-    public EdytujPietro(java.awt.Frame parent, boolean modal) {
+    public EdytujPietro(java.awt.Frame parent, boolean modal, String s, int idListy) {
         super(parent, modal);
         initComponents();
+        this.s = s;
+        tfNazwaPietra.setText(s.split("#")[0]);
+        this.index = Integer.parseInt(s.split("#")[1]);
+        this.idListy = idListy;
     }
 
     /** This method is called from within the constructor to
@@ -46,6 +53,11 @@ public class EdytujPietro extends javax.swing.JDialog {
 
         btnEdytujPietro.setText("Edytuj");
         btnEdytujPietro.setName("btnEdytujPietro"); // NOI18N
+        btnEdytujPietro.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnEdytujPietroMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -57,7 +69,7 @@ public class EdytujPietro extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnEdytujPietro)
-                    .addComponent(tfNazwaPietra, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE))
+                    .addComponent(tfNazwaPietra, javax.swing.GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -69,12 +81,20 @@ public class EdytujPietro extends javax.swing.JDialog {
                     .addComponent(tfNazwaPietra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnEdytujPietro)
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         setBounds((screenSize.width-185)/2, (screenSize.height-106)/2, 185, 106);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnEdytujPietroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEdytujPietroMouseClicked
+        if (!tfNazwaPietra.getText().equals(s)) {
+            new MsPietroDAO().ustawNazwe(index, tfNazwaPietra.getText());
+            (View.ProjektorPanel.getLstPietra()).set(idListy, tfNazwaPietra.getText()+"#"+index);
+            dispose();
+        }
+    }//GEN-LAST:event_btnEdytujPietroMouseClicked
 
     /**
     * @param args the command line arguments
@@ -82,7 +102,7 @@ public class EdytujPietro extends javax.swing.JDialog {
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                EdytujPietro dialog = new EdytujPietro(new javax.swing.JFrame(), true);
+                EdytujPietro dialog = new EdytujPietro(new javax.swing.JFrame(), true, new String(), 0);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     public void windowClosing(java.awt.event.WindowEvent e) {
                         System.exit(0);
@@ -98,5 +118,7 @@ public class EdytujPietro extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JTextField tfNazwaPietra;
     // End of variables declaration//GEN-END:variables
-
+    private String s;
+    private int index;
+    private int idListy;
 }
