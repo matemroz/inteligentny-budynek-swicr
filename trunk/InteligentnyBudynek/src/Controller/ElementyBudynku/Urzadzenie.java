@@ -1,5 +1,6 @@
 package Controller.ElementyBudynku;
 
+import Model.DAO.MsDemoDAO;
 import Model.DAO.MsUrzadzenieDAO;
 
 public class Urzadzenie {
@@ -51,6 +52,27 @@ public class Urzadzenie {
         return (new MsUrzadzenieDAO()).ustawMoc(idUrzadzenia, poborGazuUrzadzenia);
     }
 
+    public String pobierzNazwa( int idUrzadzenia){
+        return ( new MsDemoDAO().pobierzNazwa(idUrzadzenia));
+    }
+    /*
+=======
+    public double pobierzMocUrzadzenia() {
+        return (new MsUrzadzenieDAO()).pobierzMoc(idUrzadzenia);
+    }
+
+    public double pobierzPoborGazuUrzadzenia() {
+        return (new MsUrzadzenieDAO()).pobierzPoborGazu(idUrzadzenia);
+    }
+
+    public boolean ustawMocUrzadzenia(double mocUrzadzenia) {
+        return (new MsUrzadzenieDAO()).ustawMoc(idUrzadzenia, mocUrzadzenia);
+    }
+
+    public boolean ustawPoborGazuUrzadzenia(double poborGazuUrzadzenia) {
+        return (new MsUrzadzenieDAO()).ustawMoc(idUrzadzenia, poborGazuUrzadzenia);
+    }
+
     public void wlacz() {
         new MsUrzadzenieDAO().rejestrujWlaczenie(this.idUrzadzenia);
     }
@@ -64,6 +86,7 @@ public class Urzadzenie {
     }
 
     /*
+>>>>>>> .r57
      * Metody wygenerowane na podstawie pól
      */
     public int getIdUrzadzenia() {
@@ -97,6 +120,7 @@ public class Urzadzenie {
     public int pobierzPoziomPracy(){
         return  (new MsUrzadzenieDAO()).pobierzPoziomPracy(this.idUrzadzenia);
     }
+
 
     @Override
     public String toString() {
