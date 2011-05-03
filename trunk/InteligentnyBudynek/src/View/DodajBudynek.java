@@ -1,6 +1,7 @@
 package View;
 
 import Controller.ElementyBudynku.Budynek;
+import java.util.List;
 
 public class DodajBudynek extends javax.swing.JDialog {
 
@@ -68,7 +69,9 @@ public class DodajBudynek extends javax.swing.JDialog {
     private void btnDodajBudynekMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDodajBudynekMouseClicked
         Budynek b = new Budynek();
         b.dodajBudynek(tfNazwaBudynku.getText());
-        (View.ProjektorPanel.getLstBudynki()).add(View.ProjektorPanel.getLstBudynki().getSize(), tfNazwaBudynku.getText());
+        List<Integer> lstBud = b.pobierzListeBudynkow();
+        int id = lstBud.get(lstBud.size()-1);
+        (View.ProjektorPanel.getLstBudynki()).add(View.ProjektorPanel.getLstBudynki().getSize(),  tfNazwaBudynku.getText() + "#" + id);
         dispose();
     }//GEN-LAST:event_btnDodajBudynekMouseClicked
 

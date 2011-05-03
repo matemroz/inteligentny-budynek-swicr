@@ -34,7 +34,7 @@ public class MainPanel extends javax.swing.JFrame {
         while (itBud.hasNext()) {
             int index = itBud.next();
             cbListaBudynkow.addItem(Controller.Utils.Formater.formatujID(index, new Budynek(index).getNazwa()));
-        }
+       }
 
         // utworzPokoje(null);
     }

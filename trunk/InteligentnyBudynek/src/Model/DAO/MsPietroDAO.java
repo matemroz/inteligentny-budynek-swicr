@@ -71,7 +71,12 @@ public class MsPietroDAO implements IPietroDAO {
 
     @Override
     public void ustawNazwe(int idPietra, String nazwa) {
-        // TODO Auto-generated method stub
+         int result = DatabaseUtils.updateCommand("Pietro", "nazwa", "'" + nazwa + "'", "idPietra = '" + idPietra + "'");
+        if (result != 1) {
+            System.err.println("Nie dokonano zmiany nazwy budynku!");
+
+        }
+        
     }
 
     @Override

@@ -32,7 +32,7 @@
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="btnEdytujPietro" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="tfNazwaPietra" alignment="0" pref="111" max="32767" attributes="0"/>
+                  <Component id="tfNazwaPietra" alignment="0" pref="103" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -48,7 +48,7 @@
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="btnEdytujPietro" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="12" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -70,6 +70,9 @@
         <Property name="text" type="java.lang.String" value="Edytuj"/>
         <Property name="name" type="java.lang.String" value="btnEdytujPietro" noResource="true"/>
       </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnEdytujPietroMouseClicked"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
