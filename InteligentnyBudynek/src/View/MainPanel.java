@@ -26,14 +26,26 @@ public class MainPanel extends javax.swing.JFrame {
             Logger.getLogger(MainPanel.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        int n = JOptionPane.showConfirmDialog(this, "Czy wczytać dane przykładowe?", "Dane demo", JOptionPane.YES_NO_OPTION);
+        int reply = JOptionPane.showConfirmDialog(this, "Czy wczytać dane przykładowe?", "Dane demo", JOptionPane.YES_NO_OPTION);
+
+        if (reply == JOptionPane.YES_OPTION) {
+            lancuchPolaczenia = "jdbc:sqlserver://DON-LAPTOP:1433;DatabaseName=InteligentnyBudynek;user=budynek;password=haslo;SelectMethod=cursor ";
+        }
+
+        if (reply == JOptionPane.NO_OPTION) {
+            lancuchPolaczenia = "jdbc:sqlserver://DON-LAPTOP:1433;DatabaseName=InteligentnyBudynek1;user=budynek;password=haslo;SelectMethod=cursor ";
+        }
+
+
         initComponents();
         Budynek b = new Budynek();
         List<Integer> lstBud = b.pobierzListeBudynkow();
-        Iterator<Integer> itBud = lstBud.iterator();
-        while (itBud.hasNext()) {
-            int index = itBud.next();
-            cbListaBudynkow.addItem(Controller.Utils.Formater.formatujID(index, new Budynek(index).getNazwa()));
+        if (lstBud != null) {
+            Iterator<Integer> itBud = lstBud.iterator();
+            while (itBud.hasNext()) {
+                int index = itBud.next();
+                cbListaBudynkow.addItem(Controller.Utils.Formater.formatujID(index, new Budynek(index).getNazwa()));
+            }
        }
 
         // utworzPokoje(null);
@@ -1122,6 +1134,10 @@ public class MainPanel extends javax.swing.JFrame {
         rightPanel.repaint();
     }
 
+    public static String getLancuchPolaczenia() {
+        return lancuchPolaczenia;
+    }
+
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
 
@@ -1162,4 +1178,5 @@ public class MainPanel extends javax.swing.JFrame {
     private Pokoj p3;
     private int idPokoju4;
     private Pokoj p4;
+    private static String lancuchPolaczenia;
 }

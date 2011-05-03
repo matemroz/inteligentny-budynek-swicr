@@ -79,7 +79,6 @@ public class PunktGrzewczy extends Urzadzenie {
             //TODO: obsluga bazy? czy przechowujemy poziomDzialania?
 	}
 
-    @Override
 	public void wlacz(){
             boolean ifSuccess = (new MsUrzadzenieDAO()).rejestrujWlaczenie(this.idUrzadzenia);
             if (ifSuccess) {
@@ -91,7 +90,6 @@ public class PunktGrzewczy extends Urzadzenie {
             }
 	}
 
-    @Override
 	public void wylacz(){
             boolean ifSuccess = (new MsUrzadzenieDAO()).rejestrujWlaczenie(this.idUrzadzenia);
             if (ifSuccess) {

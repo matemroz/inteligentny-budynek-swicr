@@ -70,7 +70,11 @@ public class DodajBudynek extends javax.swing.JDialog {
         Budynek b = new Budynek();
         b.dodajBudynek(tfNazwaBudynku.getText());
         List<Integer> lstBud = b.pobierzListeBudynkow();
-        int id = lstBud.get(lstBud.size()-1);
+       int id = 0;
+        if(lstBud != null){
+            id = lstBud.get(lstBud.size()-1);
+        }
+
         (View.ProjektorPanel.getLstBudynki()).add(View.ProjektorPanel.getLstBudynki().getSize(),  tfNazwaBudynku.getText() + "#" + id);
         dispose();
     }//GEN-LAST:event_btnDodajBudynekMouseClicked

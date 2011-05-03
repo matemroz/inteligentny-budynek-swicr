@@ -85,7 +85,7 @@ public class MsPokojDAO {
     public List wylistujUrzadzenia(int idPokoju) {
         List<Integer> urzadzenia = new ArrayList<Integer>();
 
-        ResultSet rs = DatabaseUtils.queryCommand("idUrzadzenia", "InteligentnyBudynek.dbo.Urzadzenia", "idPokoju='" + idPokoju + "'");
+        ResultSet rs = DatabaseUtils.queryCommand("idUrzadzenia", "Urzadzenia", "idPokoju='" + idPokoju + "'");
 
         if (rs == null) {
             return null;
