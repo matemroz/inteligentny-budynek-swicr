@@ -122,7 +122,7 @@ public class MsUrzadzenieDAO implements IUrzadzenieDAO {
      */
     public String pobierzNazwa(int idUrzadzenia) {
         String nazwa = "";
-        ResultSet rs = DatabaseUtils.queryCommand("nazwa", "InteligentnyBudynek.dbo.Urzadzenia", "idUrzadzenia='" + idUrzadzenia + "'");
+        ResultSet rs = DatabaseUtils.queryCommand("nazwa", "Urzadzenia", "idUrzadzenia='" + idUrzadzenia + "'");
 
         if (rs == null) {
             return null;
@@ -168,7 +168,7 @@ public class MsUrzadzenieDAO implements IUrzadzenieDAO {
 
     public int pobierzPoziomPracy(int idUrzadzenia) {
         int poziomPracy = 0;
-        ResultSet rs = DatabaseUtils.queryCommand("poziomPracy", "InteligentnyBudynek.dbo.Urzadzenia", "idUrzadzenia='" + idUrzadzenia + "'");
+        ResultSet rs = DatabaseUtils.queryCommand("poziomPracy", "Urzadzenia", "idUrzadzenia='" + idUrzadzenia + "'");
 
         if (rs == null) {
             return -1;
@@ -191,7 +191,7 @@ public class MsUrzadzenieDAO implements IUrzadzenieDAO {
      */
     public double pobierzMoc(int idUrzadzenia) {
         double moc = 0.0;
-        ResultSet rs = DatabaseUtils.queryCommand("moc", "InteligentnyBudynek.dbo.Urzadzenia", "idUrzadzenia='" + idUrzadzenia + "'");
+        ResultSet rs = DatabaseUtils.queryCommand("moc", "Urzadzenia", "idUrzadzenia='" + idUrzadzenia + "'");
 
         if (rs == null) {
             return -1;
@@ -329,7 +329,7 @@ public class MsUrzadzenieDAO implements IUrzadzenieDAO {
 
     public int pobierzCzasPracy(int idUrzadzenia) {
         int czasPracy = 0;
-        ResultSet rs = DatabaseUtils.queryCommand("czasPracy", "InteligentnyBudynek.dbo.PracaUrzadzenia", "idUrzadzenia='" + idUrzadzenia + "'");
+        ResultSet rs = DatabaseUtils.queryCommand("czasPracy", "PracaUrzadzenia", "idUrzadzenia='" + idUrzadzenia + "'");
 
         if (rs == null) {
             return -1;
@@ -352,7 +352,7 @@ public class MsUrzadzenieDAO implements IUrzadzenieDAO {
 
     public String pobierzStan(int idUrzadzenia) {
         String stan = "";
-        ResultSet rs = DatabaseUtils.queryCommand("stan", "InteligentnyBudynek.dbo.Urzadzenia", "idUrzadzenia='" + idUrzadzenia + "'");
+        ResultSet rs = DatabaseUtils.queryCommand("stan", "Urzadzenia", "idUrzadzenia='" + idUrzadzenia + "'");
 
         if (rs == null) {
             return null;

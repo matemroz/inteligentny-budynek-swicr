@@ -19,10 +19,12 @@ public class ProjektorPanel extends javax.swing.JDialog {
         Budynek b = new Budynek();
        
         List<Integer> lstBud = b.pobierzListeBudynkow();
-        Iterator<Integer> itBud = lstBud.iterator();
-        while (itBud.hasNext()) {
-            int index = itBud.next();
-            modelLstBudynki.addElement(Controller.Utils.Formater.formatujID(index, new Budynek(index).getNazwa()));
+        if (lstBud != null) {
+            Iterator<Integer> itBud = lstBud.iterator();
+            while (itBud.hasNext()) {
+                int index = itBud.next();
+                modelLstBudynki.addElement(Controller.Utils.Formater.formatujID(index, new Budynek(index).getNazwa()));
+            }
         }
 
         modelLstPietra = new DefaultListModel();

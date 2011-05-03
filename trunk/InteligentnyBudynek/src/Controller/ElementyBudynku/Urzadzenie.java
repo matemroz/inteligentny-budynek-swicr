@@ -52,25 +52,8 @@ public class Urzadzenie {
         return (new MsUrzadzenieDAO()).ustawMoc(idUrzadzenia, poborGazuUrzadzenia);
     }
 
-    public String pobierzNazwa( int idUrzadzenia){
-        return ( new MsDemoDAO().pobierzNazwa(idUrzadzenia));
-    }
-    /*
-=======
-    public double pobierzMocUrzadzenia() {
-        return (new MsUrzadzenieDAO()).pobierzMoc(idUrzadzenia);
-    }
-
-    public double pobierzPoborGazuUrzadzenia() {
-        return (new MsUrzadzenieDAO()).pobierzPoborGazu(idUrzadzenia);
-    }
-
-    public boolean ustawMocUrzadzenia(double mocUrzadzenia) {
-        return (new MsUrzadzenieDAO()).ustawMoc(idUrzadzenia, mocUrzadzenia);
-    }
-
-    public boolean ustawPoborGazuUrzadzenia(double poborGazuUrzadzenia) {
-        return (new MsUrzadzenieDAO()).ustawMoc(idUrzadzenia, poborGazuUrzadzenia);
+    public String pobierzNazwa(int idUrzadzenia) {
+        return (new MsDemoDAO().pobierzNazwa(idUrzadzenia));
     }
 
     public void wlacz() {
@@ -81,12 +64,11 @@ public class Urzadzenie {
         new MsUrzadzenieDAO().rejestrujWylaczenie(idUrzadzenia);
     }
 
-    public boolean czyPracuje(){
-       return new MsUrzadzenieDAO().czyPracuje(this.idUrzadzenia);
+    public boolean czyPracuje() {
+        return new MsUrzadzenieDAO().czyPracuje(this.idUrzadzenia);
     }
 
     /*
->>>>>>> .r57
      * Metody wygenerowane na podstawie pól
      */
     public int getIdUrzadzenia() {
@@ -117,10 +99,9 @@ public class Urzadzenie {
         (new MsUrzadzenieDAO()).ustawPoziomPracy(this.idUrzadzenia, poziomPracy);
     }
 
-    public int pobierzPoziomPracy(){
-        return  (new MsUrzadzenieDAO()).pobierzPoziomPracy(this.idUrzadzenia);
+    public int pobierzPoziomPracy() {
+        return (new MsUrzadzenieDAO()).pobierzPoziomPracy(this.idUrzadzenia);
     }
-
 
     @Override
     public String toString() {

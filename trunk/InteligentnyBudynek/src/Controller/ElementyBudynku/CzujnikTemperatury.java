@@ -43,13 +43,10 @@ public class CzujnikTemperatury extends Urzadzenie {
         return (new MsUrzadzenieDAO()).ustawMoc(this.idUrzadzenia, moc);
     }
 
-
-    @Override
     public void wlacz() {
         new MsUrzadzenieDAO().rejestrujWlaczenie(this.idUrzadzenia);
     }
 
-    @Override
     public void wylacz() {
         new MsUrzadzenieDAO().rejestrujWylaczenie(this.idUrzadzenia);
     }

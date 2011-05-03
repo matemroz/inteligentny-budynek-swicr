@@ -54,8 +54,8 @@ public class Budynek {
 
     public boolean dodajBudynek(String nazwa) {
         int id = (new MsBudynekDAO()).dodaj(nazwa);
-        boolean b = budynki.add(id);
-        return b;
+        //boolean b = budynki.add(id);
+        return true;
     }
 
     public boolean usunBudynek(int b) {

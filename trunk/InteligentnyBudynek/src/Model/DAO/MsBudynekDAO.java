@@ -76,7 +76,7 @@ public class MsBudynekDAO implements IBudynekDAO {
     public List<Integer> pobierzListeBudynkow() {
         List<Integer> budynki = new ArrayList<Integer>();
 
-        ResultSet rs = DatabaseUtils.queryCommand("idBudynku, nazwa", "InteligentnyBudynek.dbo.Budynek", "");
+        ResultSet rs = DatabaseUtils.queryCommand("idBudynku, nazwa", "Budynek", "");
 
         if (rs == null) {
             return null;

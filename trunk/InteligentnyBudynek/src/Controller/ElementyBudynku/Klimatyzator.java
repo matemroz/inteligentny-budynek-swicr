@@ -36,12 +36,10 @@ public class Klimatyzator extends Urzadzenie {
         return (new MsUrzadzenieDAO()).czyPracuje(idUrzadzenia);
     }
 
-    @Override
     public void wlacz() {
         new MsUrzadzenieDAO().rejestrujWlaczenie(this.idUrzadzenia);
     }
 
-    @Override
     public void wylacz() {
         new MsUrzadzenieDAO().rejestrujWylaczenie(this.idUrzadzenia);
     }
