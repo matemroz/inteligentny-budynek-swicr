@@ -19,6 +19,7 @@ import Model.DAO.MsGazPradDAO;
 import Model.DAO.MsPokojDAO;
 import Model.DAO.MsUrzadzenieDAO;
 import java.sql.SQLException;
+import java.text.DecimalFormat;
 import java.util.Iterator;
 import java.util.List;
 import java.util.logging.Level;
@@ -33,7 +34,6 @@ import javax.swing.DefaultListModel;
 public class KosztyPanel extends javax.swing.JDialog {
 
     /** Creates new form KosztyView */
-
     public KosztyPanel(java.awt.Frame parent, boolean modal, List<Pokoj> pokoje) throws SQLException {
         super(parent, modal);
         roomListModel = new DefaultComboBoxModel();
@@ -206,18 +206,23 @@ public class KosztyPanel extends javax.swing.JDialog {
         setBounds((screenSize.width-472)/2, (screenSize.height-358)/2, 472, 358);
     }// </editor-fold>//GEN-END:initComponents
 
+    public static double roundToDecimals(double d, int c) {
+        int temp = (int) ((d * Math.pow(10, c)));
+        return (((double) temp) / Math.pow(10, c));
+    }
+
     private void jListaUrzadzenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jListaUrzadzenMouseClicked
-        if(jListaUrzadzen.getModel().getSize()==0) {
+        if (jListaUrzadzen.getModel().getSize() == 0) {
             return;
         }
-        int selectedID =  Integer.parseInt(jListaUrzadzen.getSelectedValue().toString().split("#")[1]);
+        int selectedID = Integer.parseInt(jListaUrzadzen.getSelectedValue().toString().split("#")[1]);
         double prad = (new MsGazPradDAO()).pobierzCenePradu();
         MsUrzadzenieDAO dao = new MsUrzadzenieDAO();
         int czas = dao.pobierzCzasPracy(selectedID);
         double moc = dao.pobierzMoc(selectedID);
         jLabel4.setText(Konwerter.czasSekNaGodz(czas));//wyswietlanie czasu
         double kwh = czas * moc / 3600;//TODO: dla kWh dzielenie przez 3,600,000
-        jLabel5.setText(kwh * prad + " zł");//wyswietlanie mocy
+        jLabel5.setText(roundToDecimals(kwh * prad, 2) + " zł");//wyswietlanie mocy
     }//GEN-LAST:event_jListaUrzadzenMouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -226,7 +231,7 @@ public class KosztyPanel extends javax.swing.JDialog {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jComboBox1PopupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_jComboBox1PopupMenuWillBecomeInvisible
-        if (jComboBox1.getSelectedItem().toString().equals("wybierz...")){
+        if (jComboBox1.getSelectedItem().toString().equals("wybierz...")) {
             listModel.clear();
             return;
         }
@@ -243,6 +248,7 @@ public class KosztyPanel extends javax.swing.JDialog {
      */
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
+
             @Override
             public void run() {
                 try {
@@ -262,7 +268,6 @@ public class KosztyPanel extends javax.swing.JDialog {
             }
         });
     }
-    
 
     private void initList(int idPokoju) throws SQLException {//wczytywanie nazw urzadzen z bazy danych do listy
         //ConnectionManager.getDatabaseConnection();
@@ -276,9 +281,11 @@ public class KosztyPanel extends javax.swing.JDialog {
             idUrzadzenia = (Integer) list.get(i);
             Urzadzenie u = new Urzadzenie(idUrzadzenia);
             nazwaUrzadzenia = u.pobierzNazwa();
-            listModel.addElement(nazwaUrzadzenia+"#"+idUrzadzenia);
+            if (nazwaUrzadzenia.equals("Okno") == false && nazwaUrzadzenia.equals("Drzwi") == false) {
+                listModel.addElement(nazwaUrzadzenia + "#" + idUrzadzenia);
+            }
         }
-        
+
     }
 
     private void covertListToComboBox(List<Pokoj> pokoje) {
@@ -288,10 +295,9 @@ public class KosztyPanel extends javax.swing.JDialog {
         Pokoj p = new Pokoj();
         while (it.hasNext()) {
             p = it.next();
-            roomListModel.addElement(p.getNazwa()+"#"+p.getIdPokoju());
+            roomListModel.addElement(p.getNazwa() + "#" + p.getIdPokoju());
         }
     }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JComboBox jComboBox1;
@@ -311,5 +317,4 @@ public class KosztyPanel extends javax.swing.JDialog {
     private DefaultComboBoxModel roomListModel;
     private List list;
     private CenaPanel cenaPanel;
-
 }
