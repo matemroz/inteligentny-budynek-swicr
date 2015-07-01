@@ -1,0 +1,1 @@
+System zarządzania inteligentnym budynkiem
